@@ -5,11 +5,7 @@ import Header from './Components/zeroz/Header/Header';
 function App() {
   return (
     <>
-<<<<<<< HEAD
-    {"Frieza is gay"}
-=======
       <Header/>
->>>>>>> 10b3f05 (hello)
     </>
   );
 }
