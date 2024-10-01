@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+export default function App() {
   return (
     <>
-    {"Frieza is gay"}
+    {"hello"}
     </>
   );
 }
 
-export default App;
