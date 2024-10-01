@@ -11,7 +11,7 @@ export default function Header(){
                     Free Express Shipping on all orders with all duties included
                 </h5>
             </div>  
-            <div className="header p-9 pe-0 flex ">
+            <div className="header p-9 pe-0 flex relative">
                 
                 <button>
                     <a href='#'>
@@ -42,8 +42,8 @@ export default function Header(){
                             <li>
                                 <a href='#' className='pe-6'>CONTACT</a>
                             </li>   
-                            <li className='icons ms-4 text-black text-3xl -mt-2'>
-                                <a href='#' >
+                            <li className='icons cart ms-4 text-black text-3xl -mt-2'>
+                                <a href='#'>
                                     <FontAwesomeIcon icon={faBagShopping}/>
                                 </a>
                             </li>   
