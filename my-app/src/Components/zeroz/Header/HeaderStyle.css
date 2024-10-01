@@ -3,5 +3,19 @@
 }
 .headerLinks .ourStory{
     position: absolute;
-    margin-left: 80%;
+    margin-left: 75%;
+}
+
+@media (max-width: 1450px) {
+    .headerLinks .ourStory{
+        margin-left: 65%;
+    }
+}
+@media (max-width: 1100px) {
+    .headerLinks,.shipping{
+        display: none;
+    }
+    .icons{
+        display: block;
+    }
 }
