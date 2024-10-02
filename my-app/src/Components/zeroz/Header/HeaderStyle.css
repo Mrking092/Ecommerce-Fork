@@ -17,7 +17,7 @@
     }
 
     .headerLinks .cart{
-        margin-left: 280%;
+        margin-left: 250%;
     }
     .header{
         display: flex;
@@ -26,10 +26,13 @@
     .header button{
         position: absolute;
     }
+    .header .sidebar{
+        display: block;
+    }
 }
 @media (max-width: 1000px) {
         .headerLinks .cart{
-        margin-left: 220%;
+        margin-left: 210%;
         font-size: 22px;
     }
     .headerLinks .icons{
@@ -38,23 +41,23 @@
 }
 @media (max-width: 830px) {
         .headerLinks .cart{
-        margin-left: 180%;
+        margin-left: 160%;
     }
 }
 @media (max-width: 720px) {
         .headerLinks .cart{
-        margin-left: 140%;
+        margin-left: 120%;
     }
 }
 @media (max-width: 620px) {
         .headerLinks .cart{
-        margin-left: 100%;
+        margin-left: 70%;
     }
 }
 @media (max-width: 500px) {
         .headerLinks .cart{
-        margin-left: 60%;
-        margin-right: -20%;
+        margin-left: 50%;
+        margin-right: -25%;
     }
     .headerLinks .icons{
         font-size: 18px;

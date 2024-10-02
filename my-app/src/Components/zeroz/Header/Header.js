@@ -12,7 +12,13 @@ export default function Header(){
                 </h5>
             </div>  
             <div className="header p-9 pe-0 flex relative">
-                
+                <div className='sidebar cursor-pointer hidden'>
+                    <a href='#'>
+                    <div className='w-6 h-0.5 mb-1 mt-1 bg-gray-500'></div>
+                    <div className='w-6 h-0.5 mb-1 bg-gray-500'></div>
+                    <div className='w-6 h-0.5 mb-1 bg-gray-500'></div>
+                    </a>
+                </div>
                 <button>
                     <a href='#'>
                     <img src={siteLogo} alt="site-logo"/>
@@ -47,7 +53,7 @@ export default function Header(){
                                     <FontAwesomeIcon icon={faBagShopping}/>
                                 </a>
                             </li>   
-                            <li className='icons ms-9 text-black text-xl -mt-1'>
+                            <li className='icons ms-9 text-black text-2xl -mt-1.5'>
                                 <a href='#' className=''>
                                     <FontAwesomeIcon icon={faUser} />
                                 </a>
