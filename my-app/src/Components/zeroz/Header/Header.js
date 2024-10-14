@@ -1,11 +1,25 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBagShopping, faUser} from '@fortawesome/free-solid-svg-icons'
+// import {faBagShopping, faUser} from '@fortawesome/free-solid-svg-icons'
 import siteLogo from '../../Imgs/site-logo.png'
 import HeaderStyle from './HeaderStyle.css'
 
 export default function Header(){
+    const [cart, setCart] = useState(false);
+
+    const shoppingCart = () => {
+        setCart(!cart);
+        console.log(cart);
+    }
     return(
         <>
+        { cart &&
+        <div className='shoppingContainer'>
+            <div className='shoppingDiv'>
+
+            </div>
+            <div></div>
+        </div>
+        }
             <div className='shipping bg-gray-100 w-full'>
                 <h5 className='text-gray-400 text-center text-xs p-3'>
                     Free Express Shipping on all orders with all duties included
@@ -49,8 +63,8 @@ export default function Header(){
                                 <a href='#' className='pe-6'>CONTACT</a>
                             </li>   
                             <li className='icons cart ms-4 text-black text-3xl -mt-2'>
-                                <a href='#'>
-                                    <FontAwesomeIcon icon={faBagShopping}/>
+                                <a href='x' onClick={shoppingCart}>
+                                    <FontAwesomeIcon  icon={faBagShopping}/>
                                 </a>
                             </li>   
                             <li className='icons ms-9 text-black text-2xl -mt-1.5'>

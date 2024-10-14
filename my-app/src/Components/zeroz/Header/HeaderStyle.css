@@ -5,7 +5,14 @@
     position: absolute;
     margin-left: 75%;
 }
+.shoppingContainer{
+    position: absolute;
+    z-index: 5;
+    background-color: black;
+}
+.shoppingDiv{
 
+}
 @media (max-width: 1450px) {
     .headerLinks .ourStory{
         margin-left: 65%;
