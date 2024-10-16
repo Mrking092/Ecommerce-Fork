@@ -1,9 +1,11 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-// import {faBagShopping, faUser} from '@fortawesome/free-solid-svg-icons'
+import {faBagShopping, faUser, faXmark} from '@fortawesome/free-solid-svg-icons'
 import siteLogo from '../../Imgs/site-logo.png'
 import HeaderStyle from './HeaderStyle.css'
+import { useState } from 'react';
 
 export default function Header(){
+    let shoppingElements = 0;
     const [cart, setCart] = useState(false);
 
     const shoppingCart = () => {
@@ -15,9 +17,14 @@ export default function Header(){
         { cart &&
         <div className='shoppingContainer'>
             <div className='shoppingDiv'>
-
+                <FontAwesomeIcon onClick={shoppingCart} className='closeBtn text-xl absolute' icon={faXmark}/>
+                <h2 className='ps-5 pb-5 mt-5 text-lg border-b font-semibold'>Shopping Cart</h2>
+                <div className='flex justify-center'>
+                    {shoppingElements > 0 ? "": <h5 className='noElement text-lg font-semibold text-gray-500 absolute'>No products in the cart.</h5>}
+                </div>
+                <div className='shoppingBtn cursor-pointer text-center py-3 mx-5 text-gray-100 text-md tracking-widest font-bold'>CONTINUE SHOPPING</div>
             </div>
-            <div></div>
+            <div className='shoppingBg' onClick={shoppingCart}></div>
         </div>
         }
             <div className='shipping bg-gray-100 w-full'>
@@ -63,8 +70,9 @@ export default function Header(){
                                 <a href='#' className='pe-6'>CONTACT</a>
                             </li>   
                             <li className='icons cart ms-4 text-black text-3xl -mt-2'>
-                                <a href='x' onClick={shoppingCart}>
+                                <a href='#' onClick={shoppingCart}>
                                     <FontAwesomeIcon  icon={faBagShopping}/>
+                                    <div className='count text-sm bg-black text-white text-center'>{shoppingElements}</div>
                                 </a>
                             </li>   
                             <li className='icons ms-9 text-black text-2xl -mt-1.5'>
