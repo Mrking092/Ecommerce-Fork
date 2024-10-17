@@ -5,3 +5,12 @@
 body {
     background-color: #f1f1ef;
 }
+
+#priceRangeSlider {
+    height: 20px;
+    margin: 20px;
+  }
+
+  #priceRangeSlider {
+    background-color: red;
+  }
