@@ -6,14 +6,33 @@ import { useState } from 'react';
 
 export default function Header(){
     let shoppingElements = 0;
+    const [sidebar, setSidebar] = useState(false);
     const [cart, setCart] = useState(false);
 
+    const sidebarChange = () => {
+        setSidebar(!sidebar);
+    }
     const shoppingCart = () => {
         setCart(!cart);
-        console.log(cart);
     }
     return(
         <>
+        { sidebar &&
+        <div className='sidebarContainer absolute'>
+            <div className='sidebarDiv'>
+            <FontAwesomeIcon onClick={sidebarChange} className='closeBtn text-xl absolute z-20' icon={faXmark}/>
+                <ul className='sidebarSections flex flex-col text-lg'>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Home</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Shop Everything</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Lookbook</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Sale</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Story</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Contact</a></li>
+                </ul>
+            </div>
+            <div className='sidebarBg' onClick={sidebarChange}></div>
+        </div>
+        }
         { cart &&
         <div className='shoppingContainer'>
             <div className='shoppingDiv'>
@@ -33,7 +52,7 @@ export default function Header(){
                 </h5>
             </div>  
             <div className="header p-9 pe-0 flex relative">
-                <div className='sidebar cursor-pointer hidden'>
+                <div onClick={sidebarChange} className='sidebar cursor-pointer hidden'>
                     <a href='#'>
                     <div className='w-6 h-0.5 mb-1 mt-1 bg-gray-500'></div>
                     <div className='w-6 h-0.5 mb-1 bg-gray-500'></div>

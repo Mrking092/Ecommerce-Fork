@@ -12,6 +12,38 @@
     height: 20px;
     margin-left: 55%;
 }
+.sidebarContainer{
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+}
+.sidebarContainer .sidebarDiv{
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+}
+.sidebarDiv .sidebarSections{
+    margin-top: 100px;
+}
+.sidebarDiv .closeBtn{
+    margin-left: 96%;
+    margin-top: 3%;
+    cursor: pointer;
+}
+.sidebarDiv .closeBtn:active{
+    border: 1px dotted gray;
+    padding: 3px;
+}
+.sidebarBg{
+    position: absolute;
+    background-color: black;
+    opacity: 0.3;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+}
 .shoppingContainer{
     position: absolute;
     z-index: 5;
@@ -47,7 +79,7 @@
 .shoppingContainer .shoppingBg{
     position: absolute;
     background-color: black;
-    opacity: 0.2;
+    opacity: 0.3;
     z-index: -1;
     width: 100vw;
     height: 100vh;
@@ -60,6 +92,11 @@
 @media (max-height: 600px) {
     .shoppingDiv .shoppingBtn{
         margin-top: 78vh;
+    }
+}
+@media (min-width: 1100px){
+    .sidebarContainer{
+    display: none;
     }
 }
 @media (max-width: 1450px) {
@@ -115,6 +152,11 @@
         .headerLinks .cart{
         margin-left: 120%;
     }
+    .sidebarDiv .closeBtn{
+        margin-left: 95%;
+        margin-top: 3%;
+        cursor: pointer;
+    }
 }
 @media (max-width: 620px) {
         .headerLinks .cart{
@@ -143,6 +185,12 @@
     .header button{
         margin-left: -10%;
         width: 120px;
+    }
+    .sidebarContainer .sidebarDiv{
+        width: 85vw;
+    }
+    .sidebarDiv .closeBtn{
+        margin-left: 90%;
     }
     .shoppingContainer .shoppingDiv{
         width: 100vw;
