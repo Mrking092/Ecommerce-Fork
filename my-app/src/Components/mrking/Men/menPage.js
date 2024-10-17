@@ -5,10 +5,10 @@ import {} from '@fortawesome/free-brands-svg-icons'
 import {} from '@fortawesome/free-regular-svg-icons'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import Box from '@mui/material/Box';
 
-const MenPage = () => {
+export default function MenPage() {
   const [shoes, setShoes] = useState([
     { id: 1, name: "Nike Air Max", price: 120 },
     { id: 2, name: "Adidas Superstar", price: 80 },
@@ -34,32 +34,34 @@ const MenPage = () => {
     setMaxPrice(maxPriceValue);
   };
 
-  const renderThumb = (props) => {
+  const renderThumb = () => {
     return (
       <div
-        {...props}
         style={{
-          ...props.style,
-          backgroundColor: '#6e7051',
-          width: '20px',
-          height: '20px',
+          width: 20,
+          height: 20,
+          backgroundColor: 'red', // changed to red
           borderRadius: '50%',
+          border: '2px solid #fff',
+          cursor: 'pointer',
+          position: 'absolute', // added position absolute
+          top: 0, // added top 0
+          left: 0, // added left 0
         }}
       />
     );
   };
-
-  const renderTrack = (props) => {
+  
+  const renderTrack = () => {
     return (
       <div
-        {...props}
         style={{
-          ...props.style,
-          height: '10px',
           width: '100%',
-          borderRadius: '4px',
-          backgroundColor: '#ccc',
-          opacity: 0.3,
+          height: 4,
+          backgroundColor: 'green', // changed to green
+          borderRadius: 2,
+          boxShadow: 'inset 0 0 5px rgba(0, 0, 0, 0.2)',
+          position: 'relative', // added position relative
         }}
       />
     );
@@ -87,10 +89,9 @@ const MenPage = () => {
             </div>
           </div>
           <div className="shoes">
-            {filteredShoes.map((shoe) => (
-              <div key={shoe.id} className="shoe">
-                <h2>{shoe.name}</h2>
-                <p>Price: ${shoe.price}</p>
+            {filteredShoes.map((shoe,ids) => (
+              <div key={shoe.ids} className="shoe">
+                <h2>{shoe.name} Price: ${shoe.price}</h2>
               </div>
             ))}
           </div>
@@ -99,5 +100,3 @@ const MenPage = () => {
     </div>
   );
 };
-
-export default MenPage;
