@@ -1,0 +1,66 @@
+.betterForDiv{
+    height: 60vh;
+    background-image: url('../../Imgs/betterForImg.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.betterForDiv h1{
+    font-size: 4.2rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0px 15px;
+}
+.betterForDiv p{
+    font-size: 1.2rem;
+    padding-top: 15px;
+    text-align: center;
+    padding: 0px 15px;
+}
+.betterForDiv button{
+    margin-top: 30px;
+}
+
+.pros{
+    
+}
+@media (max-width: 950px) {
+    .betterForDiv{
+        height: 40vh;
+    }
+}
+@media (max-width: 800px) {
+    .betterForDiv{
+        height: 30vh;
+    }
+    .betterForDiv h1{
+        font-size: 2rem;
+    }
+    .betterForDiv p{
+        font-size: 1rem;
+    }
+    .betterForDiv div{
+        flex-direction: column;
+
+    }
+    .betterForDiv button{
+        padding: 10px 0;
+        width: 90vw;
+    }
+}
+@media (max-width: 465px) {
+    .betterForDiv h1{
+        /* padding-top: 25px; */
+    }
+    .betterForDiv {
+        height: 37vh;
+    }
+    .betterForDiv div{
+        /* margin-bottom: 20px; */
+    }
+}
+@media (max-height: 900px) {
+    .betterForDiv{
+        height: 50vh;
+    }
+}
