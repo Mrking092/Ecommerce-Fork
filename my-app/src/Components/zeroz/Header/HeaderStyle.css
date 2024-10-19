@@ -16,12 +16,14 @@
     z-index: 5;
     width: 100vw;
     height: 100vh;
+    position: fixed;
 }
 .sidebarContainer .sidebarDiv{
     position: absolute;
     z-index: 10;
     background-color: white;
-    width: 100vw;
+    min-width: 85vw;
+
     height: 100vh;
 }
 .sidebarDiv .sidebarSections{
@@ -47,7 +49,7 @@
 .shoppingContainer{
     position: absolute;
     z-index: 5;
-    width: 100vw;
+    width: 85vw;
     height: 100vh;
 }
 .shoppingContainer .shoppingDiv{
@@ -101,11 +103,16 @@
 }
 @media (max-width: 1450px) {
     .headerLinks .ourStory{
-        margin-left: 65%;
+        margin-left: 70%;
     }
     .shoppingContainer .shoppingDiv{
         width: 50vw;
         margin-left: 50%;
+    }
+}
+@media (max-width: 1300px) {
+    .headerLinks .ourStory{
+        margin-left: 65%;
     }
 }
 @media (max-width: 1100px) {
@@ -173,7 +180,7 @@
         margin-right: -25%;
     }
     .headerLinks .icons{
-        font-size: 18px;
+        font-size: 16px;
     }
     .icons .count{
         width: 15px;
@@ -187,7 +194,7 @@
         width: 120px;
     }
     .sidebarContainer .sidebarDiv{
-        width: 85vw;
+        /* width: 85vw; */
     }
     .sidebarDiv .closeBtn{
         margin-left: 90%;

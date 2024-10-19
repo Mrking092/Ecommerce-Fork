@@ -6,7 +6,7 @@ import Footer from './Components/zeroz/Footer/Footer';
 function App() {
   return (
     <>
-      {/* <Header/> */}
+      <Header/>
       
       <Footer/>
     </>
