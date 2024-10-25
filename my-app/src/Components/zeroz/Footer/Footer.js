@@ -3,7 +3,7 @@ import {faArrowsRotate, faLock, faTruck} from '@fortawesome/free-solid-svg-icons
 import {faCopyright} from '@fortawesome/free-regular-svg-icons'
 import {faInstagram, faPinterestP, faFacebook, faXTwitter} from '@fortawesome/free-brands-svg-icons'
 import FooterStyle from './FooterStyle.css'
-import PaymentMethods from '../../Imgs/PaymentMethods.png'
+import PaymentMethods from '../../Imgs/zeroz/PaymentMethods.png'
 
 export default function Footer(){
     return(

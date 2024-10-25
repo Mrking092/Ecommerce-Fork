@@ -3,7 +3,7 @@
 }
 .betterForDiv{
     height: 60vh;
-    background-image: url('../../Imgs/betterForImg.jpg');
+    background-image: url('../../Imgs/zeroz/betterForImg.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -153,9 +153,9 @@
         margin-top: 20px;
     }
 }
-@media (max-width: 465px) {
+@media (max-width: 485px) {
     .betterForDiv {
-        height: 37vh;
+        height: 38vh;
     }
 }
 @media (max-height: 900px) {

@@ -1,6 +1,6 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBagShopping, faUser, faXmark} from '@fortawesome/free-solid-svg-icons'
-import siteLogo from '../../Imgs/site-logo.png'
+import siteLogo from '../../Imgs/zeroz/site-logo.png'
 import HeaderStyle from './HeaderStyle.css'
 import { useState } from 'react';
 

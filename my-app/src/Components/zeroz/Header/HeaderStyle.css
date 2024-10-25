@@ -3,7 +3,7 @@
 }
 .headerLinks .ourStory{
     position: absolute;
-    margin-left: 75%;
+    margin-left: 73%;
 }
 .icons .count{
     margin-top: -50px;
@@ -23,7 +23,6 @@
     z-index: 10;
     background-color: white;
     min-width: 85vw;
-
     height: 100vh;
 }
 .sidebarDiv .sidebarSections{
