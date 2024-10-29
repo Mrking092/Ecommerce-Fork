@@ -11,21 +11,6 @@ import aboutUsImg from '../../Imgs/zeroz/aboutUsImg.jpg'
 import shoes from '../../Imgs/zeroz/shoes.png'
 
 export default function HomeContent() {
-
-    const url = 'https://v1-sneakers.p.rapidapi.com/v1/brands';
-    const options = {
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': '2460ab4236msh42ec7298ff9e099p188cfejsn7b366a399060',
-		'x-rapidapi-host': 'v1-sneakers.p.rapidapi.com'
-	}
-};
-    const test = async () =>{
-        const response = await fetch(url, options);
-        const result = await response.text();
-        console.log(result);
-    }
-
     return (
         <>
             <div className='homeFirstDiv '>
