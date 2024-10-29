@@ -8,8 +8,24 @@ import asSeen3 from '../../Imgs/zeroz/asSeen3.png'
 import asSeen4 from '../../Imgs/zeroz/asSeen4.png'
 import asSeen5 from '../../Imgs/zeroz/asSeen5.png'
 import aboutUsImg from '../../Imgs/zeroz/aboutUsImg.jpg'
+import shoes from '../../Imgs/zeroz/shoes.png'
 
 export default function HomeContent() {
+
+    const url = 'https://v1-sneakers.p.rapidapi.com/v1/brands';
+    const options = {
+	method: 'GET',
+	headers: {
+		'x-rapidapi-key': '2460ab4236msh42ec7298ff9e099p188cfejsn7b366a399060',
+		'x-rapidapi-host': 'v1-sneakers.p.rapidapi.com'
+	}
+};
+    const test = async () =>{
+        const response = await fetch(url, options);
+        const result = await response.text();
+        console.log(result);
+    }
+
     return (
         <>
             <div className='homeFirstDiv '>
@@ -17,7 +33,7 @@ export default function HomeContent() {
                 <p className='text-lg text-white w-4/12 mb-7'>Bibendum fermentum, aenean donec pretium aliquam blandit
                 tempor imperdiet arcu arcu ut nunc in dictum mauris at ut.</p>
                 <div className='flex flex-row'>
-                <button className='bg-white py-3 px-8 font-semibold me-7'>SHOP MEN</button>
+                <button onClick={test} className='bg-white py-3 px-8 font-semibold me-7'>SHOP MEN</button>
                 <button className='bg-white py-3 px-8 font-semibold'>SHOP WOMEN</button>
                 </div>
             </div>
@@ -44,6 +60,40 @@ export default function HomeContent() {
                     <button className='font-semibold border-b-2 border-orange-400  mt-10'>READ MORE</button>
                 </div>
             </div>
+
+            <div className='seeHowMadeDiv py-20'>
+                <h2 className='text-5xl font-semibold text-center py-10'>See how your shoes are made</h2>
+                <p className='text-gray-400 text-center mx-auto pb-5 w-5/12 font-semibold'>Urna, felis enim orci accumsan urna blandit
+                egestas mattis egestas feugiat viverra ornare donec adipiscing semper aliquet integer
+                risus leo volutpat nulla enim ultrices.</p>
+                <div className=' makingContainer grid grid-flow-col grid-cols-3'>
+                    <div className='beforeImg pt-10 w-5/12 mx-auto text-start'>
+                        <h6 className='text-orange-400 font-semibold mb-3'>01.</h6>
+                        <h4 className='text-2xl font-semibold mb-3'>Pet canvas</h4>
+                        <p className='text-gray-400'>Morbi eget bibendum sit adipiscing morbi ac nisl vitae maecenas nulla cursus</p>
+                    </div>
+                    <div className='beforeImg pt-10 w-5/12 mx-auto text-start'>
+                        <h6 className='text-orange-400 font-semibold mb-3'>02.</h6>
+                        <h4 className='text-2xl font-semibold mb-3'>Algae foam + vegan glue</h4>
+                        <p className='text-gray-400'>Enim tincidunt donec vulputate magna pharetra mattis in</p>
+                    </div>
+                    <div className='shoes pt-10 row-span-2 my-auto col-start-2 row-start-1'>
+                        <img className='' src={shoes}/>
+                    </div>
+                    <div className='afterImg pt-10 w-5/12 mx-auto text-end'>
+                        <h6 className='text-orange-400 font-semibold mb-3'>03.</h6>
+                        <h4 className='text-2xl font-semibold mb-3'>Organic cotton</h4>
+                        <p className='text-gray-400'>A vel ipsum, sed dignissim elementum ultrices amet</p>
+                    </div>
+                    <div className='afterImg pt-10 w-5/12 mx-auto text-end'>
+                        <h6 className='text-orange-400 font-semibold mb-3'>04.</h6>
+                        <h4 className='text-2xl font-semibold mb-3'>Upcycled plastic bottles</h4>
+                        <p className='text-gray-400'>Pellentesque viverra amet netus facilisis amet felis odio tortor orci cursus est</p>
+                    </div>
+                </div>
+            </div>
+
+            
         </>
     )
 }

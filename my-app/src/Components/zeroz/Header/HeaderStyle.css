@@ -46,18 +46,26 @@
     height: 100vh;
 }
 .shoppingContainer{
-    position: absolute;
+    position: fixed;
     z-index: 5;
-    width: 85vw;
+    width: 98vw;
     height: 100vh;
 }
 .shoppingContainer .shoppingDiv{
     position: absolute;
     z-index: 10;
     background-color: white;
-    width: 35vw;
+    width: 33.8vw;
     height: 100vh;
     margin-left: 65vw;
+}
+.shoppingContainer .shoppingBg{
+    position: absolute;
+    background-color: black;
+    opacity: 0.3;
+    z-index: -1;
+    width: 95vw;
+    height: 100vh;
 }
 .shoppingDiv .noElement{
     margin-top: 38vh;
@@ -77,14 +85,7 @@
     margin-top: 3%;
     cursor: pointer;
 }
-.shoppingContainer .shoppingBg{
-    position: absolute;
-    background-color: black;
-    opacity: 0.3;
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-}
+
 @media (max-height: 800px) {
     .shoppingDiv .shoppingBtn{
         margin-top: 81vh;
