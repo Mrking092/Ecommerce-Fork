@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  } from '@fortawesome/free-solid-svg-icons'
-import {  } from '@fortawesome/free-regular-svg-icons'
+import { faStar } from '@fortawesome/free-regular-svg-icons'
 import HomeContentStyle from './HomeContentStyle.css'
 import asSeen1 from '../../Imgs/zeroz/asSeen1.png'
 import asSeen2 from '../../Imgs/zeroz/asSeen2.png'
@@ -18,7 +18,7 @@ export default function HomeContent() {
                 <p className='text-lg text-white w-4/12 mb-7'>Bibendum fermentum, aenean donec pretium aliquam blandit
                 tempor imperdiet arcu arcu ut nunc in dictum mauris at ut.</p>
                 <div className='flex flex-row'>
-                <button onClick={test} className='bg-white py-3 px-8 font-semibold me-7'>SHOP MEN</button>
+                <button className='bg-white py-3 px-8 font-semibold me-7'>SHOP MEN</button>
                 <button className='bg-white py-3 px-8 font-semibold'>SHOP WOMEN</button>
                 </div>
             </div>
@@ -78,7 +78,31 @@ export default function HomeContent() {
                 </div>
             </div>
 
-            
+            <div className='ourBestSeller'>
+                <div className=''>
+                    <h4 className='text-2xl font-semibold py-10'>Our Best Seller</h4>
+                    <button className=''>VIEW ALL BEST SELLERS</button>
+                </div>
+                <div>
+                    <div className=''>
+                        <div className=''>
+                            <img src={shoes}/>
+                        </div>
+                        <h5 className=''>Women's each Training</h5>
+                        <div className=''>
+                            <p className=''>$69.90</p>
+                            <p className=''>$57.90</p>
+                        </div>
+                        <div className=''>
+                            <FontAwesomeIcon icon={faStar} />
+                            <FontAwesomeIcon icon={faStar} />
+                            <FontAwesomeIcon icon={faStar} />
+                            <FontAwesomeIcon icon={faStar} />
+                            <FontAwesomeIcon icon={faStar} />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
