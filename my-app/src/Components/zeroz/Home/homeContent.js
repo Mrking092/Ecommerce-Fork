@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useRef } from 'react';
-// import loginAudio from '../../Imgs/zeroz/loginCheckout.mp3';
 import {  } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
 import HomeContentStyle from './HomeContentStyle.css'
@@ -15,19 +14,24 @@ import Rating from '@mui/material/Rating';
 
 
 export default function HomeContent() {
-    // const audioRef = useRef(null);
-    // const playAudio = async () => {
-    //         if (audioRef.current) {
-    //             await audioRef.current.play();
-    //         }
-    // };
-    // useEffect(() => {
-    //     window.addEventListener('click', playAudio, { once: true });
-    //     return () => {
-    //         window.removeEventListener('click', playAudio);
-    //     };
-    // }, []);
 
+     async function test(){
+        try{
+            const response = await fetch('/my-app/src/database/database.json');
+            // console.log(response);
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const json = await response.json(); 
+            console.log(json);
+        }catch(error){
+            console.error(error.message);
+        }
+    }
+    test()
+    
     return (
         <>
             <div className='homeFirstDiv'>
@@ -36,7 +40,7 @@ export default function HomeContent() {
                     Bibendum fermentum, aenean donec pretium aliquam blandit tempor imperdiet arcu arcu ut nunc in dictum mauris at ut.
                 </p>
                 <div className='flex flex-row'>
-                    <button className='bg-white py-3 px-8 font-semibold me-7'>SHOP MEN</button>
+                    <button onClick={test} className='bg-white py-3 px-8 font-semibold me-7'>SHOP MEN</button>
                     <button className='bg-white py-3 px-8 font-semibold'>SHOP WOMEN</button>
                 </div>
             </div>
@@ -115,7 +119,7 @@ export default function HomeContent() {
                             <p className=''>$57.90</p>
                         </div>
                         <div className=''>
-                        <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly />
+                        <Rating name="half-rating-read" value={2.5} precision={0.5} readOnly />
                         </div>
                     </div>
                 </div>
