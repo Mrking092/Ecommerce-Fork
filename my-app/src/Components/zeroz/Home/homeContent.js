@@ -11,6 +11,7 @@ import asSeen4 from '../../Imgs/zeroz/asSeen4.png'
 import asSeen5 from '../../Imgs/zeroz/asSeen5.png'
 import aboutUsImg from '../../Imgs/zeroz/aboutUsImg.jpg'
 import shoes from '../../Imgs/zeroz/shoes.png'
+import Rating from '@mui/material/Rating';
 
 
 export default function HomeContent() {
@@ -114,11 +115,7 @@ export default function HomeContent() {
                             <p className=''>$57.90</p>
                         </div>
                         <div className=''>
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
-                            <FontAwesomeIcon icon={faStar} />
+                        <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly />
                         </div>
                     </div>
                 </div>
