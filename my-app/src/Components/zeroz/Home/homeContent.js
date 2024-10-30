@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useRef } from 'react';
-import loginAudio from '../../Imgs/zeroz/loginCheckout.mp3';
+// import loginAudio from '../../Imgs/zeroz/loginCheckout.mp3';
 import {  } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
 import HomeContentStyle from './HomeContentStyle.css'
@@ -14,18 +14,18 @@ import shoes from '../../Imgs/zeroz/shoes.png'
 
 
 export default function HomeContent() {
-    const audioRef = useRef(null);
-    const playAudio = async () => {
-            if (audioRef.current) {
-                await audioRef.current.play();
-            }
-    };
-    useEffect(() => {
-        window.addEventListener('click', playAudio, { once: true });
-        return () => {
-            window.removeEventListener('click', playAudio);
-        };
-    }, []);
+    // const audioRef = useRef(null);
+    // const playAudio = async () => {
+    //         if (audioRef.current) {
+    //             await audioRef.current.play();
+    //         }
+    // };
+    // useEffect(() => {
+    //     window.addEventListener('click', playAudio, { once: true });
+    //     return () => {
+    //         window.removeEventListener('click', playAudio);
+    //     };
+    // }, []);
 
     return (
         <>
@@ -62,7 +62,7 @@ export default function HomeContent() {
                         Nullam auctor faucibus ridiculus dignissim sed et auctor sed eget auctor nec sed elit nunc, magna non urna amet ac neque ut quam enim pretium risus gravida ullamcorper adipiscing at ut magna.
                     </p>
                     <button className='font-semibold border-b-2 border-orange-400 mt-10'>READ MORE</button>
-                    <audio ref={audioRef} src={loginAudio} preload="auto" style={{ display: 'none' }} />
+                    {/* <audio ref={audioRef} src={loginAudio} preload="auto" style={{ display: 'none' }} /> */}
                 </div>
             </div>
 
