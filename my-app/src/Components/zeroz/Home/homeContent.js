@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {  } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
 import HomeContentStyle from './HomeContentStyle.css'
@@ -11,27 +11,39 @@ import asSeen5 from '../../Imgs/zeroz/asSeen5.png'
 import aboutUsImg from '../../Imgs/zeroz/aboutUsImg.jpg'
 import shoes from '../../Imgs/zeroz/shoes.png'
 import Rating from '@mui/material/Rating';
+// import imageTest from '../../../database/img/female/0.jpg'
 
 
 export default function HomeContent() {
 
+    const [name, setName] = useState([]);
+    const [img, setImg] = useState([]);
+    const [price, setPrice] = useState([]);
+    const [rating, setRating] = useState([]);
+
      async function test(){
         try{
-            const response = await fetch('/my-app/src/database/database.json');
-            // console.log(response);
+            const response = await fetch('http://localhost:3000/database/database.json');
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
 
-            const json = await response.json(); 
-            console.log(json);
+            const json = await response.json();
+            setName(json.female.map((item)=> item.name));
+            setImg(json.female.map((item)=> item.img));
+            setPrice(json.female.map((item)=> item.price.new));
+            setRating(json.female.map((item)=> item.rating)); 
+
+
         }catch(error){
             console.error(error.message);
         }
     }
-    test()
-    
+    useEffect(()=>{
+        test();
+    }, [])
+    console.log(img[0])
     return (
         <>
             <div className='homeFirstDiv'>
@@ -67,7 +79,6 @@ export default function HomeContent() {
                         Nullam auctor faucibus ridiculus dignissim sed et auctor sed eget auctor nec sed elit nunc, magna non urna amet ac neque ut quam enim pretium risus gravida ullamcorper adipiscing at ut magna.
                     </p>
                     <button className='font-semibold border-b-2 border-orange-400 mt-10'>READ MORE</button>
-                    {/* <audio ref={audioRef} src={loginAudio} preload="auto" style={{ display: 'none' }} /> */}
                 </div>
             </div>
 
@@ -109,17 +120,16 @@ export default function HomeContent() {
                     <button className=''>VIEW ALL BEST SELLERS</button>
                 </div>
                 <div>
-                    <div className=''>
+                    <div className='flex flex-col items-center'>
                         <div className=''>
-                            <img src={shoes}/>
+                            <img src={`${process.env.PUBLIC_URL}/database/female/0.jpg`}/>
                         </div>
-                        <h5 className=''>Women's each Training</h5>
+                        <h5 className=''>{name[0]}</h5>
                         <div className=''>
-                            <p className=''>$69.90</p>
-                            <p className=''>$57.90</p>
+                            <p className=''>{`${price[0]}`}</p>
                         </div>
                         <div className=''>
-                        <Rating name="half-rating-read" value={2.5} precision={0.5} readOnly />
+                        <Rating name="half-rating-read" value={rating[0] || 0} precision={0.5} readOnly />
                         </div>
                     </div>
                 </div>
