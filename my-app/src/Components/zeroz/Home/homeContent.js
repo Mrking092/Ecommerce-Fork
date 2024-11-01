@@ -43,6 +43,24 @@ export default function HomeContent() {
     const quickViewChange = () => {
         setQuickView(!quickView);
     }
+    let sizeValue = '';
+
+    const [shoesSize, setShoesSize] = useState("")
+    function sizeChanging(){        
+        let getSize = document.querySelector('.size');
+        setShoesSize(sizeValue = getSize.value || 35);
+        console.log(sizeValue);
+    }
+
+    let [shoesNum, setShoesNum] = useState("1")
+    function addShoes(){
+        setShoesNum(++shoesNum);
+    }
+    function removeShoes(){
+        setShoesNum(--shoesNum);
+    }
+
+
     return (
         <>
             <div className='homeFirstDiv'>
@@ -121,14 +139,41 @@ export default function HomeContent() {
                 </div>
                 <div className='mainGrid grid grid-flow-row grid-cols-3 gap-5'>
                     {quickView &&
-                        <div className='quickViewContainer m-auto'>
+                        <div className='quickViewContainer'>
                             <div onClick={quickViewChange} className='quickViewBg'></div>
-                            <div className='quickViewDiv flex items-center'>
-                                <div className='quickViewImg'>
-                                    <img src={`${process.env.PUBLIC_URL}${female[0].img}`}/>
+                            <div className='quickViewDiv h-fit flex items-center p-[1.5%]'>
+                                <div className='quickViewImg h-fit w-1/2'>
+                                    <img className='w-full' src={`${process.env.PUBLIC_URL}${female[0].img}`}/>
                                 </div>
-                                <div>
-
+                                <div className='w-1/2 px-[3%]'>
+                                    <h2 className='text-4xl pb-5'>{female[0].name}</h2>
+                                    <Rating className='pb-5' name="half-rating-read " value={female[0].rating || 0} precision={0.5} readOnly/>
+                                    <p className='pb-5'>Auctor eros suspendisse tellus venenatis sodales purus non pellentesque amet,
+                                    nunc sit eu, enim fringilla egestas pulvinar odio feugiat consectetur egestas magna
+                                    pharetra cursus risus, lectus enim eget eu et lobortis faucibus.</p>
+                                        <p className='pb-5 font-semibold'>SIZE: {shoesSize || 35} </p>
+                                        <select onChange={sizeChanging} defaultValue={35} className='size w-[100%] border p-2 mb-5'>
+                                            <option value='35'>35</option>
+                                            <option value='36'>36</option>
+                                            <option value='37'>37</option>
+                                            <option value='38'>38</option>
+                                            <option value='39'>39</option>
+                                            <option value='40'>40</option>
+                                            <option value='41'>41</option>
+                                            <option value='42'>42</option>
+                                            <option value='43'>43</option>
+                                            <option value='44'>44</option>
+                                            <option value='45'>45</option>
+                                        </select>
+                                        <h4 className='text-3xl pb-5'>{female[0].price.new}</h4>
+                                        <div className='flex justify-between'>
+                                            <div className='flex px-8'>
+                                                <div onClick={removeShoes} className='border px-3 pb-1 text-3xl cursor-pointer'>-</div>
+                                                <div  className='border px-3 pt-1.5 text-xl cursor-pointer'>{shoesNum || 1}</div>
+                                                <div onClick={addShoes} className='border px-3 pb-1 text-3xl cursor-pointer'>+</div>
+                                            </div>
+                                            <button className='bg-[#6e7051] text-white px-8 py-3'>ADD TO CART</button>
+                                        </div>
                                 </div>
                             </div>
                         </div>
