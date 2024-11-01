@@ -32,7 +32,50 @@
     background-color: #f1f1ef;
 }
 
+.quickViewContainer{
+    position:fixed;
+    background-color: transparent;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+.quickViewContainer .quickViewBg{
+    position: absolute;
+    background-color: black;
+    opacity: 0.3;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+}
+.quickViewContainer .quickViewDiv{
+    position: absolute;
+    width: 50vw;
+    height: 60vh;
+    background-color: white;
+    z-index: 100;
+    margin-left: 25%;
+    margin-top: 150px;
+}
 
+.ourBestSeller{
+    margin: 0 15%;
+}
+
+.mainGrid .sale{
+    position: absolute;
+    top: -10px;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    left: 90.8%;
+    color: white;
+    padding-top: 10px;
+    padding-left: 1px;
+    font-weight: 500;
+    /* z-index: 50; */
+}
 
 @media (max-width:1200px) {
     .homeFirstDiv{
@@ -62,6 +105,9 @@
     }
     .asSeenIn div img{
         width: 19.5vw;
+    }
+    .ourBestSeller .mainGrid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 @media (max-width:800px){
@@ -165,4 +211,41 @@
         display: flex;
         justify-content: center;
     }
+    .ourBestSeller .mainGrid div h5{
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    .ourBestSeller .mainGrid div p{
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    .mainGrid .sale{
+        width: 40px;
+        height: 40px;
+        padding-top: 8px;
+        font-weight: 400;
+    }
+}
+@media (max-width:600px){ 
+    .ourBestSeller .mainGrid{
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .ourBestSeller .headerDiv{
+        display: block;
+        text-align: center;
+    }
+    .ourBestSeller .headerDiv h4{
+        padding-bottom: 10px;
+        font-size: 1.4rem;
+    }
+    .mainGrid .sale{
+        left: 92%;
+    }
+
+}
+@media (max-width:400px){
+    .mainGrid .sale{
+        left: 89%;
+    }
+    
 }

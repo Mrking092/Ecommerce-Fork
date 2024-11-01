@@ -16,26 +16,18 @@ import Rating from '@mui/material/Rating';
 
 export default function HomeContent() {
 
-    const [name, setName] = useState([]);
-    const [img, setImg] = useState([]);
-    const [price, setPrice] = useState([]);
-    const [rating, setRating] = useState([]);
+    const [female, setFemale] = useState([]);
+    const [male, setMale] = useState([]);
 
      async function test(){
         try{
             const response = await fetch('http://localhost:3000/database/database.json');
-
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-
             const json = await response.json();
-            setName(json.female.map((item)=> item.name));
-            setImg(json.female.map((item)=> item.img));
-            setPrice(json.female.map((item)=> item.price.new));
-            setRating(json.female.map((item)=> item.rating)); 
-
-
+            setFemale(json.female);
+            setMale(json.male);
         }catch(error){
             console.error(error.message);
         }
@@ -43,7 +35,14 @@ export default function HomeContent() {
     useEffect(()=>{
         test();
     }, [])
-    console.log(img[0])
+
+    let highRating = female.concat(male).filter((item) => item.rating >= 4.5).sort((a, b) => b.rating - a.rating);
+    console.log(highRating);
+    const [quickView, setQuickView] = useState(false);
+
+    const quickViewChange = () => {
+        setQuickView(!quickView);
+    }
     return (
         <>
             <div className='homeFirstDiv'>
@@ -52,7 +51,7 @@ export default function HomeContent() {
                     Bibendum fermentum, aenean donec pretium aliquam blandit tempor imperdiet arcu arcu ut nunc in dictum mauris at ut.
                 </p>
                 <div className='flex flex-row'>
-                    <button onClick={test} className='bg-white py-3 px-8 font-semibold me-7'>SHOP MEN</button>
+                    <button className='bg-white py-3 px-8 font-semibold me-7'>SHOP MEN</button>
                     <button className='bg-white py-3 px-8 font-semibold'>SHOP WOMEN</button>
                 </div>
             </div>
@@ -114,24 +113,46 @@ export default function HomeContent() {
                 </div>
             </div>
 
-            <div className='ourBestSeller'>
-                <div className=''>
-                    <h4 className='text-2xl font-semibold py-10'>Our Best Seller</h4>
-                    <button className=''>VIEW ALL BEST SELLERS</button>
+
+            <div className='ourBestSeller pb-24'>
+                <div className='headerDiv flex py-10 justify-between'>
+                    <h4 className='text-2xl font-semibold'>Our Best Seller</h4>
+                    <button className='pt-2 border-b-2 border-orange-400 hover:border-black duration-500 font-semibold tracking-wider'>VIEW ALL BEST SELLERS</button>
                 </div>
-                <div>
-                    <div className='flex flex-col items-center'>
-                        <div className=''>
-                            <img src={`${process.env.PUBLIC_URL}/database/female/0.jpg`}/>
+                <div className='mainGrid grid grid-flow-row grid-cols-3 gap-5'>
+                    {quickView &&
+                        <div className='quickViewContainer m-auto'>
+                            <div onClick={quickViewChange} className='quickViewBg'></div>
+                            <div className='quickViewDiv flex items-center'>
+                                <div className='quickViewImg'>
+                                    <img src={`${process.env.PUBLIC_URL}${female[0].img}`}/>
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
                         </div>
-                        <h5 className=''>{name[0]}</h5>
-                        <div className=''>
-                            <p className=''>{`${price[0]}`}</p>
+                    }
+                    {highRating.map(item =>
+                        <div className='text-center flex flex-col relative'>
+                            <img onClick={quickViewChange} className='cursor-pointer' src={`${process.env.PUBLIC_URL}${item.img}`}/>
+                            <h5 onClick={quickViewChange} className='cursor-pointer text-xl pt-3'>{item.name}</h5>
+                            <div className='flex justify-center pt-3'>
+                                {
+                                    item.price.old == item.price.new ?
+                                    <p className='text-gray-500 font-bold'>{item.price.old}</p> :
+                                    <>
+                                    <div className='sale bg-[#6e7051]'>Sale!</div>
+                                    <p className='line-through text-gray-200 font-bold me-2'>{item.price.old}</p>
+                                    <p className='text-gray-500 font-bold'>{item.price.new}</p>
+                                </>
+                                }
+                            </div>
+                            <div className='pt-3'>
+                            <Rating name="half-rating-read" value={item.rating || 0} precision={0.5} readOnly />
+                            </div>
                         </div>
-                        <div className=''>
-                        <Rating name="half-rating-read" value={rating[0] || 0} precision={0.5} readOnly />
-                        </div>
-                    </div>
+                )}
                 </div>
             </div>
         </>

@@ -3,7 +3,7 @@
 
         {   
             "name": "Women’s Blue Training",
-            "img": "/public/database/female/0.jpg",
+            "img": "/database/female/0.jpg",
             "price": {
                 "old": "$69.90",
                 "new": "$60.00"
@@ -13,16 +13,16 @@
 
         {
             "name": "Women’s Candy City Run",
-            "img": "/my-app/src/database/img/Female/1.jpg",
+            "img": "/database/Female/1.jpg",
             "price": {
                 "old": "$54.90",
-                "new": "$40.00 "
+                "new": "$54.90"
                 },
             "rating": 5   
         },
         {
             "name": "Women’s Choco City Run",
-            "img": "/my-app/src/database/img/Female/2.jpg",
+            "img": "/database/Female/2.jpg",
             "price": {
                 "old": "$64.00",
                 "new": "$64.00"
@@ -31,7 +31,7 @@
         },
         {
             "name": "Women’s Cream Suede",
-            "img": "/my-app/src/database/img/Female/3.jpg",
+            "img": "/database/Female/3.jpg",
             "price": {
                 "old": "$59.90",
                 "new": "$59.90"
@@ -40,7 +40,7 @@
         },
         {
             "name": "Women’s Green Training",
-            "img": "/my-app/src/database/img/Female/4.jpg",
+            "img": "/database/Female/4.jpg",
             "price": {
                 "old": "$64.90",
                 "new": "$49.90"
@@ -49,7 +49,7 @@
         },
         {
             "name": "Women’s Mint Sneaker",
-            "img": "/my-app/src/database/img/Female/5.jpg",
+            "img": "/database/Female/5.jpg",
             "price": {
                 "old": "$89.90",
                 "new": "$89.90"
@@ -58,16 +58,16 @@
         },
         {
             "name": "Women’s Orange Sneaker",
-            "img": "/my-app/src/database/img/Female/6.jpg",
+            "img": "/database/Female/6.jpg",
             "price": {
                 "old": "$44.90",
                 "new": "$44.90"
                 },
-            "rating": 4        
+            "rating": 4.5        
         },
         {
             "name": "Women’s Peach Training",
-            "img": "/my-app/src/database/img/Female/7.jpg",
+            "img": "/database/Female/7.jpg",
             "price": {
                 "old": "$69.90",
                 "new": "$57.90"
@@ -76,7 +76,7 @@
         },
         {
             "name": "Women’s Pink Suede",
-            "img": "/my-app/src/database/img/Female/8.jpg",
+            "img": "/database/Female/8.jpg",
             "price": {
                 "old": "$59.90",
                 "new": "$59.90"
@@ -85,7 +85,7 @@
         },
         {
             "name": "Women’s Pink Training",
-            "img": "/my-app/src/database/img/Female/9.jpg",
+            "img": "/database/Female/9.jpg",
             "price": {
                 "old": "$64.90",
                 "new": "$54.90"
@@ -94,7 +94,7 @@
         },
         {
             "name": "Women’s Green Training",
-            "img": "/my-app/src/database/img/Female/10.jpg",
+            "img": "/database/Female/10.jpg",
             "price": {
                 "old": "$64.90",
                 "new": "$49.90"
@@ -103,7 +103,7 @@
         },
         {
             "name": "Women’s Tosca City Run",
-            "img": "/my-app/src/database/img/Female/11.jpg",
+            "img": "/database/Female/11.jpg",
             "price": {
                 "old": "$64.00",
                 "new": "$64.00"
@@ -116,7 +116,7 @@
     [
         {
             "name": "Men’s Black Running",
-            "img": "/my-app/src/database/img/Male/0.jpg",
+            "img": "/database/Male/0.jpg",
             "price": {
                 "old": "$79.90",
                 "new": "$79.90"
@@ -125,7 +125,7 @@
         },
         {
             "name": "Men’s Classic Blue",
-            "img": "/my-app/src/database/img/Male/1.jpg",
+            "img": "/database/Male/1.jpg",
             "price": {
                 "old": "$79.90",
                 "new": "$69.00"
@@ -134,7 +134,7 @@
         },
         {
             "name": "Men’s Classic Mint",
-            "img": "/my-app/src/database/img/Male/2.jpg",
+            "img": "/database/Male/2.jpg",
             "price": {
                 "old": "$79.90",
                 "new": "$79.90"
@@ -143,7 +143,7 @@
         },
         {
             "name": "Men’s Earth-Tone Sneaker",
-            "img": "/my-app/src/database/img/Male/3.jpg",
+            "img": "/database/Male/3.jpg",
             "price": {
                 "old": "$74.90",
                 "new": "$74.90"
@@ -152,7 +152,7 @@
         },
         {
             "name": "Men’s Green Running",
-            "img": "/my-app/src/database/img/Male/4.jpg",
+            "img": "/database/Male/4.jpg",
             "price": {
                 "old": "$104.90",
                 "new": "$89.90"
@@ -161,7 +161,7 @@
         },
         {
             "name": "Men’s Moonstone Sneaker",
-            "img": "/my-app/src/database/img/Male/5.jpg",
+            "img": "/database/Male/5.jpg",
             "price": {
                 "old": "$74.90",
                 "new": "$74.90"
@@ -170,7 +170,7 @@
         },
         {
             "name": "Men’s Navy Running",
-            "img": "/my-app/src/database/img/Male/6.jpg",
+            "img": "/database/Male/6.jpg",
             "price": {
                 "old": "$104.90",
                 "new": "$104.90"
@@ -179,7 +179,7 @@
         },
         {
             "name": "Men’s Red Running",
-            "img": "/my-app/src/database/img/Male/7.jpg",
+            "img": "/database/Male/7.jpg",
             "price": {
                 "old": "$79.90",
                 "new": "$69.90"
