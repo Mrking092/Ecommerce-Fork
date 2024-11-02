@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useRef, useState } from 'react';
-import {  } from '@fortawesome/free-solid-svg-icons'
-import { faStar } from '@fortawesome/free-regular-svg-icons'
+import { faX } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { faPinterestP, faXTwitter , faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import HomeContentStyle from './HomeContentStyle.css'
 import asSeen1 from '../../Imgs/zeroz/asSeen1.png'
 import asSeen2 from '../../Imgs/zeroz/asSeen2.png'
@@ -37,24 +38,30 @@ export default function HomeContent() {
     }, [])
 
     let highRating = female.concat(male).filter((item) => item.rating >= 4.5).sort((a, b) => b.rating - a.rating);
-    console.log(highRating);
     const [quickView, setQuickView] = useState(false);
+    const [shoesSize, setShoesSize] = useState("")
 
-    const quickViewChange = () => {
+    let quickVal = '';
+    const quickViewChange = (e) => {
         setQuickView(!quickView);
+        setShoesSize(35);
         if(document.querySelector('body').style.overflow == 'hidden'){
             document.querySelector('body').style.overflow = 'visible';
         }else{
             document.querySelector('body').style.overflow = 'hidden';
         }
-    }
+        if(e.target.textContent != ''){
+            // quickVal = ;
+            console.log(e.target.textContent);
+        }else{
+            console.log(e.target.src);
+        }
+        }
     let sizeValue = '';
 
-    const [shoesSize, setShoesSize] = useState("")
     function sizeChanging(){        
         let getSize = document.querySelector('.size');
         setShoesSize(sizeValue = getSize.value || 35);
-        console.log(sizeValue);
     }
 
     let [shoesNum, setShoesNum] = useState("1")
@@ -62,9 +69,9 @@ export default function HomeContent() {
         setShoesNum(++shoesNum);
     }
     function removeShoes(){
+        if(shoesNum > 1)
         setShoesNum(--shoesNum);
     }
-
 
     return (
         <>
@@ -145,15 +152,18 @@ export default function HomeContent() {
                 <div className='mainGrid grid grid-flow-row grid-cols-3 gap-5 h-[100%]'>
                     {quickView &&
                         <div className='quickViewContainer'>
-                            <div onClick={quickViewChange} className='quickViewBg'></div>
+                            <div value={''} onClick={quickViewChange} className='quickViewBg'></div>
                             <div className='quickViewDiv h-fit flex items-center p-[1.5%]'>
+                                    <div value={''} onClick={quickViewChange} className='quickViewCloseBtn absolute'>
+                                        <FontAwesomeIcon icon={faX} />
+                                    </div>    
                                 <div className='quickViewImg h-fit w-1/2 bg-[#f1f1ef]'>
                                     <img className='w-full' src={`${process.env.PUBLIC_URL}${female[0].img}`}/>
                                 </div>
-                                <div className='w-1/2 px-[3%]'>
+                                <div className='quickViewContent w-1/2 px-[3%]'>
                                     <h2 className='text-3xl pb-5'>{female[0].name}</h2>
                                     <Rating className='pb-5' name="half-rating-read " value={female[0].rating || 0} precision={0.5} readOnly/>
-                                    <p className='pb-5'>Auctor eros suspendisse tellus venenatis sodales purus non pellentesque amet,
+                                    <p className='pb-5 font-semibold'>Auctor eros suspendisse tellus venenatis sodales purus non pellentesque amet,
                                     nunc sit eu, enim fringilla egestas pulvinar odio feugiat consectetur egestas magna
                                     pharetra cursus risus, lectus enim eget eu et lobortis faucibus.</p>
                                         <p className='pb-5 font-semibold'>SIZE: {shoesSize || 35} </p>
@@ -171,22 +181,30 @@ export default function HomeContent() {
                                             <option value='45'>45</option>
                                         </select>
                                         <h4 className='text-3xl pb-5'>{female[0].price.new}</h4>
-                                        <div className='flex justify-between'>
-                                            <div className='flex '>
-                                                <div onClick={removeShoes} className='border px-3 pb-1 text-3xl cursor-pointer'>-</div>
+                                        <div className='addToCartContainer flex justify-between pb-[8%] border-b border-gray-200'>
+                                            <div className='flex h-fit'>
+                                                <div onClick={removeShoes} className='select-none border px-3 pb-1 text-3xl cursor-pointer'>-</div>
                                                 <div  className='border px-3 pt-1.5 text-xl cursor-pointer'>{shoesNum || 1}</div>
-                                                <div onClick={addShoes} className='border px-3 pb-1 text-3xl cursor-pointer'>+</div>
+                                                <div onClick={addShoes} className='select-none border px-3 pb-1 text-3xl cursor-pointer'>+</div>
                                             </div>
-                                            <button className='bg-[#6e7051] whitespace-nowrap text-white px-8 py-3'>ADD TO CART</button>
+                                            <button className='bg-[#6e7051] whitespace-nowrap text-white px-5'>ADD TO CART</button>
                                         </div>
+                                        <div className='productShare flex gap-x-5 pt-[5%]'>
+                                            <p className='font-semibold -mt-1'>SHARE: </p>
+                                            <FontAwesomeIcon className='text-xl cursor-pointer' icon={faEnvelope} />
+                                            <FontAwesomeIcon className='text-xl cursor-pointer' icon={faPinterestP} />
+                                            <FontAwesomeIcon className='text-xl cursor-pointer' icon={faXTwitter} />
+                                            <FontAwesomeIcon className='text-xl cursor-pointer' icon={faFacebook} />
+                                            <FontAwesomeIcon className='text-xl cursor-pointer' icon={faInstagram} />
+                                        </div>    
                                 </div>
                             </div>
                         </div>
                     }
-                    {highRating.map(item =>
-                        <div className='text-center flex flex-col relative'>
-                            <img onClick={quickViewChange} className='cursor-pointer' src={`${process.env.PUBLIC_URL}${item.img}`}/>
-                            <h5 onClick={quickViewChange} className='cursor-pointer text-xl pt-3'>{item.name}</h5>
+                    {highRating.map((item,index) =>
+                        <div value={index} className='text-center flex flex-col relative'>
+                            <img  value={index} onClick={quickViewChange} className='cursor-pointer' src={`${process.env.PUBLIC_URL}${item.img}`}/>
+                            <h5  value={index} onClick={quickViewChange} className='cursor-pointer text-xl pt-3'>{item.name}</h5>
                             <div className='flex justify-center pt-3'>
                                 {
                                     item.price.old == item.price.new ?

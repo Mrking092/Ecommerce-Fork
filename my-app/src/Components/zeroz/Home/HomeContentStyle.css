@@ -76,6 +76,13 @@
     font-weight: 500;
     /* z-index: 50; */
 }
+.quickViewDiv .quickViewCloseBtn{
+    left: 97%;
+    top: 10px;
+    font-size: 1.2rem;
+    color: #262b2c;
+    cursor: pointer;;
+}
 
 @media (max-width:1200px) {
     .homeFirstDiv{
@@ -108,6 +115,21 @@
     }
     .ourBestSeller .mainGrid{
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .quickViewContainer .quickViewDiv{
+        flex-direction: column;
+        margin: 0;  
+        height: 100vh;
+        overflow-y: scroll;
+        width: 80vw;
+        margin-left: 10%;
+    }
+    .quickViewContainer .quickViewDiv .quickViewContent{
+        width: 100%;
+    }
+    .quickViewContainer .quickViewDiv .quickViewImg{
+        width: 75%;
+        margin-bottom: 5%;
     }
 }
 @media (max-width:800px){
@@ -225,6 +247,36 @@
         padding-top: 8px;
         font-weight: 400;
     }
+    .quickViewContainer .quickViewDiv .quickViewImg{
+        width: 100%;
+        margin-bottom: 5%;
+    }
+    
+    .quickViewContainer .quickViewContent{
+        width: fit-content;
+    }
+    .quickViewContainer .addToCartContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+    .quickViewContainer .addToCartContainer div{
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 5%;
+    }
+    .quickViewContainer .addToCartContainer button{
+        width: fit-content;
+        padding: 3%;
+    }
+    .quickViewContainer .addToCartContainer div div{
+        height: 45px;
+    }
+    .quickViewDiv .quickViewCloseBtn{
+        left: 94%;
+        top: 15px;
+        font-size: 1.1rem;
+
+    }
 }
 @media (max-width:600px){ 
     .ourBestSeller .mainGrid{
@@ -241,11 +293,36 @@
     .mainGrid .sale{
         left: 92%;
     }
-
+    .productShare{
+        gap: 0px 10px;
+        justify-content: center;
+    }
+    .quickViewContainer .quickViewContent{
+        padding: 1.5%;
+        width: 100%;
+    }
+    .quickViewContainer .quickViewDiv .quickViewImg{
+        width: 100%;
+        margin-bottom: 5%;
+    }
+    .quickViewContainer .addToCartContainer button{
+        width: fit-content;
+        padding: 2.5%;
+    }
+    .quickViewContainer .addToCartContainer div div{
+        height: 50px;
+    }
+    .quickViewContainer .quickViewDiv{
+        padding: 1.5%;
+    }
+    
 }
 @media (max-width:400px){
     .mainGrid .sale{
         left: 89%;
+    }
+    .quickViewDiv .quickViewCloseBtn{
+        left: 91%;
     }
     
 }
