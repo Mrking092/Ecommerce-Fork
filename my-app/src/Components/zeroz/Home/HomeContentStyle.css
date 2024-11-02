@@ -51,7 +51,7 @@
 }
 .quickViewContainer .quickViewDiv{
     position: absolute;
-    width: 60vw;
+    width: 70vw;
     height: fit-content;
     background-color: white;
     z-index: 100;

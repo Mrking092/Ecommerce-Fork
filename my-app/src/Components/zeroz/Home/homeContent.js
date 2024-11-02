@@ -42,6 +42,11 @@ export default function HomeContent() {
 
     const quickViewChange = () => {
         setQuickView(!quickView);
+        if(document.querySelector('body').style.overflow == 'hidden'){
+            document.querySelector('body').style.overflow = 'visible';
+        }else{
+            document.querySelector('body').style.overflow = 'hidden';
+        }
     }
     let sizeValue = '';
 
@@ -137,16 +142,16 @@ export default function HomeContent() {
                     <h4 className='text-2xl font-semibold'>Our Best Seller</h4>
                     <button className='pt-2 border-b-2 border-orange-400 hover:border-black duration-500 font-semibold tracking-wider'>VIEW ALL BEST SELLERS</button>
                 </div>
-                <div className='mainGrid grid grid-flow-row grid-cols-3 gap-5'>
+                <div className='mainGrid grid grid-flow-row grid-cols-3 gap-5 h-[100%]'>
                     {quickView &&
                         <div className='quickViewContainer'>
                             <div onClick={quickViewChange} className='quickViewBg'></div>
                             <div className='quickViewDiv h-fit flex items-center p-[1.5%]'>
-                                <div className='quickViewImg h-fit w-1/2'>
+                                <div className='quickViewImg h-fit w-1/2 bg-[#f1f1ef]'>
                                     <img className='w-full' src={`${process.env.PUBLIC_URL}${female[0].img}`}/>
                                 </div>
                                 <div className='w-1/2 px-[3%]'>
-                                    <h2 className='text-4xl pb-5'>{female[0].name}</h2>
+                                    <h2 className='text-3xl pb-5'>{female[0].name}</h2>
                                     <Rating className='pb-5' name="half-rating-read " value={female[0].rating || 0} precision={0.5} readOnly/>
                                     <p className='pb-5'>Auctor eros suspendisse tellus venenatis sodales purus non pellentesque amet,
                                     nunc sit eu, enim fringilla egestas pulvinar odio feugiat consectetur egestas magna
@@ -167,12 +172,12 @@ export default function HomeContent() {
                                         </select>
                                         <h4 className='text-3xl pb-5'>{female[0].price.new}</h4>
                                         <div className='flex justify-between'>
-                                            <div className='flex px-8'>
+                                            <div className='flex '>
                                                 <div onClick={removeShoes} className='border px-3 pb-1 text-3xl cursor-pointer'>-</div>
                                                 <div  className='border px-3 pt-1.5 text-xl cursor-pointer'>{shoesNum || 1}</div>
                                                 <div onClick={addShoes} className='border px-3 pb-1 text-3xl cursor-pointer'>+</div>
                                             </div>
-                                            <button className='bg-[#6e7051] text-white px-8 py-3'>ADD TO CART</button>
+                                            <button className='bg-[#6e7051] whitespace-nowrap text-white px-8 py-3'>ADD TO CART</button>
                                         </div>
                                 </div>
                             </div>
