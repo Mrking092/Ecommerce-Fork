@@ -40,8 +40,7 @@ export default function HomeContent() {
     let highRating = female.concat(male).filter((item) => item.rating >= 4.5).sort((a, b) => b.rating - a.rating);
     const [quickView, setQuickView] = useState(false);
     const [shoesSize, setShoesSize] = useState("")
-
-    let quickVal = '';
+    const [quickVal, setQuickVal] = useState('');
     const quickViewChange = (e) => {
         setQuickView(!quickView);
         setShoesSize(35);
@@ -50,11 +49,12 @@ export default function HomeContent() {
         }else{
             document.querySelector('body').style.overflow = 'hidden';
         }
+        // console.log(e.target.value)
         if(e.target.textContent != ''){
-            // quickVal = ;
-            console.log(e.target.textContent);
+            setQuickVal(highRating.filter(item => item.name == e.target.textContent));
+            console.log(quickVal.name);
         }else{
-            console.log(e.target.src);
+            setQuickVal(highRating.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src));
         }
         }
     let sizeValue = '';
@@ -158,11 +158,11 @@ export default function HomeContent() {
                                         <FontAwesomeIcon icon={faX} />
                                     </div>    
                                 <div className='quickViewImg h-fit w-1/2 bg-[#f1f1ef]'>
-                                    <img className='w-full' src={`${process.env.PUBLIC_URL}${female[0].img}`}/>
+                                    <img className='w-full' src={`${process.env.PUBLIC_URL}${quickVal[0].img}`}/>
                                 </div>
                                 <div className='quickViewContent w-1/2 px-[3%]'>
-                                    <h2 className='text-3xl pb-5'>{female[0].name}</h2>
-                                    <Rating className='pb-5' name="half-rating-read " value={female[0].rating || 0} precision={0.5} readOnly/>
+                                    <h2 className='text-3xl pb-5'>{quickVal[0].name}</h2>
+                                        <Rating className='pb-5' name="half-rating-read " value={quickVal[0].rating || 0} precision={0.5} readOnly/>
                                     <p className='pb-5 font-semibold'>Auctor eros suspendisse tellus venenatis sodales purus non pellentesque amet,
                                     nunc sit eu, enim fringilla egestas pulvinar odio feugiat consectetur egestas magna
                                     pharetra cursus risus, lectus enim eget eu et lobortis faucibus.</p>
@@ -180,7 +180,15 @@ export default function HomeContent() {
                                             <option value='44'>44</option>
                                             <option value='45'>45</option>
                                         </select>
-                                        <h4 className='text-3xl pb-5'>{female[0].price.new}</h4>
+                                        <h4 className='text-2xl pb-5'>{
+                                        (
+                                            quickVal[0].price.new == quickVal[0].price.old ? quickVal[0].price.old :
+                                            <div className='flex'>
+                                                <p className='line-through text-gray-300 me-2'>{quickVal[0].price.old}</p>
+                                                <p className='text-black'>{quickVal[0].price.new}</p>
+                                            </div>
+                                        )
+                                    }</h4>
                                         <div className='addToCartContainer flex justify-between pb-[8%] border-b border-gray-200'>
                                             <div className='flex h-fit'>
                                                 <div onClick={removeShoes} className='select-none border px-3 pb-1 text-3xl cursor-pointer'>-</div>
