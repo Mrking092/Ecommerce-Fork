@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 .homeFirstDiv{
     background-image: url('../../Imgs/zeroz/homePage.jpg');
     background-repeat: no-repeat;
@@ -84,6 +87,25 @@
     cursor: pointer;;
 }
 
+.menOrWomenRoute{
+    width: 100vw;
+    height: 70vh;
+    max-width: 100%;
+}
+.menOrWomenRoute #menRoute{
+    width: 100%;
+    background-image: url('../../Imgs/zeroz//menRoute.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.menOrWomenRoute #womenRoute{
+    width: 100%;
+    background-image: url('../../Imgs/zeroz//womenRoute.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 @media (max-width:1200px) {
     .homeFirstDiv{
         padding-top: 7%;
@@ -130,6 +152,12 @@
     .quickViewContainer .quickViewDiv .quickViewImg{
         width: 75%;
         margin-bottom: 5%;
+    }
+    .menOrWomenRoute{
+        gap: 0;
+        padding: 0;
+        height: 50vh;
+
     }
 }
 @media (max-width:800px){
@@ -275,8 +303,33 @@
         left: 94%;
         top: 15px;
         font-size: 1.1rem;
-
     }
+
+    .shoesEmv{
+        flex-direction: column-reverse;
+        height: fit-content;
+        padding-bottom: 10%;
+        text-align: center;
+        padding: 1.5%;
+    }
+    .shoesEmv div{
+        padding: 0;
+        margin-bottom: 5%;
+    }
+    .shoesEmvImgContainer{
+        width: 100%;
+    }
+    .shoesEmv div p{
+        font-size: 1rem;
+    }
+    .customersSpeak{
+        flex-direction: column;
+    }
+    .customersSpeak .customersSpeakDiv{
+        width: 100%;
+        margin-bottom: 3%;
+    }
+
 }
 @media (max-width:600px){ 
     .ourBestSeller .mainGrid{
@@ -315,7 +368,15 @@
     .quickViewContainer .quickViewDiv{
         padding: 1.5%;
     }
+
+    .menOrWomenRoute{
+        flex-direction: column;
+    }
+    .menOrWomenRoute > div{
+        height: 100%;
+    }
     
+
 }
 @media (max-width:400px){
     .mainGrid .sale{
@@ -324,5 +385,8 @@
     .quickViewDiv .quickViewCloseBtn{
         left: 91%;
     }
-    
+    .shoesEmv .shoesEmvImgContainer img{
+        width: 50%;
+
+    }
 }
