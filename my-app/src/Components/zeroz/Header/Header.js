@@ -34,16 +34,18 @@ export default function Header(){
         </div>
         }
         { cart &&
-        <div className='shoppingContainer'>
-            <div className='shoppingDiv'>
-                <FontAwesomeIcon onClick={shoppingCart} className='closeBtn text-xl absolute' icon={faXmark}/>
-                <h2 className='ps-5 pb-5 mt-5 text-lg border-b font-semibold'>Shopping Cart</h2>
+        <div className='shoppingContainer flex'>
+            <div className='shoppingBg w-[60vw]' onClick={shoppingCart}></div>
+            <div className='shoppingDiv w-[40vw]'>
+                <div className='flex border-b p-[3%] px-[5%] items-center'>
+                    <h2 className='text-lg font-semibold w-[97%]'>Shopping Cart</h2>
+                    <FontAwesomeIcon onClick={shoppingCart} className='w-[3%] text-xl cursor-pointer' icon={faXmark}/>
+                </div>
                 <div className='flex justify-center'>
                     {shoppingElements > 0 ? "": <h5 className='noElement text-lg font-semibold text-gray-500 absolute'>No products in the cart.</h5>}
                 </div>
-                <div className='shoppingBtn cursor-pointer text-center py-3 mx-5 text-gray-100 text-md tracking-widest font-bold'>CONTINUE SHOPPING</div>
+                <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'>CONTINUE SHOPPING</div>
             </div>
-            <div className='shoppingBg' onClick={shoppingCart}></div>
         </div>
         }
             <div className='shipping bg-gray-100 w-full'>
@@ -51,7 +53,7 @@ export default function Header(){
                     Free Express Shipping on all orders with all duties included
                 </h5>
             </div>  
-            <div className="header p-9 pe-0 flex relative">
+            <div className="header mx-[1.5%] my-[3%] pe-0 flex relative">
                 <div onClick={sidebarChange} className='sidebar cursor-pointer hidden'>
                     <a href='#'>
                     <div className='w-6 h-0.5 mb-1 mt-1 bg-gray-500'></div>
@@ -59,47 +61,53 @@ export default function Header(){
                     <div className='w-6 h-0.5 mb-1 bg-gray-500'></div>
                     </a>
                 </div>
-                <button>
+                <button className='text-center'>
                     <a href='#'>
                     <img src={siteLogo} alt="site-logo"/>
                     </a>
                 </button>
-                <div className='headerLinks w-full'>
-                    <ul className=' flex text-gray-400 font-medium relative'>
-                        <li>
-                            <a className='pe-6' href='#'>MEN</a>
-                        </li>
-                        <li>
-                            <a className='pe-6' href='#'>WOMEN</a>
-                        </li>
-                        <li>
-                            <a className='pe-6' href='#'>COLLECTION</a>
-                        </li>
-                        <li>
-                            <a className='pe-6' href='#'>LOOKBOOK</a>
-                        </li>
-                        <li>
-                            <a className='pe-6' href='#'>SALE</a>
-                        </li>
-                        <div className='ourStory flex'>
+                <div className='flex headerLinks w-[100vw] h-fit ms-[1.5%] mt-[2px]'>
+                    <ul className='flex justify-between w-[100%] text-gray-400 font-medium relative'>
+                        <li className='leftLinks flex'>
                             <li>
-                                <a href='#' className=' whitespace-nowrap pe-6'>OUR STORY</a>
-                            </li>    
+                                <a className='pe-6' href='#'>MEN</a>
+                            </li>
                             <li>
-                                <a href='#' className='pe-6'>CONTACT</a>
-                            </li>   
-                            <li className='icons cart ms-4 text-black text-3xl -mt-2'>
-                                <a href='#' onClick={shoppingCart}>
-                                    <FontAwesomeIcon  icon={faBagShopping}/>
-                                    <div className='count text-sm bg-black text-white text-center'>{shoppingElements}</div>
-                                </a>
-                            </li>   
-                            <li className='icons ms-9 text-black text-2xl -mt-1.5'>
-                                <a href='#' className=''>
-                                    <FontAwesomeIcon icon={faUser} />
-                                </a>
-                            </li>   
-                        </div>
+                                <a className='pe-6' href='#'>WOMEN</a>
+                            </li>
+                            <li>
+                                <a className='pe-6' href='#'>COLLECTION</a>
+                            </li>
+                            <li>
+                                <a className='pe-6' href='#'>LOOKBOOK</a>
+                            </li>
+                            <li>
+                                <a className='pe-6' href='#'>SALE</a>
+                            </li>
+                        </li>
+                        <li className='flex'>
+                            <li className='rightLinks flex'>
+                                <li>
+                                    <a href='#' className=' whitespace-nowrap pe-6'>OUR STORY</a>
+                                </li>    
+                                <li>
+                                    <a href='#' className='pe-6'>CONTACT</a>
+                                </li>   
+                            </li>
+                            <li className='flex'>
+                                <li className='icons aspect-square text-black text-3xl -mt-2'>
+                                    <a href='#' onClick={shoppingCart}>
+                                        <FontAwesomeIcon  icon={faBagShopping}/>
+                                        <div className='count text-sm bg-black text-white text-center'>{shoppingElements}</div>
+                                    </a>
+                                </li>   
+                                <li className='icons aspect-square ms-5 text-black text-2xl -mt-1'>
+                                    <a href='#' className=''>
+                                        <FontAwesomeIcon icon={faUser} />
+                                    </a>
+                                </li>   
+                            </li>
+                        </li>
                     </ul>
                 </div>    
             </div>

@@ -1,16 +1,13 @@
-.headerLinks{
-    margin-left: 4%;
-}
-.headerLinks .ourStory{
-    position: absolute;
-    margin-left: 73%;
+*{
+    box-sizing: border-box;
 }
 .icons .count{
-    margin-top: -50px;
+    position: absolute;
+    margin-top: -55px;
     border-radius: 50%;
     width: 20px;
     height: 20px;
-    margin-left: 55%;
+    margin-left: 1%;
 }
 .sidebarContainer{
     z-index: 5;
@@ -48,23 +45,25 @@
 .shoppingContainer{
     position: fixed;
     z-index: 5;
-    width: 98vw;
+    width: 100vw;
     height: 100vh;
+    overflow-y: scroll;
 }
 .shoppingContainer .shoppingDiv{
-    position: absolute;
+    /* position: absolute; */
     z-index: 10;
     background-color: white;
-    width: 33.8vw;
+    /* width: 34vw; */
     height: 100vh;
-    margin-left: 65vw;
+    /* margin-left: 65vw; */
 }
 .shoppingContainer .shoppingBg{
-    position: absolute;
+    /* position: absolute; */
     background-color: black;
     opacity: 0.3;
     z-index: -1;
-    width: 95vw;
+    /* width: 100vw; */
+    /* max-width: 100%; */
     height: 100vh;
 }
 .shoppingDiv .noElement{
@@ -73,18 +72,18 @@
     
 }
 .shoppingDiv .shoppingBtn{
-    margin-top: 86vh;
+    margin-top: 85vh;
     background-color: #6e7051;
     transition: 0.5s;
 }
 .shoppingDiv .shoppingBtn:hover{
     background-color: #262b2c;
 }
-.shoppingDiv .closeBtn{
+/* .shoppingDiv .closeBtn{
     margin-left: 92%;
     margin-top: 3%;
     cursor: pointer;
-}
+} */
 
 @media (max-height: 800px) {
     .shoppingDiv .shoppingBtn{
@@ -105,10 +104,10 @@
     .headerLinks .ourStory{
         margin-left: 70%;
     }
-    .shoppingContainer .shoppingDiv{
-        width: 50vw;
+    /* .shoppingContainer .shoppingDiv{
+        width: 49vw;
         margin-left: 50%;
-    }
+    } */
 }
 @media (max-width: 1300px) {
     .headerLinks .ourStory{
@@ -116,15 +115,12 @@
     }
 }
 @media (max-width: 1100px) {
-    .headerLinks li:not(.icons),.shipping{
+    .headerLinks ul .leftLinks, .headerLinks ul .rightLinks{
         display: none;
     }
-    .shoppingContainer .shoppingDiv{
-        width: 55vw;
-        margin-left: 45%;
-    }
-    .headerLinks .cart{
-        margin-left: 250%;
+    .headerLinks ul{
+        width: 100%;
+        justify-content: end;
     }
     .header{
         display: flex;
@@ -132,33 +128,50 @@
     }
     .header button{
         position: absolute;
+        margin-top: 1%;
     }
     .header .sidebar{
         display: block;
+        margin-top: 1.5%;
+    }
+    .shoppingContainer .shoppingDiv{
+        width: 70vw;
+    }
+    .shoppingContainer .shoppingBg{
+        width: 30vw;
     }
 }
 @media (max-width: 1000px) {
-        .headerLinks .cart{
-        margin-left: 210%;
-        font-size: 22px;
-    }
     .headerLinks .icons{
-        font-size: 25px;
+        font-size: 18px;
+        
+    }
+    .headerLinks .icons:first-child{
+        font-size: 20px;
+        /* margin-left: ; */
+    }
+    .icons .count{
+        margin-top: -45px;
+        width: 15px;
+        height: 15px;
+        font-size: 10px;
+        line-height: 15px;
+
     }
 }
 @media (max-width: 830px) {
-        .headerLinks .cart{
+        /* .headerLinks .cart{
         margin-left: 160%;
-    }
-    .shoppingContainer .shoppingDiv{
-        width: 60vw;
+    } */
+    /* .shoppingContainer .shoppingDiv{
+        width: 58.5vw;
         margin-left: 40%;
-    }
+    } */
 }
 @media (max-width: 720px) {
-        .headerLinks .cart{
+        /* .headerLinks .cart{
         margin-left: 120%;
-    }
+    } */
     .sidebarDiv .closeBtn{
         margin-left: 95%;
         margin-top: 3%;
@@ -166,35 +179,31 @@
     }
 }
 @media (max-width: 620px) {
-        .headerLinks .cart{
-        margin-left: 70%;
-    }
-    .shoppingContainer .shoppingDiv{
-        width: 70vw;
-        margin-left: 30%;
+    .header{
+        margin-left: 2%;
+        margin-right: 2%;
     }
 }
 @media (max-width: 500px) {
-        .headerLinks .cart{
+        /* .headerLinks .cart{
         margin-left: 50%;
         margin-right: -25%;
-    }
+    } */
     .headerLinks .icons{
         font-size: 16px;
     }
     .icons .count{
-        width: 15px;
-        height: 15px;
-        font-size: 10px;
+        width: 12px;
+        height: 12px;
+        font-size:9px;
         margin-top: -40px;
+        margin-left: 4%;
+        /* padding-right: 0%; */
         line-height: 1.5;
     }
     .header button{
-        margin-left: -10%;
+        /* margin-left: -10%; */
         width: 120px;
-    }
-    .sidebarContainer .sidebarDiv{
-        /* width: 85vw; */
     }
     .sidebarDiv .closeBtn{
         margin-left: 90%;
@@ -203,5 +212,8 @@
         width: 100vw;
         margin-left: 0;
         font-size: 0.7rem;
+    }
+    .shoppingContainer .shoppingBg{
+        width: 0;
     }
 }
