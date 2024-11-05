@@ -128,11 +128,9 @@
     }
     .header button{
         position: absolute;
-        margin-top: 1%;
     }
     .header .sidebar{
         display: block;
-        margin-top: 1.5%;
     }
     .shoppingContainer .shoppingDiv{
         width: 70vw;
@@ -151,7 +149,8 @@
         /* margin-left: ; */
     }
     .icons .count{
-        margin-top: -45px;
+        margin-top: -42px;
+        margin-left: 1.5%;
         width: 15px;
         height: 15px;
         font-size: 10px;
@@ -196,7 +195,7 @@
         width: 12px;
         height: 12px;
         font-size:9px;
-        margin-top: -40px;
+        margin-top: -37px;
         margin-left: 4%;
         /* padding-right: 0%; */
         line-height: 1.5;

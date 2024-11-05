@@ -53,7 +53,7 @@ export default function Header(){
                     Free Express Shipping on all orders with all duties included
                 </h5>
             </div>  
-            <div className="header mx-[1.5%] my-[3%] pe-0 flex relative">
+            <div className="header mx-[1.5%] my-[3.5%] pe-0 flex relative">
                 <div onClick={sidebarChange} className='sidebar cursor-pointer hidden'>
                     <a href='#'>
                     <div className='w-6 h-0.5 mb-1 mt-1 bg-gray-500'></div>
@@ -94,7 +94,7 @@ export default function Header(){
                                     <a href='#' className='pe-6'>CONTACT</a>
                                 </li>   
                             </li>
-                            <li className='flex'>
+                            <li className='flex -mt-0.5'>
                                 <li className='icons aspect-square text-black text-3xl -mt-2'>
                                     <a href='#' onClick={shoppingCart}>
                                         <FontAwesomeIcon  icon={faBagShopping}/>
