@@ -53,7 +53,7 @@ export default function Header(){
                     Free Express Shipping on all orders with all duties included
                 </h5>
             </div>  
-            <div className="header mx-[1.5%] my-[3.5%] pe-0 flex relative">
+            <div className="header mx-[3%] my-[3.5%] pe-0 flex relative">
                 <div onClick={sidebarChange} className='sidebar cursor-pointer hidden'>
                     <a href='#'>
                     <div className='w-6 h-0.5 mb-1 mt-1 bg-gray-500'></div>
