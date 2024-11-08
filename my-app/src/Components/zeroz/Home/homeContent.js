@@ -61,11 +61,11 @@ export default function HomeContent() {
         // console.log(e.target.value)
         if(e.target.textContent != ''){
             setHighQuickVal(highRating.filter(item => item.name == e.target.textContent )|| "");
-
+            
         }else{
             setHighQuickVal(highRating.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
         }
-        }
+    }
     const latestQuickViewChange = (e) => {
         setLatestQuickView(!latestQuickView);
         setShoesSize(35);
@@ -88,7 +88,7 @@ export default function HomeContent() {
         setShoesSize(sizeValue = getSize.value || 35);
     }
 
-    let [shoesNum, setShoesNum] = useState("1")
+    let [shoesNum, setShoesNum] = useState(1)
     function addShoes(){
         setShoesNum(++shoesNum);
     }
@@ -96,6 +96,33 @@ export default function HomeContent() {
         if(shoesNum > 1)
         setShoesNum(--shoesNum);
     }
+    const [addLocal, setAddLocal] = useState(() => {
+        const storedItems = JSON.parse(localStorage.getItem("item"));
+        return storedItems || []; // Avoid conditional by setting default empty array
+    });
+    function addToCart(e){
+        setAddLocal(prevItems =>
+             [...prevItems,
+                {...female.concat(male).find(item => item.name == e.target.parentNode.parentNode.firstChild.innerHTML),
+                shoesNumber: shoesNum,
+                shoesSize: shoesSize
+
+        }]);
+        // shoesNum, shoesSize
+        if(latestQuickView){
+            setLatestQuickView(!latestQuickView);
+        }else if(highQuickView){
+            setHighQuickView(!highQuickView);
+        }
+        document.querySelector('body').style.overflow = 'visible';
+    }
+
+    useEffect(() => {
+        window.localStorage.setItem("item",JSON.stringify(addLocal));
+        window.dispatchEvent(new Event('storage'));
+        
+        // setAddLocal([]);
+    },[addLocal])
     return (
         <>
             <div className='homeFirstDiv'>
@@ -174,7 +201,7 @@ export default function HomeContent() {
                 </div>
                 <div className='mainGrid grid grid-flow-row grid-cols-3 gap-5 h-[100%]'>
                     {highQuickView &&
-                        <div className='quickViewContainer'>
+                        <div value className='quickViewContainer'>
                             <div value={''} onClick={highQuickViewChange} className='quickViewBg'></div>
                             <div className='quickViewDiv h-fit flex items-center p-[1.5%]'>
                                     <div value={''} onClick={highQuickViewChange} className='quickViewCloseBtn absolute'>
@@ -218,7 +245,7 @@ export default function HomeContent() {
                                                 <div  className='border px-3 pt-1.5 text-xl cursor-pointer'>{shoesNum || 1}</div>
                                                 <div onClick={addShoes} className='select-none border px-3 pb-1 text-3xl cursor-pointer'>+</div>
                                             </div>
-                                            <button className='bg-[#6e7051] whitespace-nowrap text-white px-5'>ADD TO CART</button>
+                                            <button onClick={addToCart} className='bg-[#6e7051] rounded-sm whitespace-nowrap text-white px-5'>ADD TO CART</button>
                                         </div>
                                         <div className='productShare flex gap-x-5 pt-[5%]'>
                                             <p className='font-semibold -mt-1'>SHARE: </p>
@@ -233,8 +260,8 @@ export default function HomeContent() {
                         </div>
                     }
                     {highRating.map((item,index) =>
-                        <div key={item.name} value={index} className='text-center flex flex-col relative'>
-                            <img  value={index} onClick={highQuickViewChange} className='cursor-pointer' src={`${process.env.PUBLIC_URL}${item.img}`}/>
+                        <div key={item.name} value={index} className='text-center flex flex-col relative '>
+                            <img  value={index} onClick={highQuickViewChange} className='cursor-pointer hover:scale-[1.02] duration-[0.7s]' src={`${process.env.PUBLIC_URL}${item.img}`}/>
                             <h5  value={index} onClick={highQuickViewChange} className='cursor-pointer text-xl pt-3'>{item.name}</h5>
                             <div className='flex justify-center pt-3'>
                                 {
@@ -321,7 +348,7 @@ export default function HomeContent() {
                                                 <div  className='border px-3 pt-1.5 text-xl cursor-pointer'>{shoesNum || 1}</div>
                                                 <div onClick={addShoes} className='select-none border px-3 pb-1 text-3xl cursor-pointer'>+</div>
                                             </div>
-                                            <button className='bg-[#6e7051] whitespace-nowrap text-white px-5'>ADD TO CART</button>
+                                            <button onClick={addToCart} className='bg-[#6e7051] rounded-sm whitespace-nowrap text-white px-5'>ADD TO CART</button>
                                         </div>
                                         <div className='productShare flex gap-x-5 pt-[5%]'>
                                             <p className='font-semibold -mt-1'>SHARE: </p>
@@ -337,7 +364,7 @@ export default function HomeContent() {
                     }
                     {newArrival.map((item,index) =>
                         <div key={item.name} value={index} className='text-center flex flex-col relative'>
-                            <img  value={index} onClick={latestQuickViewChange} className='cursor-pointer' src={`${process.env.PUBLIC_URL}${item.img}`}/>
+                            <img  value={index} onClick={latestQuickViewChange} className='cursor-pointer hover:scale-[1.02] duration-[0.7s]' src={`${process.env.PUBLIC_URL}${item.img}`}/>
                             <h5  value={index} onClick={latestQuickViewChange} className='cursor-pointer text-xl pt-3'>{item.name}</h5>
                             <div className='flex justify-center pt-3'>
                                 {

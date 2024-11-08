@@ -9,8 +9,8 @@ function App() {
   return (
     <>
       <Header/>
-      {/* <HomeContent/> */}
-      <LookBook/>
+      <HomeContent/>
+      {/* <LookBook/> */}
       <Footer/>
     </>
   );

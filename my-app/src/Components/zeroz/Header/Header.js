@@ -1,20 +1,47 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBagShopping, faUser, faXmark} from '@fortawesome/free-solid-svg-icons'
+import { faCircleXmark } from '@fortawesome/free-regular-svg-icons'
 import siteLogo from '../../Imgs/zeroz/site-logo.png'
 import HeaderStyle from './HeaderStyle.css'
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Header(){
-    let shoppingElements = 0;
     const [sidebar, setSidebar] = useState(false);
     const [cart, setCart] = useState(false);
+    const [shoppingElements, setShoppingElements] = useState([]);
+    const [shoppingElementsCount, setShoppingElementsCount] = useState(0);
 
     const sidebarChange = () => {
         setSidebar(!sidebar);
     }
     const shoppingCart = () => {
         setCart(!cart);
-    }
+        console.log('Shopping cart toggled');
+        const storedItems = JSON.parse(window.localStorage.getItem("item"))|| [];
+        // console.log(shoppingElements)
+        if (storedItems.length > 0 && !cart) {
+            console.log('Items found in localStorage');
+            setShoppingElements(storedItems);
+        }
+    };
+    useEffect(() => {
+        const updateCartItems = () => {
+        const storedItems = JSON.parse(window.localStorage.getItem("item"))|| [];
+        setShoppingElementsCount(storedItems.reduce((acc, item) => acc + item.shoesNumber ,0));
+    };
+    updateCartItems();
+    window.addEventListener('storage', updateCartItems);
+    return () => {
+        window.removeEventListener('storage', updateCartItems);
+    };
+},);
+
+function deleteProduct(e) {
+    const itemName = e.target.parentElement.firstChild.nextSibling.firstChild.innerHTML;
+    const updatedShoppingElements = shoppingElements.filter(item => item.name !== itemName);
+    setShoppingElements(updatedShoppingElements);
+    window.localStorage.setItem("item", JSON.stringify(updatedShoppingElements));
+}
     return(
         <>
         { sidebar &&
@@ -36,14 +63,37 @@ export default function Header(){
         { cart &&
         <div className='shoppingContainer flex'>
             <div className='shoppingBg w-[60vw]' onClick={shoppingCart}></div>
-            <div className='shoppingDiv w-[40vw]'>
-                <div className='flex border-b p-[3%] px-[5%] items-center'>
+            <div className='shoppingDiv flex flex-col w-[40vw]'>
+                <div className='flex border-b px-[5%] items-center h-[6vh]'>
                     <h2 className='text-lg font-semibold w-[97%]'>Shopping Cart</h2>
                     <FontAwesomeIcon onClick={shoppingCart} className='w-[3%] text-xl cursor-pointer' icon={faXmark}/>
                 </div>
-                <div className='flex justify-center'>
-                    {shoppingElements > 0 ? "": <h5 className='noElement text-lg font-semibold text-gray-500 absolute'>No products in the cart.</h5>}
-                </div>
+                {shoppingElements.length > 0 ?
+                    <div id='cartProductsContainer' className='p-[5%] h-[86vh]'>
+                        <div className='flex flex-col gap-y-[10px]'>
+                            {shoppingElements.map((item, index) => ( 
+                                <>
+                                <div id={index} className='flex py-[2%]'>
+                                    <div className='w-[150px]'>
+                                        <img src={`${process.env.PUBLIC_URL}${item.img}`}/>
+                                    </div>
+                                    <div className="flex flex-col justify-between px-[5%] font-semibold w-[100%]">
+                                        <h4>{item.name}</h4>
+                                        <h6 className='text-gray-400 font-semibold'>{item.price.new}</h6>
+                                    </div>
+                                    <div className='h-fit select-none text-xl text-gray-400 font-semibold cursor-pointer -mt-[2%]' onClick={deleteProduct}>x</div>
+                                </div>
+                                {index + 1 != shoppingElements.length ? <hr/> : null}
+                                
+                                </>
+                            ))}
+                        </div>
+                    </div>
+                :
+                    <div className='flex justify-center items-center h-[86vh]'>
+                        <h5 className='noElement text-lg font-semibold text-gray-500'>No products in the cart.</h5>
+                    </div>
+                    }
                 <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'>CONTINUE SHOPPING</div>
             </div>
         </div>
@@ -98,7 +148,7 @@ export default function Header(){
                                 <li className='icons aspect-square text-black text-3xl -mt-2'>
                                     <a href='#' onClick={shoppingCart}>
                                         <FontAwesomeIcon  icon={faBagShopping}/>
-                                        <div className='count text-sm bg-black text-white text-center'>{shoppingElements}</div>
+                                        <div className='count text-sm bg-black text-white text-center'>{shoppingElementsCount}</div>
                                     </a>
                                 </li>   
                                 <li className='icons aspect-square ms-5 text-black text-2xl -mt-1'>
