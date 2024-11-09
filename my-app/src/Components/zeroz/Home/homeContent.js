@@ -96,33 +96,52 @@ export default function HomeContent() {
         if(shoesNum > 1)
         setShoesNum(--shoesNum);
     }
-    const [addLocal, setAddLocal] = useState(() => {
-        const storedItems = JSON.parse(localStorage.getItem("item"));
-        return storedItems || []; // Avoid conditional by setting default empty array
-    });
-    function addToCart(e){
-        setAddLocal(prevItems =>
-             [...prevItems,
-                {...female.concat(male).find(item => item.name == e.target.parentNode.parentNode.firstChild.innerHTML),
-                shoesNumber: shoesNum,
-                shoesSize: shoesSize
+    // const [addLocal, setAddLocal] = useState(() => {
+    //     const storedItems = JSON.parse(localStorage.getItem("item"));
+    //     return storedItems || []; // Avoid conditional by setting default empty array
+    // });
+    // function addToCart(e){
+    //     setAddLocal(prevItems =>
+    //          [...prevItems,
+    //             {...female.concat(male).find(item => item.name == e.target.parentNode.parentNode.firstChild.innerHTML),
+    //             shoesNumber: shoesNum,
+    //             shoesSize: shoesSize
 
-        }]);
-        // shoesNum, shoesSize
-        if(latestQuickView){
-            setLatestQuickView(!latestQuickView);
-        }else if(highQuickView){
-            setHighQuickView(!highQuickView);
-        }
-        document.querySelector('body').style.overflow = 'visible';
+    //     }]);
+    //     // shoesNum, shoesSize
+    //     if(latestQuickView){
+    //         setLatestQuickView(!latestQuickView);
+    //     }else if(highQuickView){
+    //         setHighQuickView(!highQuickView);
+    //     }
+    //     document.querySelector('body').style.overflow = 'visible';
+    // }
+
+    // useEffect(() => {
+    //     window.localStorage.setItem("item",JSON.stringify(addLocal));
+    //     window.dispatchEvent(new Event('storage'));
+        
+    //     // setAddLocal([]);
+    // },[addLocal])
+    function addToCart(e) {
+        const itemName = e.target.parentNode.parentNode.firstChild.innerHTML;
+        const itemToAdd = {
+            ...female.concat(male).find(item => item.name === itemName),
+            shoesNumber: shoesNum,
+            shoesSize: shoesSize
+        };
+
+        // Retrieve current items from local storage
+        const currentItems = JSON.parse(localStorage.getItem("item")) || [];
+        // Add the new item to the list
+        const updatedItems = [...currentItems, itemToAdd];
+        // Save updated list back to local storage
+        localStorage.setItem("item", JSON.stringify(updatedItems));
+
+        // Trigger storage event to sync other components
+        window.dispatchEvent(new Event('storage'));
     }
 
-    useEffect(() => {
-        window.localStorage.setItem("item",JSON.stringify(addLocal));
-        window.dispatchEvent(new Event('storage'));
-        
-        // setAddLocal([]);
-    },[addLocal])
     return (
         <>
             <div className='homeFirstDiv'>

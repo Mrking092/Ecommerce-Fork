@@ -8,7 +8,7 @@ import { useState, useRef, useEffect } from 'react';
 export default function Header(){
     const [sidebar, setSidebar] = useState(false);
     const [cart, setCart] = useState(false);
-    const [shoppingElements, setShoppingElements] = useState([]);
+    // const [shoppingElements, setShoppingElements] = useState([]);
     const [shoppingElementsCount, setShoppingElementsCount] = useState(0);
 
     const sidebarChange = () => {
@@ -16,13 +16,13 @@ export default function Header(){
     }
     const shoppingCart = () => {
         setCart(!cart);
-        console.log('Shopping cart toggled');
-        const storedItems = JSON.parse(window.localStorage.getItem("item"))|| [];
-        // console.log(shoppingElements)
-        if (storedItems.length > 0 && !cart) {
-            console.log('Items found in localStorage');
-            setShoppingElements(storedItems);
-        }
+        // console.log('Shopping cart toggled');
+        // const storedItems = JSON.parse(window.localStorage.getItem("item"))|| [];
+        // // console.log(shoppingElements)
+        // if (storedItems.length > 0 && !cart) {
+        //     console.log('Items found in localStorage');
+        //     setShoppingElements(storedItems);
+        // }
     };
     useEffect(() => {
         const updateCartItems = () => {
@@ -36,12 +36,49 @@ export default function Header(){
     };
 },);
 
+// function deleteProduct(e) {
+//     const itemName = e.target.parentElement.firstChild.nextSibling.firstChild.innerHTML;
+//     const updatedShoppingElements = shoppingElements.filter(item => item.name !== itemName);
+//     setShoppingElements(updatedShoppingElements);
+//     window.localStorage.setItem("item", JSON.stringify(updatedShoppingElements));
+// }
+const [shoppingElements, setShoppingElements] = useState(() => {
+    // Initialize cart items from localStorage
+    return JSON.parse(localStorage.getItem("item")) || [];
+});
+
+// Sync state with `localStorage` on mount and whenever `localStorage` changes
+useEffect(() => {
+    const syncCartFromStorage = () => {
+        const storedItems = JSON.parse(localStorage.getItem("item")) || [];
+        setShoppingElements(storedItems);
+    };
+
+    // Load items from local storage on component mount
+    syncCartFromStorage();
+
+    // Listen for `storage` events and update state when it occurs
+    window.addEventListener('storage', syncCartFromStorage);
+    return () => {
+        window.removeEventListener('storage', syncCartFromStorage);
+    };
+}, []);
+
+// Function to delete an item
 function deleteProduct(e) {
-    const itemName = e.target.parentElement.firstChild.nextSibling.firstChild.innerHTML;
-    const updatedShoppingElements = shoppingElements.filter(item => item.name !== itemName);
+    const itemName = e.target.closest('.flex').querySelector('h4').innerHTML;
+    const updatedShoppingElements = shoppingElements.filter(
+        item => item.name !== itemName
+    );
+
+    // Update `localStorage` and state
+    localStorage.setItem("item", JSON.stringify(updatedShoppingElements));
     setShoppingElements(updatedShoppingElements);
-    window.localStorage.setItem("item", JSON.stringify(updatedShoppingElements));
+
+    // Trigger storage event to notify other components of the change
+    window.dispatchEvent(new Event('storage'));
 }
+
     return(
         <>
         { sidebar &&
@@ -69,7 +106,7 @@ function deleteProduct(e) {
                     <FontAwesomeIcon onClick={shoppingCart} className='w-[3%] text-xl cursor-pointer' icon={faXmark}/>
                 </div>
                 {shoppingElements.length > 0 ?
-                    <div id='cartProductsContainer' className='p-[5%] h-[86vh]'>
+                    <div id='cartProductsContainer' className='flex flex-col justify-between p-[5%] h-[100vh]'>
                         <div className='flex flex-col gap-y-[10px]'>
                             {shoppingElements.map((item, index) => ( 
                                 <>
@@ -88,13 +125,20 @@ function deleteProduct(e) {
                                 </>
                             ))}
                         </div>
+                        <div>
+                            <div className='shoppingBtn cursor-pointer text-center mb-3 mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'><a href='#'>VIEW CART</a></div>
+                            <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'><a href='#'>CHECKOUT</a></div>
+                        </div>
+
                     </div>
                 :
+                <>
                     <div className='flex justify-center items-center h-[86vh]'>
                         <h5 className='noElement text-lg font-semibold text-gray-500'>No products in the cart.</h5>
                     </div>
+                    <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'>CONTINUE SHOPPING</div>
+                </>
                     }
-                <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'>CONTINUE SHOPPING</div>
             </div>
         </div>
         }
