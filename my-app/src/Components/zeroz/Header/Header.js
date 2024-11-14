@@ -106,7 +106,7 @@ function deleteProduct(e) {
                     <FontAwesomeIcon onClick={shoppingCart} className='w-[3%] text-xl cursor-pointer' icon={faXmark}/>
                 </div>
                 {shoppingElements.length > 0 ?
-                    <div id='cartProductsContainer' className='flex flex-col justify-between p-[5%] h-[100vh]'>
+                    <div id='cartProductsContainer' className='flex flex-col overflow-y-auto justify-between p-[5%] h-[100vh]'>
                         <div className='flex flex-col gap-y-[10px]'>
                             {shoppingElements.map((item, index) => ( 
                                 <>

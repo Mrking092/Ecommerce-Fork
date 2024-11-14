@@ -129,8 +129,14 @@ export default function HomeContent() {
             ...female.concat(male).find(item => item.name === itemName),
             shoesNumber: shoesNum,
             shoesSize: shoesSize
+            
         };
-
+        if(latestQuickView){
+            setLatestQuickView(!latestQuickView);
+        }else if(highQuickView){
+            setHighQuickView(!highQuickView);
+        }
+        document.querySelector('body').style.overflow = 'visible';
         // Retrieve current items from local storage
         const currentItems = JSON.parse(localStorage.getItem("item")) || [];
         // Add the new item to the list
@@ -261,7 +267,7 @@ export default function HomeContent() {
                                         <div className='addToCartContainer flex justify-between pb-[8%] border-b border-gray-200'>
                                             <div className='flex h-fit'>
                                                 <div onClick={removeShoes} className='select-none border px-3 pb-1 text-3xl cursor-pointer'>-</div>
-                                                <div  className='border px-3 pt-1.5 text-xl cursor-pointer'>{shoesNum || 1}</div>
+                                                <div  className='border px-3 pt-1.5 text-xl'>{shoesNum || 1}</div>
                                                 <div onClick={addShoes} className='select-none border px-3 pb-1 text-3xl cursor-pointer'>+</div>
                                             </div>
                                             <button onClick={addToCart} className='bg-[#6e7051] rounded-sm whitespace-nowrap text-white px-5'>ADD TO CART</button>
