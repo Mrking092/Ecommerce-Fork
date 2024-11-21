@@ -16,13 +16,12 @@ export default function Cart(){
     const [shoesTotal, setShoesTotal] = useState(() => {return JSON.parse(window.localStorage.getItem("coupon")) ? JSON.parse(window.localStorage.getItem("coupon")) * shoesNum.reduce((acc, item) => acc + item, 0) * +(editProduct.reduce((acc,item) => acc + +item.price.new.replace('$',''),0)) : shoesNum.reduce((acc, item) => acc + item, 0) * +(editProduct.reduce((acc,item) => acc + +item.price.new.replace('$',''),0)) || 0});
     const [coupon, setCoupon] = useState(false);
     const [discount, setDiscount] = useState(() => JSON.parse(window.localStorage.getItem("discount")) ? true : false);
-    
+    console.log(shoesNum.reduce((acc, item) => acc + item, 0));
     useEffect(() => {
         window.addEventListener('storage', () => {
                     setShoesTotal(
-                        shoesNum.reduce((acc, item) => acc + item, 0) *
                         editProduct.reduce((acc, item) => {
-                            const price = parseFloat(item.price.new.replace('$', '')) || 0; // Default to 0 if invalid
+                            const price = parseFloat(item.price.new.replace('$', '')) * item.shoesNumber || 0; // Default to 0 if invalid
                             return acc + price;
                         }, 0)
                     );
@@ -80,10 +79,10 @@ function deleteElement(e){
     }
     return(
         <div className='mainDiv bg-[#f1f1ef] flex justify-center items-center h-[fit-content] px-[12%] py-[2%] min-w-fit'>
-            <div className='bg-white w-[100%] h-[100%] my-[3%] px-[5%] min-w-fit'>
+            <div className='bg-white w-[100%] h-[100%] max-h-fit my-[3%] px-[5%] min-w-fit'>
                 <h1 className='text-7xl font-semibold text-center py-[5%] border-[#6e7051] border-b-4'>Cart</h1>
                 {editProduct.length != 0 ?
-                <div className='tableWrapper flex gap-x-5 h-[100%] mt-2 mb-[2%]'>
+                <div className='tableWrapper max-h-fit flex gap-x-5 h-[100%] mt-2 mb-[2%]'>
                     <table className='table-auto w-[70%] h-[20%] border'>
                         <>
                             <tr className='tableHeader bg-[#f1f1ef] text-[black] border h-[8vh] text-lg font-semibold'>

@@ -56,7 +56,7 @@ export default function Checkout() {
             <div id='checkoutMainPageContainer'  className='bg-[#f1f1ef] flex justify-center items-center h-[fit-content] px-[15%] py-[2%] min-w-fit'>
                 <div className='bg-white w-[100%] h-[100%] my-[3%] px-[5%]'>
                     <h1 className='text-7xl font-semibold text-center py-[5%]'>Checkout</h1>
-                    <div id='cheackoutContainer' className='flex gap-x-[5%]'>
+                    <div id='cheackoutContainer' className='flex gap-x-[5%]  max-h-fit'>
                         <form id='checkoutForm' className='w-[55%]'>
                             <h3 className='border-b w-fit border-[#ddd] py-[2%] text-2xl font-bold'>Customer information</h3>
                             <div className='mt-[3%]'>
@@ -114,12 +114,12 @@ export default function Checkout() {
                                     </div>
                                     <p className='yourOrderValue w-[25%] py-[3%] font-bold text-center min-w-fit'>${discount ? ((1-(discount / 100)) * data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0 )).toFixed(2) : data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0).toFixed(2)}</p>
                                 </div>
-                                <div id='yourOrderDiv' className=''>
+                                <div id='yourOrderDiv'>
                                     <div id='yourOrderTitle' className='flex ps-[2%] py-[3%] justify-between items-center border-b'>
                                         <p className='w-[75%] min-w-fit'>Product</p>
                                         <p className='yourOrderValue w-[25%] min-w-fit text-center'>Subtotal</p>
                                         </div>
-                                    <div className=''>
+                                    <div>
                                         {data.map(item =>
                                             <div className='flex ps-[4%] justify-between items-center border-b'>
                                                 <div className='flex py-[3%] w-[75%] items-center gap-x-[2%]'>
@@ -132,7 +132,7 @@ export default function Checkout() {
                                     </div>
                                     <div className='flex ps-[4%] py-[3%] justify-between items-center border-b'>
                                         <h6 className=' w-[75%] min-w-fit'>Subtotal</h6>
-                                        <p className='yourOrderValue w-[25%] text-center min-w-fit'>${data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0 ).toFixed(2)}</p>
+                                        <p className='yourOrderValue w-[25%] text-center min-w-fit'>${data.reduce((acc,item) => acc + +item.price.new.replace('$','') * item.shoesNumber ,0 ).toFixed(2)}</p>
                                     </div>
                                     <div className='flex ps-[4%] py-[3%] justify-between items-center border-b'>
                                         <h6 className=' w-[75%] font-bold min-w-fit'>Total</h6>
