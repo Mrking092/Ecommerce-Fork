@@ -4,27 +4,50 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import siteLogo from '../../Imgs/zeroz/site-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDolly, faLock, faAngleUp } from '@fortawesome/free-solid-svg-icons';
-
+import { faDolly, faLock, faAngleUp, faSortAmountAsc } from '@fortawesome/free-solid-svg-icons';
 
 export default function Checkout() {
     const [country, setCountry] = useState([]);
+    const [summary, setSummary] = useState(false);
     async function fetchCounties() {
         try {
             const response = await fetch('https://countriesnow.space/api/v0.1/countries');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            const json = await response.json(); // Use await here as well
+            const json = await response.json();
             setCountry(json.data.map(item => item.country));
         } catch (error) {
-            console.error('Error:', error.message); // Improved error handling
+            console.error('Error:', error.message);
         }
     }
     fetchCounties();
+    useEffect(() => {
+        if(window.innerWidth >= 1200){
+            document.getElementById('yourOrderDiv').style.display = 'block';
+        }else if (!summary) {
+            document.getElementById("yourOrderDiv").style.display = "none";
+        }
+    })
+    function changeSummary(){
+        setSummary((prevSummary) => {
+            const newSummary = !prevSummary;
+            const dropdownArrow = document.getElementById('dropdownArrow');
+            const yourOrderDiv = document.getElementById('yourOrderDiv');
+    
+            if (dropdownArrow) {
+                dropdownArrow.style.transform = newSummary ? "rotate(180deg)" : "rotate(0deg)";
+            }
+    
+            if (yourOrderDiv) {
+                yourOrderDiv.style.display = newSummary ? "block" : "none";
+            }
+    
+            return newSummary;
+        });
+    }
     const data = JSON.parse(window.localStorage.getItem("item"));
     const discount = JSON.parse(window.localStorage.getItem("discount"));
-    // console.log(((1-(discount / 100)) * data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0 ).toFixed(2)).toFixed(2));
     return(
         <>
             <a className='flex justify-center py-[1%] cursor-pointer'>
@@ -81,18 +104,17 @@ export default function Checkout() {
                             </div>
                         </form>
 
-                        <div id='yourOrder' className='w-[45%] rounded'>
+                        <div id='yourOrder' className='w-[45%] max-h-fit rounded'>
                             <h3 className='w-fit py-[2%] text-2xl font-bold'>Your order</h3>
                             <div id='yourOrderContainer' className='text-[#979a9b] font-semibold border mt-[1%] rounded text-lg w-full border-[#ddd]'>
-                                <div id='yourOrderSammary' className='hidden items-center border-b border-[#e5e7eb] ps-[4%] cursor-pointer justify-between bg-[#f1f1ef]'>
+                                <div onClick={changeSummary} id='yourOrderSummary' className='hidden items-center border-b border-[#e5e7eb] ps-[4%] cursor-pointer justify-between bg-[#f1f1ef]'>
                                     <div className='flex py-[5%] w-[75%] items-center gap-x-[2%]'>
                                         <h6 className='whitespace-nowrap'>Show Order Summary</h6>
-                                        <FontAwesomeIcon className='duration-[0.4s]' icon={faAngleUp} />
+                                        <FontAwesomeIcon id='dropdownArrow' className='duration-[0.4s] mt-1' icon={faAngleUp} />
                                     </div>
                                     <p className='yourOrderValue w-[25%] py-[3%] font-bold text-center min-w-fit'>${discount ? ((1-(discount / 100)) * data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0 )).toFixed(2) : data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0).toFixed(2)}</p>
                                 </div>
                                 <div id='yourOrderDiv' className=''>
-
                                     <div id='yourOrderTitle' className='flex ps-[2%] py-[3%] justify-between items-center border-b'>
                                         <p className='w-[75%] min-w-fit'>Product</p>
                                         <p className='yourOrderValue w-[25%] min-w-fit text-center'>Subtotal</p>

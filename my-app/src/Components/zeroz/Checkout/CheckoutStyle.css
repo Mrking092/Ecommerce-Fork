@@ -1,3 +1,6 @@
+#yourOrder #yourOrderDiv{
+    display: block;
+}
 @media (max-width:1200px) {
     #checkoutMainPageContainer h1{
         font-size: 2.5rem;
@@ -15,7 +18,7 @@
     #checkoutForm{
         width: 100%;
     }
-    #yourOrderSammary{
+    #yourOrderSummary{
         display: flex;
     }
     #yourOrder{
@@ -23,6 +26,7 @@
     }
     #yourOrder #yourOrderDiv{
         background-color: #f1f1f1;
+        display: none;
     }
     #yourOrderTitle{
         display: none;
@@ -31,10 +35,15 @@
         text-align: end;
         padding-right: 4%;
     }
-    #yourOrderSammary div , #yourOrder h6{
-        font-size: 0.9rem;
+    #yourOrderSummary div, #yourOrder h6, #yourOrder p{
+        font-size: 1.2rem;
     }
-    #yourOrder p{
-        font-size: 0.9rem;
+}
+@media (max-width:800px){
+    #yourOrderSummary div , #yourOrder h6, #yourOrder p{
+        font-size: 0.8rem;
+    }
+    #cheackoutContainer h3{
+        font-size: 1.4rem;
     }
 }
