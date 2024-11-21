@@ -6,6 +6,7 @@ import HomeContent from './Components/zeroz/Home/homeContent';
 import LookBook from './Components/zeroz/LookBook/LookBook'
 import Cart from './Components/zeroz/Cart/Cart'
 import Checkout from './Components/zeroz/Checkout/Checkout'
+import Account from './Components/zeroz/Account/Account'
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       {/* <HomeContent/> */}
       {/* <LookBook/> */}
       {/* <Cart/> */}
-      <Checkout/>
-      <Footer/>
+      {/* <Checkout/> */}
+      <Account/>
+      {/* <Footer/> */}
     </>
   );
 }
