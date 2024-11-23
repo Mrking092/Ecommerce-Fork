@@ -1,0 +1,8 @@
+.loginActive{
+    transform: translateX(-100%);
+    z-index: -1;
+}
+.signupActive{
+    transform: translateX(100%);
+    z-index: -1;
+}

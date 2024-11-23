@@ -97,7 +97,7 @@ export default function Checkout() {
                                     Please contact us if you require assistance or wish to make alternate arrangements.
                                     </p>
                                 </div>
-                                <button className=' bg-[#6e7051] tracking-widest	 font-semibold text-[1rem] mt-[2%] text-white p-3 w-[100%] duration-[0.8s] hover:bg-[#262b2c]'><a className='flex justify-center items-center gap-x-[2%]' href='#'>
+                                <button className=' bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 w-[100%] duration-[0.8s] hover:bg-[#262b2c]'><a className='flex justify-center items-center gap-x-[2%]' href='#'>
                                 <FontAwesomeIcon className='text-sm' icon={faLock} />
                                 <p>PLACE ORDER ${discount ? ((1-(discount / 100)) * data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0 )).toFixed(2) : data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0).toFixed(2)}</p>
                                 </a></button>
