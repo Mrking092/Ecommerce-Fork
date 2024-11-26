@@ -52,6 +52,7 @@ export default function HomeContent() {
     const [latestQuickVal, setLatestQuickVal] = useState('');
     const highQuickViewChange = (e) => {
         setHighQuickView(!highQuickView);
+        setShoesNum(1);
         setShoesSize(35);
         if(document.querySelector('body').style.overflow == 'hidden'){
             document.querySelector('body').style.overflow = 'visible';
@@ -65,6 +66,7 @@ export default function HomeContent() {
         }else{
             setHighQuickVal(highRating.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
         }
+            setShoesNum(1);
     }
     const latestQuickViewChange = (e) => {
         setLatestQuickView(!latestQuickView);
@@ -80,6 +82,7 @@ export default function HomeContent() {
         }else{
             setLatestQuickVal(newArrival.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
         }
+        setShoesNum(1);
         }
     let sizeValue = '';
 
@@ -96,33 +99,6 @@ export default function HomeContent() {
         if(shoesNum > 1)
         setShoesNum(--shoesNum);
     }
-    // const [addLocal, setAddLocal] = useState(() => {
-    //     const storedItems = JSON.parse(localStorage.getItem("item"));
-    //     return storedItems || []; // Avoid conditional by setting default empty array
-    // });
-    // function addToCart(e){
-    //     setAddLocal(prevItems =>
-    //          [...prevItems,
-    //             {...female.concat(male).find(item => item.name == e.target.parentNode.parentNode.firstChild.innerHTML),
-    //             shoesNumber: shoesNum,
-    //             shoesSize: shoesSize
-
-    //     }]);
-    //     // shoesNum, shoesSize
-    //     if(latestQuickView){
-    //         setLatestQuickView(!latestQuickView);
-    //     }else if(highQuickView){
-    //         setHighQuickView(!highQuickView);
-    //     }
-    //     document.querySelector('body').style.overflow = 'visible';
-    // }
-
-    // useEffect(() => {
-    //     window.localStorage.setItem("item",JSON.stringify(addLocal));
-    //     window.dispatchEvent(new Event('storage'));
-        
-    //     // setAddLocal([]);
-    // },[addLocal])
     function addToCart(e) {
         const itemName = e.target.parentNode.parentNode.firstChild.innerHTML;
         const itemToAdd = {
@@ -146,6 +122,7 @@ export default function HomeContent() {
 
         // Trigger storage event to sync other components
         window.dispatchEvent(new Event('storage'));
+        setShoesNum(1);
     }
 
     return (

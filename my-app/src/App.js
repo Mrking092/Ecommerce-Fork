@@ -11,12 +11,12 @@ import Account from './Components/zeroz/Account/Account'
 function App() {
   return (
     <>
-      {/* <Header/> */}
-      {/* <HomeContent/> */}
+      <Header/>
+      <HomeContent/>
       {/* <LookBook/> */}
       {/* <Cart/> */}
       {/* <Checkout/> */}
-      <Account/>
+      {/* <Account/> */}
       {/* <Footer/> */}
     </>
   );

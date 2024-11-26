@@ -1,6 +1,9 @@
 *{
     box-sizing: border-box;
 }
+p,h5,h6{
+    user-select: none;
+}
 .icons .count{
     position: absolute;
     margin-top: -55px;

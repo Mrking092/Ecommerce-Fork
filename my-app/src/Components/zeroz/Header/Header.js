@@ -67,9 +67,9 @@ useEffect(() => {
 // Function to delete an item
 function deleteProduct(e) {
     const itemName = e.target.closest('.flex').querySelector('h4').innerHTML;
-    const updatedShoppingElements = shoppingElements.filter(
-        item => item.name !== itemName
-    );
+    const updatedShoppingElements = shoppingElements.filter(item => item.name.trim() !== itemName.trim());
+    console.log(shoppingElements[0].name);
+    console.log(itemName);
 
     // Update `localStorage` and state
     localStorage.setItem("item", JSON.stringify(updatedShoppingElements));
@@ -115,13 +115,21 @@ function deleteProduct(e) {
                                         <img src={`${process.env.PUBLIC_URL}${item.img}`}/>
                                     </div>
                                     <div className="flex flex-col justify-between px-[5%] font-semibold w-[100%]">
+                                        <div className='flex gap-x-[2%]'>
                                         <h4>{item.name}</h4>
-                                        <h6 className='text-gray-400 font-semibold'>{item.price.new}</h6>
+                                        <p > x{item.shoesNumber}</p>
+                                        </div>
+                                        {item.price.old == item.price.new ? <h6 className='text-gray-400 font-semibold'>${item.price.new.replace('$','') * item.shoesNumber}</h6>
+                                        :
+                                        <div className='flex gap-x-[2%]'>
+                                            <h6 className='text-gray-200 font-semibold line-through	'>${item.price.old.replace('$','') * item.shoesNumber}</h6>
+                                            <h6 className='text-gray-400 font-semibold'>${item.price.new.replace('$','') * item.shoesNumber}</h6>
+                                        </div>
+                                        }
                                     </div>
                                     <div className='h-fit select-none text-xl text-gray-400 font-semibold cursor-pointer -mt-[2%]' onClick={deleteProduct}>x</div>
                                 </div>
                                 {index + 1 != shoppingElements.length ? <hr/> : null}
-                                
                                 </>
                             ))}
                         </div>
