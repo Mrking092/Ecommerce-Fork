@@ -8,7 +8,6 @@ import { useState, useRef, useEffect } from 'react';
 export default function Header(){
     const [sidebar, setSidebar] = useState(false);
     const [cart, setCart] = useState(false);
-    // const [shoppingElements, setShoppingElements] = useState([]);
     const [shoppingElementsCount, setShoppingElementsCount] = useState(0);
 
     const sidebarChange = () => {
@@ -16,13 +15,6 @@ export default function Header(){
     }
     const shoppingCart = () => {
         setCart(!cart);
-        // console.log('Shopping cart toggled');
-        // const storedItems = JSON.parse(window.localStorage.getItem("item"))|| [];
-        // // console.log(shoppingElements)
-        // if (storedItems.length > 0 && !cart) {
-        //     console.log('Items found in localStorage');
-        //     setShoppingElements(storedItems);
-        // }
     };
     useEffect(() => {
         const updateCartItems = () => {
@@ -35,50 +27,27 @@ export default function Header(){
         window.removeEventListener('storage', updateCartItems);
     };
 },);
-
-// function deleteProduct(e) {
-//     const itemName = e.target.parentElement.firstChild.nextSibling.firstChild.innerHTML;
-//     const updatedShoppingElements = shoppingElements.filter(item => item.name !== itemName);
-//     setShoppingElements(updatedShoppingElements);
-//     window.localStorage.setItem("item", JSON.stringify(updatedShoppingElements));
-// }
 const [shoppingElements, setShoppingElements] = useState(() => {
-    // Initialize cart items from localStorage
     return JSON.parse(localStorage.getItem("item")) || [];
 });
-
-// Sync state with `localStorage` on mount and whenever `localStorage` changes
 useEffect(() => {
     const syncCartFromStorage = () => {
         const storedItems = JSON.parse(localStorage.getItem("item")) || [];
         setShoppingElements(storedItems);
     };
-
-    // Load items from local storage on component mount
     syncCartFromStorage();
-
-    // Listen for `storage` events and update state when it occurs
     window.addEventListener('storage', syncCartFromStorage);
     return () => {
         window.removeEventListener('storage', syncCartFromStorage);
     };
 }, []);
-
-// Function to delete an item
 function deleteProduct(e) {
     const itemName = e.target.closest('.flex').querySelector('h4').innerHTML;
     const updatedShoppingElements = shoppingElements.filter(item => item.name.trim() !== itemName.trim());
-    console.log(shoppingElements[0].name);
-    console.log(itemName);
-
-    // Update `localStorage` and state
     localStorage.setItem("item", JSON.stringify(updatedShoppingElements));
     setShoppingElements(updatedShoppingElements);
-
-    // Trigger storage event to notify other components of the change
     window.dispatchEvent(new Event('storage'));
 }
-
     return(
         <>
         { sidebar &&
@@ -86,12 +55,13 @@ function deleteProduct(e) {
             <div className='sidebarDiv'>
             <FontAwesomeIcon onClick={sidebarChange} className='closeBtn text-xl absolute z-20' icon={faXmark}/>
                 <ul className='sidebarSections flex flex-col text-lg'>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Home</a></li>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Shop Everything</a></li>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Lookbook</a></li>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Sale</a></li>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Story</a></li>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='#'>Contact</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/men'>Men</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/women'>Women</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/collection'>Collection</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/lookbook'>Lookbook</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/sale'>Sale</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/ourstory'>Our Story</a></li>
+                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/contact'>Contact</a></li>
                 </ul>
             </div>
             <div className='sidebarBg' onClick={sidebarChange}></div>
@@ -134,8 +104,8 @@ function deleteProduct(e) {
                             ))}
                         </div>
                         <div>
-                            <div className='shoppingBtn cursor-pointer text-center mb-3 mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'><a href='#'>VIEW CART</a></div>
-                            <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'><a href='#'>CHECKOUT</a></div>
+                            <div className='shoppingBtn cursor-pointer text-center mb-3 mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'><a href='/cart'>VIEW CART</a></div>
+                            <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'><a href='/checkout'>CHECKOUT</a></div>
                         </div>
 
                     </div>
@@ -163,8 +133,8 @@ function deleteProduct(e) {
                     <div className='w-6 h-0.5 mb-1 bg-gray-500'></div>
                     </a>
                 </div>
-                <button className='text-center'>
-                    <a href='#'>
+                <button className='text-center cursor-pointer z-10'>
+                    <a href='/'>
                     <img src={siteLogo} alt="site-logo"/>
                     </a>
                 </button>
@@ -172,39 +142,39 @@ function deleteProduct(e) {
                     <ul className='flex justify-between w-[100%] text-gray-400 font-medium relative'>
                         <li className='leftLinks flex'>
                             <li>
-                                <a className='pe-6' href='#'>MEN</a>
+                                <a className='pe-6' href='/men'>MEN</a>
                             </li>
                             <li>
-                                <a className='pe-6' href='#'>WOMEN</a>
+                                <a className='pe-6' href='women'>WOMEN</a>
                             </li>
                             <li>
-                                <a className='pe-6' href='#'>COLLECTION</a>
+                                <a className='pe-6' href='collection'>COLLECTION</a>
                             </li>
                             <li>
-                                <a className='pe-6' href='#'>LOOKBOOK</a>
+                                <a className='pe-6' href='lookbook'>LOOKBOOK</a>
                             </li>
                             <li>
-                                <a className='pe-6' href='#'>SALE</a>
+                                <a className='pe-6' href='/sale'>SALE</a>
                             </li>
                         </li>
                         <li className='flex'>
                             <li className='rightLinks flex'>
                                 <li>
-                                    <a href='#' className=' whitespace-nowrap pe-6'>OUR STORY</a>
+                                    <a href='/ourstory' className=' whitespace-nowrap pe-6'>OUR STORY</a>
                                 </li>    
                                 <li>
-                                    <a href='#' className='pe-6'>CONTACT</a>
+                                    <a href='/contact' className='pe-6'>CONTACT</a>
                                 </li>   
                             </li>
                             <li className='flex -mt-0.5'>
                                 <li className='icons aspect-square text-black text-3xl -mt-2'>
-                                    <a href='#' onClick={shoppingCart}>
+                                    <a className='cursor-pointer' onClick={shoppingCart}>
                                         <FontAwesomeIcon  icon={faBagShopping}/>
                                         <div className='count text-sm bg-black text-white text-center'>{shoppingElementsCount}</div>
                                     </a>
                                 </li>   
                                 <li className='icons aspect-square ms-5 text-black text-2xl -mt-1'>
-                                    <a href='#' className=''>
+                                    <a href='/account' className=''>
                                         <FontAwesomeIcon icon={faUser} />
                                     </a>
                                 </li>   

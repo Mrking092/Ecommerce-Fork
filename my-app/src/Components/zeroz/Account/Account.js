@@ -51,7 +51,7 @@ export default function Account() {
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="email" placeholder="Email" />
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="password" placeholder="Password" />
                         <div className="flex justify-center">
-                            <button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded">SIGN UP</button>
+                            <button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded"><a href="/">Login</a></button>
                         </div>
                     </form>
                 </div>
@@ -78,7 +78,7 @@ export default function Account() {
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="email" placeholder="Email" />
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="password" placeholder="Password" />
                         <div className="flex justify-center">
-                            <button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded">SIGN UP</button>
+                            <button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded"><a href="/">SIGN UP</a></button>
                         </div>
                     </form>
                 </div>
@@ -90,14 +90,16 @@ export default function Account() {
                         <div className="flex justify-center">
                             <h1 className="websiteLogo text-6xl font-semibold tracking-widest text-white">PLASHOE</h1>
                         </div>
-                        <p className="text-center text-sm p-[5%] text-gray-300 font-bold tracking-wide">Create an account to unlock exclusive benefits and personalized recommendations.</p>                    <button id="signup" onClick={() => setActive('login')} className="py-[2%] px-[10%] border text-white tracking-widest font-semibold text-[1rem] mt-[2%] border-white p-3 rounded hover:text-black hover:bg-white duration-[0.8s]">SIGN UP</button>
+                        <p className="text-center text-sm p-[5%] text-gray-300 font-bold tracking-wide">Create an account to unlock exclusive benefits and personalized recommendations.</p>
+                        <button id="signup" onClick={() => setActive('login')} className="py-[2%] px-[10%] border text-white tracking-widest font-semibold text-[1rem] mt-[2%] border-white p-3 rounded hover:text-black hover:bg-white duration-[0.8s]">SIGN UP</button>
                     </div>
                     <div className={`logRegTitle p-[2%] h-[60%] flex flex-col justify-center items-center min-h-fit w-[25vw] rounded-2xl duration-[1s] bg-[#6e7051]
                         ${active === 'login' ? ' loginActive' : ''}`}> 
                         <div className="flex justify-center">
                             <h1 className="websiteLogo text-6xl font-semibold tracking-widest text-white">PLASHOE</h1>
                         </div>
-                        <p className="text-center text-sm p-[5%] text-gray-300 font-bold tracking-wide">Access your account and manage your orders effortlessly.</p>                <button id="login" onClick={() => setActive('signup')} className="py-[2%] px-[10%] border text-white tracking-widest font-semibold text-[1rem] mt-[2%] border-white p-3 rounded hover:text-black hover:bg-white duration-[0.8s]">LOGIN</button>
+                        <p className="text-center text-sm p-[5%] text-gray-300 font-bold tracking-wide">Access your account and manage your orders effortlessly.</p>
+                        <button id="login" onClick={() => setActive('signup')} className="py-[2%] px-[10%] border text-white tracking-widest font-semibold text-[1rem] mt-[2%] border-white p-3 rounded hover:text-black hover:bg-white duration-[0.8s]">LOGIN</button>
                     </div>
                 </div>
                 : null}

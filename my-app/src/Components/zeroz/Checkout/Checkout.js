@@ -5,7 +5,6 @@ import Autocomplete from '@mui/material/Autocomplete';
 import siteLogo from '../../Imgs/zeroz/site-logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDolly, faLock, faAngleUp, faSortAmountAsc } from '@fortawesome/free-solid-svg-icons';
-
 export default function Checkout() {
     const [country, setCountry] = useState([]);
     const [summary, setSummary] = useState(false);
@@ -97,13 +96,12 @@ export default function Checkout() {
                                     Please contact us if you require assistance or wish to make alternate arrangements.
                                     </p>
                                 </div>
-                                <button className=' bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 w-[100%] duration-[0.8s] hover:bg-[#262b2c]'><a className='flex justify-center items-center gap-x-[2%]' href='#'>
+                                <button className=' bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 w-[100%] duration-[0.8s] hover:bg-[#262b2c]'><a href='/' className='flex justify-center items-center gap-x-[2%]'>
                                 <FontAwesomeIcon className='text-sm' icon={faLock} />
                                 <p>PLACE ORDER ${discount ? ((1-(discount / 100)) * data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0 )).toFixed(2) : data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0).toFixed(2)}</p>
                                 </a></button>
                             </div>
                         </form>
-
                         <div id='yourOrder' className='w-[45%] max-h-fit rounded'>
                             <h3 className='w-fit py-[2%] text-2xl font-bold'>Your order</h3>
                             <div id='yourOrderContainer' className='text-[#979a9b] font-semibold border mt-[1%] rounded text-lg w-full border-[#ddd]'>

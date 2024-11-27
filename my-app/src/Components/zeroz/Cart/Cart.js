@@ -158,7 +158,7 @@ function deleteElement(e){
                             </div> :
                              <p onClick={()=>setCoupon(true)} className='coupon cursor-pointer mt-[25%] text-black'>Have a coupon?</p>
                             }
-                            <button className='bg-[#6e7051] mt-[5%] text-white p-5 w-[100%] duration-[0.8s] hover:bg-[#262b2c]'><a href='#'>PROCEED TO CHECKOUT</a></button>
+                            <button className='bg-[#6e7051] mt-[5%] text-white p-5 w-[100%] duration-[0.8s] hover:bg-[#262b2c]'><a href='/checkout'>PROCEED TO CHECKOUT</a></button>
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@ function deleteElement(e){
                                     <FontAwesomeIcon className='text-2xl mt-1.5 text-[#6e7051]' icon={faDolly} />
                                     <p className='text-xl'>Your cart is currently empty.</p>
                                 </div>
-                                <button className='bg-[#6e7051] text-[1.4rem] mt-[2%] text-white p-5 w-[100%] duration-[0.8s] hover:bg-[#262b2c]'><a href='#'>Return to shop</a></button>
+                                <button className='bg-[#6e7051] text-[1.4rem] mt-[2%] text-white p-5 w-[100%] duration-[0.8s] hover:bg-[#262b2c]'><a href='/'>Return to shop</a></button>
                             </div>
                         }
             </div>

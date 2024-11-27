@@ -20,12 +20,9 @@ import recycledBigImg from '../../Imgs/zeroz/recycledBigImg.jpg'
 import JuliaImg from "../../Imgs/zeroz/JuliaKeys.jpg"
 import LuisImg from "../../Imgs/zeroz/LuisAdrian.jpg"
 import MariaImg from "../../Imgs/zeroz/MariaAnna.jpg"
-
 export default function HomeContent() {
-
     const [female, setFemale] = useState([]);
     const [male, setMale] = useState([]);
-
      async function test(){
         try{
             const response = await fetch('http://localhost:3000/database/database.json');
@@ -42,7 +39,6 @@ export default function HomeContent() {
     useEffect(()=>{
         test();
     }, [])
-
     let highRating = female.concat(male).filter((item) => item.rating >= 4.5).sort((a, b) => b.rating - a.rating);
     let newArrival = female.concat(male).filter((item) => item.rating == 0);
     const [highQuickView, setHighQuickView] = useState(false);
@@ -59,7 +55,6 @@ export default function HomeContent() {
         }else{
             document.querySelector('body').style.overflow = 'hidden';
         }
-        // console.log(e.target.value)
         if(e.target.textContent != ''){
             setHighQuickVal(highRating.filter(item => item.name == e.target.textContent )|| "");
             
@@ -85,12 +80,10 @@ export default function HomeContent() {
         setShoesNum(1);
         }
     let sizeValue = '';
-
     function sizeChanging(){        
         let getSize = document.querySelector('.size');
         setShoesSize(sizeValue = getSize.value || 35);
     }
-
     let [shoesNum, setShoesNum] = useState(1)
     function addShoes(){
         setShoesNum(++shoesNum);
@@ -105,7 +98,6 @@ export default function HomeContent() {
             ...female.concat(male).find(item => item.name === itemName),
             shoesNumber: shoesNum,
             shoesSize: shoesSize
-            
         };
         if(latestQuickView){
             setLatestQuickView(!latestQuickView);
@@ -113,18 +105,12 @@ export default function HomeContent() {
             setHighQuickView(!highQuickView);
         }
         document.querySelector('body').style.overflow = 'visible';
-        // Retrieve current items from local storage
         const currentItems = JSON.parse(localStorage.getItem("item")) || [];
-        // Add the new item to the list
         const updatedItems = [...currentItems, itemToAdd];
-        // Save updated list back to local storage
         localStorage.setItem("item", JSON.stringify(updatedItems));
-
-        // Trigger storage event to sync other components
         window.dispatchEvent(new Event('storage'));
         setShoesNum(1);
     }
-
     return (
         <>
             <div className='homeFirstDiv'>
@@ -133,8 +119,8 @@ export default function HomeContent() {
                     Bibendum fermentum, aenean donec pretium aliquam blandit tempor imperdiet arcu arcu ut nunc in dictum mauris at ut.
                 </p>
                 <div className='flex flex-row'>
-                    <button className='bg-white py-3 px-8 font-semibold me-7'>SHOP MEN</button>
-                    <button className='bg-white py-3 px-8 font-semibold'>SHOP WOMEN</button>
+                    <button className='bg-white py-3 px-8 font-semibold me-7'><a href='/men'>SHOP MEN</a></button>
+                    <button className='bg-white py-3 px-8 font-semibold'><a href='/women'>SHOP WOMEN</a></button>
                 </div>
             </div>
 
@@ -162,7 +148,6 @@ export default function HomeContent() {
                     <button className='font-semibold border-b-2 border-orange-400 mt-10'>READ MORE</button>
                 </div>
             </div>
-
             <div className='seeHowMadeDiv py-20'>
                 <h2 className='text-5xl font-semibold text-center py-10'>See how your shoes are made</h2>
                 <p className='text-gray-400 text-center mx-auto pb-5 w-5/12 font-semibold'>Urna, felis enim orci accumsan urna blandit
@@ -194,8 +179,6 @@ export default function HomeContent() {
                     </div>
                 </div>
             </div>
-
-
             <div className='ourBestSeller pb-24'>
                 <div className='headerDiv flex py-10 justify-between'>
                     <h4 className='text-2xl font-semibold'>Our Best Seller</h4>
@@ -283,22 +266,20 @@ export default function HomeContent() {
                 )}
                 </div>
             </div>
-
             <div className='menOrWomenRoute flex justify-center py-10 mb-10 p-10 gap-x-10'>
                 <div id='menRoute' className='flex flex-col justify-center items-center'>
                     <h3 className='font-semibold text-white text-4xl pb-5'>Men</h3>
                     <button className='border-2 font-semibold border-white text-white px-8 py-3'>
-                        <a className='' href='#'>SHOP MEN</a>
+                        <a className='' href='/men'>SHOP MEN</a>
                     </button>
                 </div>
                 <div id='womenRoute' className='flex flex-col justify-center items-center'>
                     <h3 className='font-semibold text-white text-4xl pb-5'>Women</h3>
                     <button className='border-2 font-semibold border-white text-white px-8 py-3'>
-                        <a className='' href='#'>SHOP WOMEN</a>
+                        <a className='' href='/women'>SHOP WOMEN</a>
                     </button>
                 </div>
             </div>
-
             <div className='ourBestSeller pb-24'>
                 <div className='headerDiv flex py-10 justify-between'>
                     <h4 className='text-2xl font-semibold'>New Arrivals</h4>
@@ -386,7 +367,6 @@ export default function HomeContent() {
                 )}
                 </div>
             </div>
-        
             <div className='shoesEmv flex justify-center items-center bg-[#f1f1ef] h-[60vh] max-w-[100%]  m-[1.5%] mb-[5%]'>
                 <div className='w-[40%] pe-[10%]'>
                     <p className='text-gray-500 pb-[15%] text-lg'>Eu eget felis erat mauris aliquam mattis lacus,
@@ -402,7 +382,6 @@ export default function HomeContent() {
                     <img className='rounded-[50%]' src={recycledBigImg}/>
                 </div>
             </div>
-
             <div className='flex flex-col justify-center my-[4%] h-fit'>
                 <h2 className='text-4xl text-center font-semibold'>Our Customers Speak For Us</h2>
                 <div className='customersSpeak flex justify-center gap-x-[2%] mx-[1.5%] my-[3%] '>
