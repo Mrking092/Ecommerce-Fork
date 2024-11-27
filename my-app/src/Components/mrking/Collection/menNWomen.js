@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./menPage.css";
+import "./menNWomen.css";
 import * as React from "react";
 import Slider from "@mui/material/Slider";
 import { Dehaze } from "@mui/icons-material";
@@ -12,19 +12,16 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Sorter from "../SortBox";
 import CloseIcon from "@mui/icons-material/Close";
 
-// #0e1017 #16ffbd
 export default function MenPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [men, setMen] = useState([]);
   const [filteredShoes, setFilteredShoes] = useState([]);
-  const [minPrice, setMinPrice] = useState(50);
+  const [minPrice, setMinPrice] = useState(30);
   const [maxPrice, setMaxPrice] = useState(110);
   const [ratingFilter, setRatingFilter] = useState(0);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [sortOption, setSortOption] = useState("");
 
-
-  // Fetch data from local JSON
   useEffect(() => {
     async function fetchData() {
       try {
@@ -43,8 +40,18 @@ export default function MenPage() {
           },
         }));
 
-        setMen(menData);
-        setFilteredShoes(menData);
+        const womenData = json.female.map((item) => ({
+          ...item,
+          price: {
+            ...item.price,
+            new: parseFloat(item.price.new.replace("$", "")),
+            old: parseFloat(item.price.old.replace("$", "")),
+          },
+        }));
+          const combinedShoes = [...menData, ...womenData];
+          
+          setMen(combinedShoes);
+          setFilteredShoes(combinedShoes);
       } catch (error) {
         console.error(error.message);
       }
@@ -59,7 +66,7 @@ export default function MenPage() {
 
   const handleMinPriceChange = (newValue) => {
     setMinPrice(newValue);
-    if (newValue > maxPrice) setMaxPrice(newValue); 
+    if (newValue > maxPrice) setMaxPrice(newValue);
   };
 
   const handleMaxPriceChange = (newValue) => {
@@ -92,6 +99,7 @@ export default function MenPage() {
         shoe.rating >= ratingFilter &&
         (selectedCategories.length === 0 ||
           selectedCategories.includes(shoe.category))
+          
     );
 
     if (sortOption === "rating") {
@@ -101,7 +109,8 @@ export default function MenPage() {
     } else if (sortOption === "priceHighToLow") {
       filtered = filtered.sort((a, b) => b.price.new - a.price.new);
     }
-
+    
+    
     setFilteredShoes(filtered);
   };
 
@@ -109,31 +118,31 @@ export default function MenPage() {
     applyFilters();
   }, [minPrice, maxPrice, ratingFilter, selectedCategories, sortOption, men]);
 
-    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 700);
-  
-    useEffect(() => {
-      const handleResize = () => {
-        setIsSmallScreen(window.innerWidth <= 700);
-      };
-      window.addEventListener('resize', handleResize);
-      
-      return () => window.removeEventListener('resize', handleResize);
-    }, []);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 700);
 
-    const toggleMenu = () => {
-      setIsOpen((prevIsOpen) => {
-        if (isSmallScreen) {
-          document.body.style.overflow = !prevIsOpen ? "hidden" : "auto";
-        }
-        return !prevIsOpen;
-      });
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 700);
     };
-    
-    useEffect(() => {
-      return () => {
-        document.body.style.overflow = "auto";
-      };
-    }, []);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleMenu = () => {
+    setIsOpen((prevIsOpen) => {
+      if (isSmallScreen) {
+        document.body.style.overflow = !prevIsOpen ? "hidden" : "auto";
+      }
+      return !prevIsOpen;
+    });
+  };
+
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
   return (
     <div>
       <div
@@ -148,7 +157,7 @@ export default function MenPage() {
         }}
       >
         {isOpen && (
-          <div className="sidebar h-[300px] bg-[#f1f1ef] w-[270px] top-[150px] left-[100px] z-[1] shadow-2xl">
+          <div className="sidebar h-[300px] bg-[#f1f1ef] w-[270px] top-[150px] left-[100px] z-[1] shadow-2xl ">
             <div className="flex justify-between flex-row items-center bg-[#6e7051] rounded-t-lg">
               <h1 className=" p-5 text-white text-2xl bg-[#6e7051] font-medium font-sans rounded-t-lg">
                 Filter
@@ -226,6 +235,16 @@ export default function MenPage() {
                   }
                   label="Sneaker"
                 />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      name="Training"
+                      checked={selectedCategories.includes("Training")}
+                      onChange={handleCategoryChange}
+                    />
+                  }
+                  label="Training"
+                />
               </FormGroup>
             </div>
           </div>
@@ -239,7 +258,7 @@ export default function MenPage() {
             className="p-10 text-7xl font-semibold mb-10 max-[407px]:flex justify-center"
             style={{ color: "#6e7051" }}
           >
-            Men
+            Shop
           </h1>
           <div className="filterNSort flex justify-between flex-row items-center">
             <div className="filter" style={{ marginLeft: "40px" }}>
@@ -272,7 +291,7 @@ export default function MenPage() {
             </div>
             <div className="mainGrid grid grid-flow-row grid-cols-3 gap-5">
               {filteredShoes.length > 0 ? (
-                filteredShoes.map((item,index) => (
+                filteredShoes.map((item, index) => (
                   <div
                     key={index}
                     className="text-center flex flex-col relative"

@@ -9,7 +9,6 @@ import RemoveIcon from "@mui/icons-material/Remove";
 
 export default function NumberInputWithButtons({ min, max, step = 1, value = min, onChange, label }) {
   // Log the value to debug whether it's correctly received by the component
-  console.log("Current value in NumberInputWithButtons:", value);
 
   const handleIncrement = () => {
     if (value + step <= max) {
@@ -34,12 +33,12 @@ export default function NumberInputWithButtons({ min, max, step = 1, value = min
     <TextField
       variant="outlined"
       type="number"
-      value={value || min} // Ensure a valid number is passed as value
+      value={value} // Ensure a valid number is passed as value
       onChange={handleInputChange}
       label={label || ""}
       InputProps={{
         startAdornment: (
-          <InputAdornment position="start">
+          <InputAdornment position="start" >
             <IconButton
               size="small"
               onClick={handleDecrement}

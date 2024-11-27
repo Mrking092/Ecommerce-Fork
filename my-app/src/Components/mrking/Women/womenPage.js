@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./menPage.css";
+import "./womenPage.css";
 import * as React from "react";
 import Slider from "@mui/material/Slider";
 import { Dehaze } from "@mui/icons-material";
@@ -12,10 +12,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Sorter from "../SortBox";
 import CloseIcon from "@mui/icons-material/Close";
 
-// #0e1017 #16ffbd
-export default function MenPage() {
+export default function WomenPage() {
   const [isOpen, setIsOpen] = useState(false);
-  const [men, setMen] = useState([]);
+  const [women, setWomen] = useState([]);
   const [filteredShoes, setFilteredShoes] = useState([]);
   const [minPrice, setMinPrice] = useState(50);
   const [maxPrice, setMaxPrice] = useState(110);
@@ -23,8 +22,6 @@ export default function MenPage() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [sortOption, setSortOption] = useState("");
 
-
-  // Fetch data from local JSON
   useEffect(() => {
     async function fetchData() {
       try {
@@ -34,7 +31,7 @@ export default function MenPage() {
         if (!response.ok) throw new Error("Network response was not ok");
         const json = await response.json();
 
-        const menData = json.male.map((item) => ({
+        const womenData = json.female.map((item) => ({
           ...item,
           price: {
             ...item.price,
@@ -43,8 +40,8 @@ export default function MenPage() {
           },
         }));
 
-        setMen(menData);
-        setFilteredShoes(menData);
+        setWomen(womenData);
+        setFilteredShoes(womenData);
       } catch (error) {
         console.error(error.message);
       }
@@ -59,7 +56,7 @@ export default function MenPage() {
 
   const handleMinPriceChange = (newValue) => {
     setMinPrice(newValue);
-    if (newValue > maxPrice) setMaxPrice(newValue); 
+    if (newValue > maxPrice) setMaxPrice(newValue);
   };
 
   const handleMaxPriceChange = (newValue) => {
@@ -85,7 +82,7 @@ export default function MenPage() {
   };
 
   const applyFilters = () => {
-    let filtered = men.filter(
+    let filtered = women.filter(
       (shoe) =>
         shoe.price.new >= minPrice &&
         shoe.price.new <= maxPrice &&
@@ -107,33 +104,33 @@ export default function MenPage() {
 
   useEffect(() => {
     applyFilters();
-  }, [minPrice, maxPrice, ratingFilter, selectedCategories, sortOption, men]);
+  }, [minPrice, maxPrice, ratingFilter, selectedCategories, sortOption, women]);
 
-    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 700);
-  
-    useEffect(() => {
-      const handleResize = () => {
-        setIsSmallScreen(window.innerWidth <= 700);
-      };
-      window.addEventListener('resize', handleResize);
-      
-      return () => window.removeEventListener('resize', handleResize);
-    }, []);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 700);
 
-    const toggleMenu = () => {
-      setIsOpen((prevIsOpen) => {
-        if (isSmallScreen) {
-          document.body.style.overflow = !prevIsOpen ? "hidden" : "auto";
-        }
-        return !prevIsOpen;
-      });
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 700);
     };
-    
-    useEffect(() => {
-      return () => {
-        document.body.style.overflow = "auto";
-      };
-    }, []);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleMenu = () => {
+    setIsOpen((prevIsOpen) => {
+      if (isSmallScreen) {
+        document.body.style.overflow = !prevIsOpen ? "hidden" : "auto"; 
+      }
+      return !prevIsOpen;
+    });
+  };
+
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
   return (
     <div>
       <div
@@ -148,7 +145,7 @@ export default function MenPage() {
         }}
       >
         {isOpen && (
-          <div className="sidebar h-[300px] bg-[#f1f1ef] w-[270px] top-[150px] left-[100px] z-[1] shadow-2xl">
+          <div className="sidebar h-[300px] bg-[#f1f1ef] w-[270px] top-[150px] left-[100px] z-[1] shadow-2xl ">
             <div className="flex justify-between flex-row items-center bg-[#6e7051] rounded-t-lg">
               <h1 className=" p-5 text-white text-2xl bg-[#6e7051] font-medium font-sans rounded-t-lg">
                 Filter
@@ -209,12 +206,12 @@ export default function MenPage() {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      name="Classic"
-                      checked={selectedCategories.includes("Classic")}
+                      name="Training"
+                      checked={selectedCategories.includes("Training")}
                       onChange={handleCategoryChange}
                     />
                   }
-                  label="Classic"
+                  label="Training"
                 />
                 <FormControlLabel
                   control={
@@ -239,13 +236,13 @@ export default function MenPage() {
             className="p-10 text-7xl font-semibold mb-10 max-[407px]:flex justify-center"
             style={{ color: "#6e7051" }}
           >
-            Men
+            Women
           </h1>
-          <div className="filterNSort flex justify-between flex-row items-center">
+          <div className="filterNSort flex justify-between flex-row items-center ">
             <div className="filter" style={{ marginLeft: "40px" }}>
               <Button
                 onClick={toggleMenu}
-                component="label"
+                component="button"
                 role={"button"}
                 tabIndex={-1}
                 startIcon={<Dehaze />}
@@ -272,7 +269,7 @@ export default function MenPage() {
             </div>
             <div className="mainGrid grid grid-flow-row grid-cols-3 gap-5">
               {filteredShoes.length > 0 ? (
-                filteredShoes.map((item,index) => (
+                filteredShoes.map((item, index) => (
                   <div
                     key={index}
                     className="text-center flex flex-col relative"
