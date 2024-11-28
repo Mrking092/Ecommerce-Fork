@@ -3,7 +3,7 @@ import {faArrowsRotate, faLock, faTruck} from '@fortawesome/free-solid-svg-icons
 import {faCopyright} from '@fortawesome/free-regular-svg-icons'
 import {faInstagram, faPinterestP, faFacebook, faXTwitter} from '@fortawesome/free-brands-svg-icons'
 import FooterStyle from './FooterStyle.css'
-import PaymentMethods from '../../Imgs/PaymentMethods.png'
+import PaymentMethods from '../../Imgs/zeroz/PaymentMethods.png'
 
 export default function Footer(){
     return(
@@ -48,18 +48,18 @@ export default function Footer(){
                 <h2 className='text-2xl tracking-wider font-semibold'>Shop</h2>
                 <ul>
                     <li className=''>
-                        <a href='#'>Shop Men</a>
+                        <a href='/men'>Shop Men</a>
                     </li>
                     <li className=''>
-                        <a href='#'>Shop Women</a>
+                        <a href='/women'>Shop Women</a>
                     </li>
                     <li className=''>
-                        <a href='#'>Lookbook</a></li>
+                        <a href='/lookbook'>Lookbook</a></li>
                     <li className=''>
                         <a href='#'>Gift Card</a>
                     </li>
                     <li className=''>
-                        <a href='#'>Sale</a>
+                        <a href='/sale'>Sale</a>
                     </li>
                 </ul>
                 </div>
@@ -67,7 +67,7 @@ export default function Footer(){
                 <h2 className='text-2xl tracking-wider font-semibold'>About</h2>
                 <ul>
                     <li className=''>
-                        <a href='#'>Our Story</a>
+                        <a href='/ourstory'>Our Story</a>
                     </li>
                     <li className=''>
                         <a href='#'>Our Materials</a>
@@ -87,7 +87,7 @@ export default function Footer(){
                 <h2 className='text-2xl tracking-wider font-semibold'>Need Help?</h2>
                 <ul>
                     <li className=''>
-                        <a href='#'>FAQs</a>
+                        <a href='/contact'>FAQs</a>
                     </li>
                     <li className=''>
                         <a href='#'>Shipping & Returns</a>
@@ -98,7 +98,7 @@ export default function Footer(){
                         <a href='#'>Size Chart</a>
                     </li>
                     <li className=''>
-                        <a href='#'>Contact Us</a>
+                        <a href='/contact'>Contact Us</a>
                     </li>
                 </ul>
                 </div>
