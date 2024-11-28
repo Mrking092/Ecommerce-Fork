@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       <Footer/>
     </>
   },
-  { path: '/our-story', 
+  { path: '/ourstory', 
     element: 
     <>
       <Header/>

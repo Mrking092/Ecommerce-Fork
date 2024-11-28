@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGoogle, faFacebookF, faLinkedinIn, faXTwitter } from "@fortawesome/free-brands-svg-icons"
-import siteLogo from '../../Imgs/zeroz/site-logo.png'
+// import siteLogo from '../../Imgs/zeroz/site-logo.png'
 import AccountStyle from './AccountStyle.css'
 
 export default function Account() {

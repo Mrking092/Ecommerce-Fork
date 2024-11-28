@@ -89,11 +89,11 @@ function deleteProduct(e) {
                                         <h4>{item.name}</h4>
                                         <p > x{item.shoesNumber}</p>
                                         </div>
-                                        {item.price.old == item.price.new ? <h6 className='text-gray-400 font-semibold'>${item.price.new.replace('$','') * item.shoesNumber}</h6>
+                                        {item.price.old == item.price.new ? <h6 className='text-gray-400 font-semibold'>${(item.price.new.replace('$','') * item.shoesNumber).toFixed(2)}</h6>
                                         :
                                         <div className='flex gap-x-[2%]'>
-                                            <h6 className='text-gray-200 font-semibold line-through	'>${item.price.old.replace('$','') * item.shoesNumber}</h6>
-                                            <h6 className='text-gray-400 font-semibold'>${item.price.new.replace('$','') * item.shoesNumber}</h6>
+                                            <h6 className='text-gray-200 font-semibold line-through	'>${(item.price.old.replace('$','') * item.shoesNumber).toFixed(2)}</h6>
+                                            <h6 className='text-gray-400 font-semibold'>${(item.price.new.replace('$','') * item.shoesNumber).toFixed(2)}</h6>
                                         </div>
                                         }
                                     </div>
@@ -114,7 +114,7 @@ function deleteProduct(e) {
                     <div className='flex justify-center items-center h-[86vh]'>
                         <h5 className='noElement text-lg font-semibold text-gray-500'>No products in the cart.</h5>
                     </div>
-                    <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'>CONTINUE SHOPPING</div>
+                    <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'><a href="/">CONTINUE SHOPPING</a></div>
                 </>
                     }
             </div>

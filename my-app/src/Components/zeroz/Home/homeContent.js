@@ -25,7 +25,7 @@ export default function HomeContent() {
     const [male, setMale] = useState([]);
      async function test(){
         try{
-            const response = await fetch('http://localhost:3000/database/database.json');
+            const response = await fetch(`${window.location}database/database.json`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -59,10 +59,10 @@ export default function HomeContent() {
             setHighQuickVal(highRating.filter(item => item.name == e.target.textContent )|| "");
             
         }else{
-            setHighQuickVal(highRating.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
+            setHighQuickVal(highRating.filter(item => (`${window.location}${item.img.substr(1)}`).toString() == e.target.src) || "");
         }
             setShoesNum(1);
-    }
+        }
     const latestQuickViewChange = (e) => {
         setLatestQuickView(!latestQuickView);
         setShoesSize(35);
@@ -75,7 +75,7 @@ export default function HomeContent() {
             setLatestQuickVal(newArrival.filter(item => item.name == e.target.textContent) || "");
             
         }else{
-            setLatestQuickVal(newArrival.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
+            setLatestQuickVal(newArrival.filter(item => ("http://127.0.0.1:3000" + item.img).toString() == e.target.src) || "");
         }
         setShoesNum(1);
         }

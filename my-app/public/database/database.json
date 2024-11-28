@@ -1,9 +1,8 @@
 {
     "female":[
-
         {   
             "name": "Women’s Blue Training",
-            "img": "/database/female/0.jpg",
+            "img": "/database/Female/0.jpg",
             "price": {
                 "old": "$69.90",
                 "new": "$60.00"
