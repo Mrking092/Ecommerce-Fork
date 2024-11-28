@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SalesButton from '../SalesButton'
+import SalesButton from './SalesButton'
 import "./Sale.css";
 import Rating from '@mui/material/Rating';
 import { faX } from '@fortawesome/free-solid-svg-icons'
