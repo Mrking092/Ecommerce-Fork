@@ -1,3 +1,7 @@
+html .contBody {
+    background-color: white !important;
+}
+
 @media (max-width: 900px) {
     .bigDiv {
         margin: 0 ;

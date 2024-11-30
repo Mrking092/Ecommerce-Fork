@@ -2,8 +2,10 @@
     margin: 0;
     padding: 0;
   }
+  .meNwomBody {
+    background-color: #f1f1ef !important;
+  }
   body {
-    background-color: #f1f1ef;
     overflow-y: scroll;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
@@ -77,7 +79,7 @@
   
     .sidebar {
       position: fixed!important;
-      width: 99.9vw!important;
+      width: 100vw!important;
       height: 99.9vh !important;
       top: 0 !important;
       left: 0 !important;

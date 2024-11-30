@@ -13,6 +13,7 @@ import Sorter from "../SortBox";
 import CloseIcon from "@mui/icons-material/Close";
 
 export default function MenPage() {
+  document.body.className = "meNwomBody";
   const [isOpen, setIsOpen] = useState(false);
   const [men, setMen] = useState([]);
   const [filteredShoes, setFilteredShoes] = useState([]);

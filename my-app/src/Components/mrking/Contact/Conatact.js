@@ -6,8 +6,8 @@ import XIcon from '@mui/icons-material/X';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Accordion from "./ContactAcordion"
-document.body.style.backgroundColor = "white";
 export default function Contact() {
+    document.body.className = "contBody";
     return (
         <div className="bigDiv mx-[5%]">
             <h1 id="dDD" className="text-center mx-auto my-16 text-7xl font-semibold">Contact</h1>
@@ -46,7 +46,7 @@ export default function Contact() {
                             <p>Message<span className="text-red-600">*</span></p>
                         </label>
                         <textarea required id="message"  className="w-full border border-[#e4e6e7]  h-[200px] rounded-md"></textarea>
-                        <button className="text-[#f1f1ef] font-bold tracking-widest text-lg px-10 py-5 mt-10 rounded-sm bg-[#262b2c] text-[#f1f1ef]" type="submit">Send Message</button>
+                        <button className="text-[#f1f1ef] font-bold tracking-widest text-lg px-10 py-5 mt-10 rounded-sm bg-[#262b2c]" type="submit">Send Message</button>
                     </form>
                 </div>
             </div>

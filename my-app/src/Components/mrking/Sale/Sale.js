@@ -9,10 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export default function Sale() {
+    document.body.className = "saleBody";
     const [female, setFemale] = useState([]);
     const [male, setMale] = useState([]);
-
-     async function test(){
+    
+    async function test(){
         try{
             const response = await fetch('http://localhost:3000/database/database.json');
             if (!response.ok) {
@@ -52,11 +53,10 @@ export default function Sale() {
         }
             setShoesNum(1);
     }
-    const sizeValue = '';
 
     function sizeChanging(){        
         let getSize = document.querySelector('.size');
-        setShoesSize(sizeValue = getSize.value || 35);
+        setShoesSize(getSize.value || 35);
     }
 
     let [shoesNum, setShoesNum] = useState(1)
@@ -215,3 +215,4 @@ export default function Sale() {
         </div>
     );
 }
+
