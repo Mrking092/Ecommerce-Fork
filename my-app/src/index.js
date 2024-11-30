@@ -13,11 +13,56 @@ import Cart from './Components/zeroz/Cart/Cart'
 import Checkout from './Components/zeroz/Checkout/Checkout'
 import Account from './Components/zeroz/Account/Account'
 import OurStory from './Components/zeroz/OurStory/OurStory';
+import Men from "./Components/mrking/Men/menPage";
+import Women from "./Components/mrking/Women/womenPage";
+import Collection from "./Components/mrking/Collection/menNWomen";
+import Sale from "./Components/mrking/Sale/Sale";
+import Contact from "./Components/mrking/Contact/Conatact";
 
 const router = createBrowserRouter([
   { path: '/',
   element: 
     <App/>
+  },
+  {path: '/men',
+    element: 
+    <>
+      <Header/>
+      <Men/>
+      <Footer/>
+    </>
+  },
+  {path: '/women',
+    element: 
+    <>
+      <Header/>
+      <Women/>
+      <Footer/>
+    </>}
+  ,
+  {path: '/collection',
+    element: 
+    <>
+      <Header/>
+      <Collection/>
+      <Footer/>
+    </>
+  },
+  {path: '/sale',
+    element: 
+    <>
+      <Header/>
+      <Sale/>
+      <Footer/>
+    </>
+  },
+  {path: '/contact',
+    element:
+    <>
+      <Header/>
+      <Contact/>
+      <Footer/>
+    </>
   },
   { path: '/lookbook',
     element: 

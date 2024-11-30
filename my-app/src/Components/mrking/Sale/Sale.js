@@ -15,7 +15,7 @@ export default function Sale() {
     
     async function test(){
         try{
-            const response = await fetch('http://localhost:3000/database/database.json');
+            const response = await fetch(`${window.location}database/database.json`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -49,7 +49,7 @@ export default function Sale() {
             setHighQuickVal(saleShoes.filter(item => item.name == e.target.textContent )|| "");
             
         }else{
-            setHighQuickVal(saleShoes.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
+            setHighQuickVal(saleShoes.filter(item => (`${window.location}${item.img.substr(1)}`).toString() == e.target.src) || "");
         }
             setShoesNum(1);
     }

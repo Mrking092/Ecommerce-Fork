@@ -75,7 +75,7 @@ export default function HomeContent() {
             setLatestQuickVal(newArrival.filter(item => item.name == e.target.textContent) || "");
             
         }else{
-            setLatestQuickVal(newArrival.filter(item => ("http://127.0.0.1:3000" + item.img).toString() == e.target.src) || "");
+            setLatestQuickVal(newArrival.filter(item => (`${window.location}${item.img.substr(1)}`).toString() == e.target.src) || "");
         }
         setShoesNum(1);
         }

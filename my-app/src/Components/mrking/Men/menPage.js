@@ -30,7 +30,9 @@ export default function MenPage() {
 
    async function test(){
       try{
-          const response = await fetch('http://localhost:3000/database/database.json');
+          const response = await fetch(`${window.location.toString().slice(0,-3)}database/database.json`);
+          console.log(`${window.location.toString().slice(0,-3)}`);
+          
           if (!response.ok) {
               throw new Error('Network response was not ok');
           }
@@ -74,11 +76,13 @@ export default function MenPage() {
           setHighQuickVal(male.filter(item => item.name == e.target.textContent )|| "");
           
       }else{
-          setHighQuickVal(male.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
+          setHighQuickVal(male.filter(item => (`${window.location.toString().slice(0,-3)}${item.img.substr(1)}`).toString() == e.target.src) || "");
+          
+        }
+        setShoesNum(1);
       }
-          setShoesNum(1);
-  }
-
+      console.log(`${window.location.toString().slice(0,-3)}${male[0].img.substr(1)}`);
+      
   function sizeChanging(){        
       let getSize = document.querySelector('.size');
       setShoesSize(getSize.value || 35);

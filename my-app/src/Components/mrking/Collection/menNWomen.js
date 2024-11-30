@@ -15,7 +15,7 @@ import CloseIcon from "@mui/icons-material/Close";
 export default function MenPage() {
   document.body.className = "meNwomBody";
   const [isOpen, setIsOpen] = useState(false);
-  const [men, setMen] = useState([]);
+  const [male, setMale] = useState([]);
   const [filteredShoes, setFilteredShoes] = useState([]);
   const [minPrice, setMinPrice] = useState(30);
   const [maxPrice, setMaxPrice] = useState(110);
@@ -27,7 +27,7 @@ export default function MenPage() {
     async function fetchData() {
       try {
         const response = await fetch(
-          `http://localhost:3000/database/database.json`
+          `${window.location}database/database.json`
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const json = await response.json();
@@ -51,7 +51,7 @@ export default function MenPage() {
         }));
           const combinedShoes = [...menData, ...womenData];
           
-          setMen(combinedShoes);
+          setMale(combinedShoes);
           setFilteredShoes(combinedShoes);
       } catch (error) {
         console.error(error.message);
@@ -59,6 +59,68 @@ export default function MenPage() {
     }
     fetchData();
   }, []);
+
+  const [highQuickView, setHighQuickView] = useState(false);
+  const [latestQuickView, setLatestQuickView] = useState(false);
+  const [shoesSize, setShoesSize] = useState("")
+  const [highQuickVal, setHighQuickVal] = useState('');
+  const highQuickViewChange = (e) => {
+      setHighQuickView(!highQuickView);
+      setShoesNum(1);
+      setShoesSize(35);
+      if(document.querySelector('body').style.overflow == 'hidden'){
+          document.querySelector('body').style.overflow = 'visible';
+      }else{
+          document.querySelector('body').style.overflow = 'hidden';
+      }
+      // console.log(e.target.value)
+      if(e.target.textContent != ''){
+          setHighQuickVal(male.filter(item => item.name == e.target.textContent )|| "");
+          
+      }else{
+          setHighQuickVal(male.filter(item => (`${window.location}${item.img.substr(1)}`).toString() == e.target.src) || "");
+      }
+          setShoesNum(1);
+  }
+
+  function sizeChanging(){        
+      let getSize = document.querySelector('.size');
+      setShoesSize(getSize.value || 35);
+  }
+
+  let [shoesNum, setShoesNum] = useState(1)
+  function addShoes(){
+      setShoesNum(++shoesNum);
+  }
+  function removeShoes(){
+      if(shoesNum > 1)
+      setShoesNum(--shoesNum);
+  }
+  function addToCart(e) {
+      const itemName = e.target.parentNode.parentNode.firstChild.innerHTML;
+      const itemToAdd = {
+          ...male.find(item => item.name === itemName),
+          shoesNumber: shoesNum,
+          shoesSize: shoesSize
+          
+      };
+      if(latestQuickView){
+          setLatestQuickView(!latestQuickView);
+      }else if(highQuickView){
+          setHighQuickView(!highQuickView);
+      }
+      document.querySelector('body').style.overflow = 'visible';
+      // Retrieve current items from local storage
+      const currentItems = JSON.parse(localStorage.getItem("item")) || [];
+      // Add the new item to the list
+      const updatedItems = [...currentItems, itemToAdd];
+      // Save updated list back to local storage
+      localStorage.setItem("item", JSON.stringify(updatedItems));
+
+      // Trigger storage event to sync other components
+      window.dispatchEvent(new Event('storage'));
+      setShoesNum(1);
+  }
 
   const handleFilterChange = (event, values) => {
     setMinPrice(values[0]);
@@ -93,7 +155,7 @@ export default function MenPage() {
   };
 
   const applyFilters = () => {
-    let filtered = men.filter(
+    let filtered = male.filter(
       (shoe) =>
         shoe.price.new >= minPrice &&
         shoe.price.new <= maxPrice &&
@@ -117,7 +179,7 @@ export default function MenPage() {
 
   useEffect(() => {
     applyFilters();
-  }, [minPrice, maxPrice, ratingFilter, selectedCategories, sortOption, men]);
+  }, [minPrice, maxPrice, ratingFilter, selectedCategories, sortOption, male]);
 
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 700);
 

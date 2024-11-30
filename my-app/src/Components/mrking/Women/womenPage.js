@@ -31,7 +31,7 @@ export default function WomenPage() {
     async function fetchData() {
       try {
         const response = await fetch(
-          `http://localhost:3000/database/database.json`
+          `${window.location}database/database.json`
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const json = await response.json();
@@ -72,7 +72,7 @@ export default function WomenPage() {
           setHighQuickVal(women.filter(item => item.name == e.target.textContent )|| "");
           
       }else{
-          setHighQuickVal(women.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
+          setHighQuickVal(women.filter(item => (`${window.location}${item.img.substr(1)}`).toString() == e.target.src) || "");
       }
           setShoesNum(1);
   }
