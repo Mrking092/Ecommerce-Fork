@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./menPage.css";
+import "./womenPage.css";
 import * as React from "react";
 import Slider from "@mui/material/Slider";
 import { Dehaze } from "@mui/icons-material";
@@ -16,45 +16,43 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faPinterestP, faXTwitter , faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-// #0e1017 #16ffbd
-export default function MenPage() {
+
+export default function WomenPage() {
   const [isOpen, setIsOpen] = useState(false);
-  const [male, setMale] = useState([]);
+  const [women, setWomen] = useState([]);
   const [filteredShoes, setFilteredShoes] = useState([]);
-  const [minPrice, setMinPrice] = useState(50);
+  const [minPrice, setMinPrice] = useState(40);
   const [maxPrice, setMaxPrice] = useState(110);
   const [ratingFilter, setRatingFilter] = useState(0);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [sortOption, setSortOption] = useState("");
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/database/database.json`
+        );
+        if (!response.ok) throw new Error("Network response was not ok");
+        const json = await response.json();
 
-   async function test(){
-      try{
-          const response = await fetch('http://localhost:3000/database/database.json');
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
-          const json = await response.json();
-          const menData = json.male.map((item) => ({
-            ...item,
-            price: {
-              ...item.price,
-              new: parseFloat(item.price.new.replace("$", "")),
-              old: parseFloat(item.price.old.replace("$", "")),
-            },
-          }));
-          
-          setMale(menData);
-          
-      }catch(error){
-          console.error(error.message);
+        const womenData = json.female.map((item) => ({
+          ...item,
+          price: {
+            ...item.price,
+            new: parseFloat(item.price.new.replace("$", "")),
+            old: parseFloat(item.price.old.replace("$", "")),
+          },
+        }));
+
+        setWomen(womenData);
+        setFilteredShoes(womenData);
+      } catch (error) {
+        console.error(error.message);
       }
-  }
-  useEffect(()=>{
-      test();
-  }, [])
-
-  
+    }
+    fetchData();
+  }, []);
 
   const [highQuickView, setHighQuickView] = useState(false);
   const [latestQuickView, setLatestQuickView] = useState(false);
@@ -71,10 +69,10 @@ export default function MenPage() {
       }
       // console.log(e.target.value)
       if(e.target.textContent != ''){
-          setHighQuickVal(male.filter(item => item.name == e.target.textContent )|| "");
+          setHighQuickVal(women.filter(item => item.name == e.target.textContent )|| "");
           
       }else{
-          setHighQuickVal(male.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
+          setHighQuickVal(women.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
       }
           setShoesNum(1);
   }
@@ -95,7 +93,7 @@ export default function MenPage() {
   function addToCart(e) {
       const itemName = e.target.parentNode.parentNode.firstChild.innerHTML;
       const itemToAdd = {
-          ...male.find(item => item.name === itemName),
+          ...women.find(item => item.name === itemName),
           shoesNumber: shoesNum,
           shoesSize: shoesSize
           
@@ -125,7 +123,7 @@ export default function MenPage() {
 
   const handleMinPriceChange = (newValue) => {
     setMinPrice(newValue);
-    if (newValue > maxPrice) setMaxPrice(newValue); 
+    if (newValue > maxPrice) setMaxPrice(newValue);
   };
 
   const handleMaxPriceChange = (newValue) => {
@@ -151,7 +149,7 @@ export default function MenPage() {
   };
 
   const applyFilters = () => {
-    let filtered = male.filter(
+    let filtered = women.filter(
       (shoe) =>
         shoe.price.new >= minPrice &&
         shoe.price.new <= maxPrice &&
@@ -173,33 +171,33 @@ export default function MenPage() {
 
   useEffect(() => {
     applyFilters();
-  }, [minPrice, maxPrice, ratingFilter, selectedCategories, sortOption, male]);
+  }, [minPrice, maxPrice, ratingFilter, selectedCategories, sortOption, women]);
 
-    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 700);
-  
-    useEffect(() => {
-      const handleResize = () => {
-        setIsSmallScreen(window.innerWidth <= 700);
-      };
-      window.addEventListener('resize', handleResize);
-      
-      return () => window.removeEventListener('resize', handleResize);
-    }, []);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 700);
 
-    const toggleMenu = () => {
-      setIsOpen((prevIsOpen) => {
-        if (isSmallScreen) {
-          document.body.style.overflow = !prevIsOpen ? "hidden" : "auto";
-        }
-        return !prevIsOpen;
-      });
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 700);
     };
-    
-    useEffect(() => {
-      return () => {
-        document.body.style.overflow = "auto";
-      };
-    }, []);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleMenu = () => {
+    setIsOpen((prevIsOpen) => {
+      if (isSmallScreen) {
+        document.body.style.overflow = !prevIsOpen ? "hidden" : "auto"; 
+      }
+      return !prevIsOpen;
+    });
+  };
+
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
   return (
     <div>
       <div
@@ -214,13 +212,13 @@ export default function MenPage() {
         }}
       >
         {isOpen && (
-          <div className="sidebar h-[300px] bg-[#f1f1ef] w-[270px] top-[150px] left-[100px] z-[1] shadow-2xl">
+          <div className="sidebar h-[300px] bg-[#f1f1ef] w-[270px] top-[150px] left-[100px] z-[1] shadow-2xl ">
             <div className="flex justify-between flex-row items-center bg-[#6e7051] rounded-t-lg">
               <h1 className=" p-5 text-white text-2xl bg-[#6e7051] font-medium font-sans rounded-t-lg">
                 Filter
               </h1>
               <CloseIcon
-                sx={{ marginRight: "15px", color: "white",cursor:"pointer"}}
+                sx={{ marginRight: "15px", color: "white" }}
                 onClick={toggleMenu}
               />
             </div>
@@ -275,12 +273,12 @@ export default function MenPage() {
                 <FormControlLabel
                   control={
                     <Checkbox
-                      name="Classic"
-                      checked={selectedCategories.includes("Classic")}
+                      name="Training"
+                      checked={selectedCategories.includes("Training")}
                       onChange={handleCategoryChange}
                     />
                   }
-                  label="Classic"
+                  label="Training"
                 />
                 <FormControlLabel
                   control={
@@ -305,13 +303,13 @@ export default function MenPage() {
             className="p-10 text-7xl font-semibold mb-10 max-[407px]:flex justify-center"
             style={{ color: "#6e7051" }}
           >
-            Men
+            Women
           </h1>
-          <div className="filterNSort flex justify-between flex-row items-center">
+          <div className="filterNSort flex justify-between flex-row items-center ">
             <div className="filter" style={{ marginLeft: "40px" }}>
               <Button
                 onClick={toggleMenu}
-                component="label"
+                component="button"
                 role={"button"}
                 tabIndex={-1}
                 startIcon={<Dehaze />}

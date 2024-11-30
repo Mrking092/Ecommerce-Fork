@@ -1,13 +1,15 @@
 {
     "female":[
+
         {   
             "name": "Women’s Blue Training",
-            "img": "/database/Female/0.jpg",
+            "img": "/database/female/0.jpg",
             "price": {
                 "old": "$69.90",
                 "new": "$60.00"
                 },
-            "rating": 5   
+            "rating": 5,
+            "category": "Training"
         },
 
         {
@@ -17,7 +19,8 @@
                 "old": "$54.90",
                 "new": "$54.90"
                 },
-            "rating": 5   
+            "rating": 5,
+            "category": "Running"
         },
         {
             "name": "Women’s Choco City Run",
@@ -26,7 +29,8 @@
                 "old": "$64.00",
                 "new": "$64.00"
                 },
-            "rating": 4.5       
+            "rating": 4.5,
+            "category": "Running"
         },
         {
             "name": "Women’s Cream Suede",
@@ -35,7 +39,8 @@
                 "old": "$59.90",
                 "new": "$59.90"
                 },  
-            "rating": 4             
+            "rating": 4,
+            "category": "Sneaker" 
         },
         {
             "name": "Women’s Green Training",
@@ -44,7 +49,8 @@
                 "old": "$64.90",
                 "new": "$49.90"
                 },
-            "rating": 4               
+            "rating": 4,
+            "category": "Training"
         },
         {
             "name": "Women’s Mint Sneaker",
@@ -53,7 +59,8 @@
                 "old": "$89.90",
                 "new": "$89.90"
                 },
-            "rating": 4         
+            "rating": 4,
+            "category": "Sneaker"
         },
         {
             "name": "Women’s Orange Sneaker",
@@ -62,7 +69,8 @@
                 "old": "$44.90",
                 "new": "$44.90"
                 },
-            "rating": 3.5        
+            "rating": 3.5,
+            "category": "Sneaker"
         },
         {
             "name": "Women’s Peach Training",
@@ -71,7 +79,8 @@
                 "old": "$69.90",
                 "new": "$57.90"
                 },
-            "rating": 3.5       
+            "rating": 3.5,
+            "category": "Training"
         },
         {
             "name": "Women’s Pink Suede",
@@ -80,7 +89,8 @@
                 "old": "$59.90",
                 "new": "$59.90"
                 },
-            "rating": 3.5         
+            "rating": 3.5,
+            "category": "Sneaker"
         },
         {
             "name": "Women’s Pink Training",
@@ -89,16 +99,18 @@
                 "old": "$64.90",
                 "new": "$64.90"
                 },
-            "rating": 0   
+            "rating": 0,
+            "category": "Training"
         },
         {
             "name": "Women’s Beige Training",
             "img": "/database/Female/10.jpg",
             "price": {
                 "old": "$64.90",
-                "new": "$64.90"
+                "new": "$49.90"
                 },
-            "rating": 0       
+            "rating": 0,
+            "category": "Training"
         },
         {
             "name": "Women’s Tosca City Run",
@@ -107,7 +119,8 @@
                 "old": "$64.00",
                 "new": "$64.00"
                 },
-            "rating": 0 
+            "rating": 0,
+            "category": "Running"
         }
     ],
 
@@ -120,7 +133,8 @@
                 "old": "$79.90",
                 "new": "$79.90"
                 },
-            "rating": 5     
+            "rating": 5,
+            "category": "Running"
         },
         {
             "name": "Men’s Classic Blue",
@@ -129,7 +143,8 @@
                 "old": "$79.90",
                 "new": "$69.00"
                 },
-            "rating": 5        
+            "rating": 5,
+            "category": "Classic"
         },
         {
             "name": "Men’s Classic Mint",
@@ -138,7 +153,8 @@
                 "old": "$79.90",
                 "new": "$79.90"
                 },
-            "rating": 4.5        
+            "rating": 4.5,
+            "category": "Classic"   
         },
         {
             "name": "Men’s Earth-Tone Sneaker",
@@ -147,7 +163,8 @@
                 "old": "$74.90",
                 "new": "$74.90"
                 },
-            "rating": 4        
+            "rating": 4,
+            "category": "Sneaker"
         },
         {
             "name": "Men’s Green Running",
@@ -156,7 +173,8 @@
                 "old": "$104.90",
                 "new": "$89.90"
                 },
-            "rating": 3.5       
+            "rating": 3.5,
+            "category": "Running"
         },
         {
             "name": "Men’s Moonstone Sneaker",
@@ -165,7 +183,8 @@
                 "old": "$74.90",
                 "new": "$74.90"
                 },
-            "rating": 0        
+            "rating": 0,
+            "category": "Sneaker"  
         },
         {
             "name": "Men’s Navy Running",
@@ -174,7 +193,8 @@
                 "old": "$104.90",
                 "new": "$104.90"
                 },
-            "rating": 0        
+            "rating": 0,
+            "category": "Running"
         },
         {
             "name": "Men’s Red Running",
@@ -183,7 +203,8 @@
                 "old": "$79.90",
                 "new": "$79.90"
                 },
-            "rating": 0        
+            "rating": 0,
+            "category": "Running"
         }
     ]   
 }
