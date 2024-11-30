@@ -31,7 +31,7 @@ export default function WomenPage() {
     async function fetchData() {
       try {
         const response = await fetch(
-          `${window.location}database/database.json`
+          `${window.location.toString().slice(0,-5)}database/database.json`
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const json = await response.json();
@@ -72,7 +72,7 @@ export default function WomenPage() {
           setHighQuickVal(women.filter(item => item.name == e.target.textContent )|| "");
           
       }else{
-          setHighQuickVal(women.filter(item => (`${window.location}${item.img.substr(1)}`).toString() == e.target.src) || "");
+          setHighQuickVal(women.filter(item => (`${window.location.toString().slice(0,-5)}${item.img.substr(1)}`).toString() == e.target.src) || "");
       }
           setShoesNum(1);
   }
@@ -341,7 +341,7 @@ export default function WomenPage() {
                                         <FontAwesomeIcon icon={faX} />
                                     </div>    
                                 <div className='quickViewImg h-fit w-1/2 bg-[#f1f1ef]'>
-                                    <img className='w-full' src={`${window.location}${highQuickVal[0].img.substr(1)}`}/>
+                                    <img className='w-full' src={`${window.location.toString().slice(0,-5)}${highQuickVal[0].img.substr(1)}`}/>
                                 </div>
                                 <div className='quickViewContent w-1/2 px-[3%]'>
                                     <h2 className='text-3xl pb-5'>{highQuickVal[0].name}</h2>
@@ -364,11 +364,11 @@ export default function WomenPage() {
                                             <option value='45'>45</option>
                                         </select>
                                         <h4 className='text-2xl pb-5'>{
-                                          highQuickVal[0].price.new == highQuickVal[0].price.old ? highQuickVal[0].price.old :
+                                          highQuickVal[0].price.new == highQuickVal[0].price.old ? '$' + highQuickVal[0].price.old :
                                         (
                                             <div className='flex'>
-                                                <p className='line-through text-gray-300 me-2'>{highQuickVal[0].price.old}</p>
-                                                <p className='text-black'>{highQuickVal[0].price.new}</p>
+                                                <p className='line-through text-gray-300 me-2'>${highQuickVal[0].price.old}</p>
+                                                <p className='text-black'>${highQuickVal[0].price.new}</p>
                                             </div>
                                         )
                                     }</h4>
@@ -394,16 +394,16 @@ export default function WomenPage() {
                     }
                     {filteredShoes.map((item,index) =>
                         <div key={item.name} value={index} className='text-center flex flex-col relative '>
-                            <img  value={index} onClick={highQuickViewChange} className='cursor-pointer hover:scale-[1.02] duration-[0.7s]' src={`${window.location}${item.img.substr(1)}`}/>
+                            <img  value={index} onClick={highQuickViewChange} className='cursor-pointer hover:scale-[1.02] duration-[0.7s]' src={`${window.location.toString().slice(0,-5)}${item.img.substr(1)}`}/>
                             <h5  value={index} onClick={highQuickViewChange} className='cursor-pointer text-xl pt-3'>{item.name}</h5>
                             <div className='flex justify-center pt-3'>
                                 {
                                     item.price.old == item.price.new ?
-                                    <p className='text-gray-500 font-bold'>{item.price.old}</p> :
+                                    <p className='text-gray-500 font-bold'>${item.price.old}</p> :
                                     <>
                                     <div className='sale bg-[#6e7051]'>Sale!</div>
-                                    <p className='line-through text-gray-200 font-bold me-2'>{item.price.old}</p>
-                                    <p className='text-gray-500 font-bold'>{item.price.new}</p>
+                                    <p className='line-through text-gray-200 font-bold me-2'>${item.price.old}</p>
+                                    <p className='text-gray-500 font-bold'>${item.price.new}</p>
                                 </>
                                 }
                             </div>

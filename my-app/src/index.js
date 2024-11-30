@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import 'flowbite';
+// import 'flowbite';
 import reportWebVitals from './reportWebVitals';
 import Header from './Components/zeroz/Header/Header';
 import Footer from './Components/zeroz/Footer/Footer';

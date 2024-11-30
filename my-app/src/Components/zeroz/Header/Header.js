@@ -48,10 +48,13 @@ function deleteProduct(e) {
     setShoppingElements(updatedShoppingElements);
     window.dispatchEvent(new Event('storage'));
 }
+console.log(sidebar);
     return(
         <>
-        { sidebar &&
-        <div className='sidebarContainer absolute'>
+        {sidebar &&
+
+
+            <div className='sidebarContainer absolute'>
             <div className='sidebarDiv'>
             <FontAwesomeIcon onClick={sidebarChange} className='closeBtn text-xl absolute z-20' icon={faXmark}/>
                 <ul className='sidebarSections flex flex-col text-lg'>
@@ -67,6 +70,7 @@ function deleteProduct(e) {
             <div className='sidebarBg' onClick={sidebarChange}></div>
         </div>
         }
+        
         { cart &&
         <div className='shoppingContainer flex'>
             <div className='shoppingBg w-[60vw]' onClick={shoppingCart}></div>

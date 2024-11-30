@@ -11,6 +11,10 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Sorter from "../SortBox";
 import CloseIcon from "@mui/icons-material/Close";
+import { faX } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { faPinterestP, faXTwitter , faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function MenPage() {
   document.body.className = "meNwomBody";
@@ -27,7 +31,7 @@ export default function MenPage() {
     async function fetchData() {
       try {
         const response = await fetch(
-          `${window.location}database/database.json`
+          `${window.location.toString().slice(0,-10)}database/database.json`
         );
         if (!response.ok) throw new Error("Network response was not ok");
         const json = await response.json();
@@ -78,7 +82,7 @@ export default function MenPage() {
           setHighQuickVal(male.filter(item => item.name == e.target.textContent )|| "");
           
       }else{
-          setHighQuickVal(male.filter(item => (`${window.location}${item.img.substr(1)}`).toString() == e.target.src) || "");
+          setHighQuickVal(male.filter(item => (`${window.location.toString().slice(0,-10)}${item.img.substr(1)}`).toString() == e.target.src) || "");
       }
           setShoesNum(1);
   }
@@ -345,7 +349,92 @@ export default function MenPage() {
               <Sorter onSortChange={handleSortChange} />
             </div>
           </div>
-          <div className="ourBestSeller pb-24 px-[40px]">
+          <div className='ourBestSeller pb-24'>
+                <div className='headerDiv flex py-10 justify-between'>
+                    <h4 className='text-2xl font-semibold'>Last Pairs</h4>
+                    <button className='pt-2 border-b-2 border-orange-400 hover:border-black duration-500 font-semibold tracking-wider'>VIEW ALL SALES</button>
+                </div>
+                <div className='mainGrid grid grid-flow-row grid-cols-3 gap-5 h-[100%]'>
+                    {highQuickView &&
+                        <div value className='quickViewContainer'>
+                            <div value={''} onClick={highQuickViewChange} className='quickViewBg'></div>
+                            <div className='quickViewDiv h-fit flex items-center p-[1.5%]'>
+                                    <div value={''} onClick={highQuickViewChange} className='quickViewCloseBtn absolute'>
+                                        <FontAwesomeIcon icon={faX} />
+                                    </div>    
+                                <div className='quickViewImg h-fit w-1/2 bg-[#f1f1ef]'>
+                                    <img className='w-full' src={`${window.location.toString().slice(0,-10)}${highQuickVal[0].img.substr(1)}`}/>
+                                </div>
+                                <div className='quickViewContent w-1/2 px-[3%]'>
+                                    <h2 className='text-3xl pb-5'>{highQuickVal[0].name}</h2>
+                                        <Rating className='pb-5' name="half-rating-read " value={highQuickVal[0].rating || 0} precision={0.5} readOnly/>
+                                    <p className='pb-5 font-semibold'>Auctor eros suspendisse tellus venenatis sodales purus non pellentesque amet,
+                                    nunc sit eu, enim fringilla egestas pulvinar odio feugiat consectetur egestas magna
+                                    pharetra cursus risus, lectus enim eget eu et lobortis faucibus.</p>
+                                        <p className='pb-5 font-semibold'>SIZE: {shoesSize || 35} </p>
+                                        <select onChange={sizeChanging} defaultValue={35} className='size w-[100%] border p-2 mb-5'>
+                                            <option value='35'>35</option>
+                                            <option value='36'>36</option>
+                                            <option value='37'>37</option>
+                                            <option value='38'>38</option>
+                                            <option value='39'>39</option>
+                                            <option value='40'>40</option>
+                                            <option value='41'>41</option>
+                                            <option value='42'>42</option>
+                                            <option value='43'>43</option>
+                                            <option value='44'>44</option>
+                                            <option value='45'>45</option>
+                                        </select>
+                                        <h4 className='text-2xl pb-5'>{
+                                          highQuickVal[0].price.new == highQuickVal[0].price.old ? '$' + highQuickVal[0].price.old :
+                                        (
+                                            <div className='flex'>
+                                                <p className='line-through text-gray-300 me-2'>${highQuickVal[0].price.old}</p>
+                                                <p className='text-black'>${highQuickVal[0].price.new}</p>
+                                            </div>
+                                        )
+                                    }</h4>
+                                        <div className='addToCartContainer flex justify-between pb-[8%] border-b border-gray-200'>
+                                            <div className='flex h-fit'>
+                                                <div onClick={removeShoes} className='select-none border px-3 pb-1 text-3xl cursor-pointer'>-</div>
+                                                <div  className='border px-3 pt-1.5 text-xl'>{shoesNum || 1}</div>
+                                                <div onClick={addShoes} className='select-none border px-3 pb-1 text-3xl cursor-pointer'>+</div>
+                                            </div>
+                                            <button onClick={addToCart} className='bg-[#6e7051] rounded-sm whitespace-nowrap text-white px-5'>ADD TO CART</button>
+                                        </div>
+                                        <div className='productShare flex gap-x-5 pt-[5%]'>
+                                            <p className='font-semibold -mt-1'>SHARE: </p>
+                                            <FontAwesomeIcon className='text-xl cursor-pointer' icon={faEnvelope} />
+                                            <FontAwesomeIcon className='text-xl cursor-pointer' icon={faPinterestP} />
+                                            <FontAwesomeIcon className='text-xl cursor-pointer' icon={faXTwitter} />
+                                            <FontAwesomeIcon className='text-xl cursor-pointer' icon={faFacebook} />
+                                            <FontAwesomeIcon className='text-xl cursor-pointer' icon={faInstagram} />
+                                        </div>    
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {filteredShoes.map((item,index) =>
+                        <div key={item.name} value={index} className='text-center flex flex-col relative '>
+                            <img  value={index} onClick={highQuickViewChange} className='cursor-pointer hover:scale-[1.02] duration-[0.7s]' src={`${window.location.toString().slice(0,-10)}${item.img.substr(1)}`}/>
+                            <h5  value={index} onClick={highQuickViewChange} className='cursor-pointer text-xl pt-3'>{item.name}</h5>
+                            <div className='flex justify-center pt-3'>
+                                {
+                                    item.price.old == item.price.new ?
+                                    <p className='text-gray-500 font-bold'>${item.price.old}</p> :
+                                    <>
+                                    <div className='sale bg-[#6e7051]'>Sale!</div>
+                                    <p className='line-through text-gray-200 font-bold me-2'>${item.price.old}</p>
+                                    <p className='text-gray-500 font-bold'>${item.price.new}</p>
+                                </>
+                                }
+                            </div>
+                            <div className='pt-3'>
+                            <Rating name="half-rating-read" value={item.rating || 0} precision={0.5} readOnly />
+                            </div>
+                        </div>
+                )}
+                </div>
             <div className="headerDiv flex py-10 justify-between">
               <h4 className="text-2xl font-semibold">Our Best Seller</h4>
               <button className="pt-2 border-b-2 border-orange-400 hover:border-black duration-500 font-semibold tracking-wider">
