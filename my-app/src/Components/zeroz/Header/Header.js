@@ -52,8 +52,6 @@ console.log(sidebar);
     return(
         <>
         {sidebar &&
-
-
             <div className='sidebarContainer absolute'>
             <div className='sidebarDiv'>
             <FontAwesomeIcon onClick={sidebarChange} className='closeBtn text-xl absolute z-20' icon={faXmark}/>
@@ -124,13 +122,13 @@ console.log(sidebar);
             </div>
         </div>
         }
-            <div className='shipping bg-gray-100 w-full'>
+            <div className='shipping w-full'>
                 <h5 className='text-gray-400 text-center text-xs p-3'>
                     Free Express Shipping on all orders with all duties included
                 </h5>
             </div>  
-            <div className="header mx-[3%] my-[3.5%] pe-0 flex relative">
-                <div onClick={sidebarChange} className='sidebar cursor-pointer hidden'>
+            <div className="ShippingHeader mx-[3%] my-[3.5%] pe-0 flex relative">
+                <div id="sidebar" onClick={sidebarChange} className='cursor-pointer hidden'>
                     <a href='#'>
                     <div className='w-6 h-0.5 mb-1 mt-1 bg-gray-500'></div>
                     <div className='w-6 h-0.5 mb-1 bg-gray-500'></div>

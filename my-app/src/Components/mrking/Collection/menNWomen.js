@@ -435,60 +435,6 @@ export default function MenPage() {
                         </div>
                 )}
                 </div>
-            <div className="headerDiv flex py-10 justify-between">
-              <h4 className="text-2xl font-semibold">Our Best Seller</h4>
-              <button className="pt-2 border-b-2 border-orange-400 hover:border-black duration-500 font-semibold tracking-wider">
-                VIEW ALL BEST SELLERS
-              </button>
-            </div>
-            <div className="mainGrid grid grid-flow-row grid-cols-3 gap-5">
-              {filteredShoes.length > 0 ? (
-                filteredShoes.map((item, index) => (
-                  <div
-                    key={index}
-                    className="text-center flex flex-col relative"
-                  >
-                    <img
-                      className="cursor-pointer"
-                      src={item.img}
-                      alt={item.name}
-                    />
-                    <h5 className="cursor-pointer text-xl pt-3">{item.name}</h5>
-                    <div className="flex justify-center pt-3">
-                      {item.price.old === item.price.new ? (
-                        <p className="text-gray-500 font-bold">
-                          ${item.price.old}
-                        </p>
-                      ) : (
-                        <>
-                          <div className="sale bg-[#6e7051]">Sale!</div>
-                          <p className="line-through text-gray-200 font-bold me-2">
-                            ${item.price.old}
-                          </p>
-                          <p className="text-gray-500 font-bold">
-                            ${item.price.new}
-                          </p>
-                        </>
-                      )}
-                    </div>
-                    <div className="pt-3">
-                      <Rating
-                        name="half-rating-read"
-                        value={item.rating || 0}
-                        precision={0.5}
-                        readOnly
-                      />
-                    </div>
-                  </div>
-                ))
-              ) : (
-                <div className="text-center ">
-                  <h1 className="text-3xl font-semibold text-[#6e7051] tracking-wider ">
-                    No shoes found.
-                  </h1>
-                </div>
-              )}
-            </div>
           </div>
         </div>
       </div>

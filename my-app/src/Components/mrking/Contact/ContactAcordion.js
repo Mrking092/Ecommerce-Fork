@@ -21,29 +21,25 @@ const Accordion = () => {
 
   const accordionItems = [
     {
-      title: "What is Flowbite?",
+      title: "Quam ligula tristique sed leo nunc aenean amet",
       content:
-        "Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.",
-      linkText: "get started",
-      linkHref: "/docs/getting-started/introduction/",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
     },
     {
-      title: "Is there a Figma file available?",
+      title: "Tortor eget a a tincidunt est viverra turpis",
       content:
-        "Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.",
-      linkText: "Figma design system",
-      linkHref: "https://flowbite.com/figma/",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
     },
     {
-      title: "What are the differences between Flowbite and Tailwind UI?",
+      title: "Quis cras urna diam id nec amet",
       content:
-        "The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.",
-      linkText: "Learn more about these technologies",
-      links: [
-        { text: "Flowbite Pro", href: "https://flowbite.com/pro/" },
-        { text: "Tailwind UI", href: "https://tailwindui.com/" },
-      ],
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
     },
+    {
+      title: "Id congue bibendum velit blandit massa elementum",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+    }
   ];
 
   return (

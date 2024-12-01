@@ -62,7 +62,7 @@
     margin-top: 150px;
 }
 
-.ourBestSeller{
+.homeShoes{
     margin: 0 15%;
 }
 
@@ -140,7 +140,7 @@
     .asSeenIn div img{
         width: 19.5vw;
     }
-    .ourBestSeller .mainGrid{
+    .homeShoes .mainGrid{
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .quickViewContainer .quickViewDiv{
@@ -266,11 +266,11 @@
         display: flex;
         justify-content: center;
     }
-    .ourBestSeller .mainGrid div h5{
+    .homeShoes .mainGrid div h5{
         font-size: 1rem;
         font-weight: 600;
     }
-    .ourBestSeller .mainGrid div p{
+    .homeShoes .mainGrid div p{
         font-size: 1rem;
         font-weight: 600;
     }
@@ -337,14 +337,14 @@
 
 }
 @media (max-width:600px){ 
-    .ourBestSeller .mainGrid{
+    .homeShoes .mainGrid{
         grid-template-columns: minmax(0, 1fr);
     }
-    .ourBestSeller .headerDiv{
+    .homeShoes .headerDiv{
         display: block;
         text-align: center;
     }
-    .ourBestSeller .headerDiv h4{
+    .homeShoes .headerDiv h4{
         padding-bottom: 10px;
         font-size: 1.4rem;
     }
