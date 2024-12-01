@@ -116,6 +116,7 @@ p,h5,h6{
     }
     .ShippingHeader button{
         position: absolute;
+        z-index: 1;
     }
     .ShippingHeader #sidebar{
         display: block;

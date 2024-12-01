@@ -91,11 +91,11 @@ console.log(sidebar);
                                         <h4>{item.name}</h4>
                                         <p > x{item.shoesNumber}</p>
                                         </div>
-                                        {item.price.old == item.price.new ? <h6 className='text-gray-400 font-semibold'>${(item.price.new.replace('$','') * item.shoesNumber).toFixed(2)}</h6>
+                                        {item.price.old == item.price.new ? <h6 className='text-gray-400 font-semibold'>${(item.price.new.toString().replace('$','') * item.shoesNumber).toFixed(2)}</h6>
                                         :
                                         <div className='flex gap-x-[2%]'>
-                                            <h6 className='text-gray-200 font-semibold line-through	'>${(item.price.old.replace('$','') * item.shoesNumber).toFixed(2)}</h6>
-                                            <h6 className='text-gray-400 font-semibold'>${(item.price.new.replace('$','') * item.shoesNumber).toFixed(2)}</h6>
+                                            <h6 className='text-gray-200 font-semibold line-through	'>${(item.price.old.toString().replace('$','') * item.shoesNumber).toFixed(2)}</h6>
+                                            <h6 className='text-gray-400 font-semibold'>${(item.price.new.toString().replace('$','') * item.shoesNumber).toFixed(2)}</h6>
                                         </div>
                                         }
                                     </div>
