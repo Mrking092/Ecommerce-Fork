@@ -48,10 +48,11 @@ function deleteProduct(e) {
     setShoppingElements(updatedShoppingElements);
     window.dispatchEvent(new Event('storage'));
 }
+console.log(sidebar);
     return(
         <>
-        { sidebar &&
-        <div className='sidebarContainer absolute'>
+        {sidebar &&
+            <div className='sidebarContainer absolute'>
             <div className='sidebarDiv'>
             <FontAwesomeIcon onClick={sidebarChange} className='closeBtn text-xl absolute z-20' icon={faXmark}/>
                 <ul className='sidebarSections flex flex-col text-lg'>
@@ -67,6 +68,7 @@ function deleteProduct(e) {
             <div className='sidebarBg' onClick={sidebarChange}></div>
         </div>
         }
+        
         { cart &&
         <div className='shoppingContainer flex'>
             <div className='shoppingBg w-[60vw]' onClick={shoppingCart}></div>
@@ -89,11 +91,11 @@ function deleteProduct(e) {
                                         <h4>{item.name}</h4>
                                         <p > x{item.shoesNumber}</p>
                                         </div>
-                                        {item.price.old == item.price.new ? <h6 className='text-gray-400 font-semibold'>${item.price.new.replace('$','') * item.shoesNumber}</h6>
+                                        {item.price.old == item.price.new ? <h6 className='text-gray-400 font-semibold'>${(item.price.new.replace('$','') * item.shoesNumber).toFixed(2)}</h6>
                                         :
                                         <div className='flex gap-x-[2%]'>
-                                            <h6 className='text-gray-200 font-semibold line-through	'>${item.price.old.replace('$','') * item.shoesNumber}</h6>
-                                            <h6 className='text-gray-400 font-semibold'>${item.price.new.replace('$','') * item.shoesNumber}</h6>
+                                            <h6 className='text-gray-200 font-semibold line-through	'>${(item.price.old.replace('$','') * item.shoesNumber).toFixed(2)}</h6>
+                                            <h6 className='text-gray-400 font-semibold'>${(item.price.new.replace('$','') * item.shoesNumber).toFixed(2)}</h6>
                                         </div>
                                         }
                                     </div>
@@ -114,19 +116,19 @@ function deleteProduct(e) {
                     <div className='flex justify-center items-center h-[86vh]'>
                         <h5 className='noElement text-lg font-semibold text-gray-500'>No products in the cart.</h5>
                     </div>
-                    <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'>CONTINUE SHOPPING</div>
+                    <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'><a href="/">CONTINUE SHOPPING</a></div>
                 </>
                     }
             </div>
         </div>
         }
-            <div className='shipping bg-gray-100 w-full'>
+            <div className='shipping w-full'>
                 <h5 className='text-gray-400 text-center text-xs p-3'>
                     Free Express Shipping on all orders with all duties included
                 </h5>
             </div>  
-            <div className="header mx-[3%] my-[3.5%] pe-0 flex relative">
-                <div onClick={sidebarChange} className='sidebar cursor-pointer hidden'>
+            <div className="ShippingHeader mx-[3%] my-[3.5%] pe-0 flex relative">
+                <div id="sidebar" onClick={sidebarChange} className='cursor-pointer hidden'>
                     <a href='#'>
                     <div className='w-6 h-0.5 mb-1 mt-1 bg-gray-500'></div>
                     <div className='w-6 h-0.5 mb-1 bg-gray-500'></div>

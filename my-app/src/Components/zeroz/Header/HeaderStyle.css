@@ -12,6 +12,9 @@ p,h5,h6{
     height: 20px;
     margin-left: 1%;
 }
+.shipping{
+    background-color: #f1f1ef;
+}
 .sidebarContainer{
     z-index: 5;
     width: 100vw;
@@ -53,20 +56,14 @@ p,h5,h6{
     overflow-y: scroll;
 }
 .shoppingContainer .shoppingDiv{
-    /* position: absolute; */
     z-index: 10;
     background-color: white;
-    /* width: 34vw; */
     height: 100vh;
-    /* margin-left: 65vw; */
 }
 .shoppingContainer .shoppingBg{
-    /* position: absolute; */
     background-color: black;
     opacity: 0.3;
     z-index: -1;
-    /* width: 100vw; */
-    /* max-width: 100%; */
     height: 100vh;
 }
 .shoppingDiv .noElement{
@@ -80,12 +77,6 @@ p,h5,h6{
 .shoppingDiv .shoppingBtn:hover{
     background-color: #262b2c;
 }
-/* .shoppingDiv .closeBtn{
-    margin-left: 92%;
-    margin-top: 3%;
-    cursor: pointer;
-} */
-
 @media (max-height: 800px) {
     .shoppingDiv .shoppingBtn{
         margin-top: 81vh;
@@ -105,10 +96,6 @@ p,h5,h6{
     .headerLinks .ourStory{
         margin-left: 70%;
     }
-    /* .shoppingContainer .shoppingDiv{
-        width: 49vw;
-        margin-left: 50%;
-    } */
 }
 @media (max-width: 1300px) {
     .headerLinks .ourStory{
@@ -123,14 +110,14 @@ p,h5,h6{
         width: 100%;
         justify-content: end;
     }
-    .header{
+    .ShippingHeader{
         display: flex;
         justify-content: center;
     }
-    .header button{
+    .ShippingHeader button{
         position: absolute;
     }
-    .header .sidebar{
+    .ShippingHeader #sidebar{
         display: block;
     }
     .shoppingContainer .shoppingDiv{

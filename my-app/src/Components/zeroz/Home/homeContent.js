@@ -25,7 +25,7 @@ export default function HomeContent() {
     const [male, setMale] = useState([]);
      async function test(){
         try{
-            const response = await fetch('http://localhost:3000/database/database.json');
+            const response = await fetch(`${window.location}database/database.json`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -59,10 +59,10 @@ export default function HomeContent() {
             setHighQuickVal(highRating.filter(item => item.name == e.target.textContent )|| "");
             
         }else{
-            setHighQuickVal(highRating.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
+            setHighQuickVal(highRating.filter(item => (`${window.location}${item.img.substr(1)}`).toString() == e.target.src) || "");
         }
             setShoesNum(1);
-    }
+        }
     const latestQuickViewChange = (e) => {
         setLatestQuickView(!latestQuickView);
         setShoesSize(35);
@@ -75,7 +75,7 @@ export default function HomeContent() {
             setLatestQuickVal(newArrival.filter(item => item.name == e.target.textContent) || "");
             
         }else{
-            setLatestQuickVal(newArrival.filter(item => ("http://localhost:3000" + item.img).toString() == e.target.src) || "");
+            setLatestQuickVal(newArrival.filter(item => (`${window.location}${item.img.substr(1)}`).toString() == e.target.src) || "");
         }
         setShoesNum(1);
         }
@@ -179,7 +179,7 @@ export default function HomeContent() {
                     </div>
                 </div>
             </div>
-            <div className='ourBestSeller pb-24'>
+            <div className='homeShoes pb-24'>
                 <div className='headerDiv flex py-10 justify-between'>
                     <h4 className='text-2xl font-semibold'>Our Best Seller</h4>
                     <button className='pt-2 border-b-2 border-orange-400 hover:border-black duration-500 font-semibold tracking-wider'>VIEW ALL BEST SELLERS</button>
@@ -280,10 +280,10 @@ export default function HomeContent() {
                     </button>
                 </div>
             </div>
-            <div className='ourBestSeller pb-24'>
+            <div className='homeShoes pb-24'>
                 <div className='headerDiv flex py-10 justify-between'>
                     <h4 className='text-2xl font-semibold'>New Arrivals</h4>
-                    <button className='pt-2 border-b-2 border-orange-400 hover:border-black duration-500 font-semibold tracking-wider'>VIEW ALL NEW ARRIVALS</button>
+                    <button className='pt-2 border-b-2 border-orange-400 whitespace-nowrap hover:border-black duration-500 font-semibold tracking-wider'>VIEW ALL NEW ARRIVALS</button>
                 </div>
                 <div className='mainGrid grid grid-flow-row grid-cols-3 gap-5 h-[100%]'>
                     {latestQuickView &&
