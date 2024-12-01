@@ -12,8 +12,8 @@ export default function Footer(){
                 <h1 className='text-white'>Better for People & the Planet</h1>
                 <p className='text-white text-md'>Ut eget at et aliquam sit quis nisl, pharetra et ac pharetra est dictum in vulputate</p>
                 <div className='flex justify-center gap-x-5'>
-                    <button className='bg-white text-black px-10 py-3 font-semibold'><a href="/men">SHOP MEN</a></button>
-                    <button className='bg-white text-black px-10 py-3 font-semibold'><a href="/women">SHOP WOMEN</a></button>
+                <a href="/men"><button className='bg-white text-black px-10 py-3 font-semibold'>SHOP MEN</button></a>
+                <a href="/women"> <button className='bg-white text-black px-10 py-3 font-semibold'>SHOP WOMEN</button></a>
                 </div>
             </div>
 

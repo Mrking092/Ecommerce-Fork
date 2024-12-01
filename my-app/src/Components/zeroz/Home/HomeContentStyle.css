@@ -370,9 +370,9 @@
     .quickViewContainer .addToCartContainer div div{
         height: 50px;
     }
-    .quickViewContainer .quickViewDiv{
+    /* .quickViewContainer .quickViewDiv{
         padding: 1.5%;
-    }
+    } */
 
     .menOrWomenRoute{
         flex-direction: column;
@@ -383,12 +383,12 @@
     
 
 }
-@media (max-width:400px){
+@media (max-width:430px){
     .mainGrid .sale{
         left: 89%;
     }
     .quickViewDiv .quickViewCloseBtn{
-        left: 91%;
+        left: 90%;
     }
     .shoesEmv .shoesEmvImgContainer img{
         width: 50%;

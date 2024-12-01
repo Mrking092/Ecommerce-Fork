@@ -27,7 +27,7 @@ export default function Account() {
             {mobile ? 
             <div className="changeBtn h-[70%] w-[70vw] flex justify-end">
                 <button onClick={()=> active == 'login' ? setActive('signup') : setActive('login')} className="z-20 absolute m-[2%] bg-[#6e7051] tracking-widest font-semibold text-[0.8rem] text-white p-2 duration-[0.8s] hover:bg-[#262b2c] rounded">{active.charAt(0).toUpperCase() + active.slice(1)}</button>
-                <h1 className="websiteLogo w-[100%] mt-[-25%] text-5xl text-center font-semibold tracking-widest text-white">PLASHOE</h1>
+                <a href="/"><h1 className="websiteLogo w-[100%] mt-[-25%] text-5xl text-center font-semibold tracking-widest text-white">PLASHOE</h1></a>
             </div>
              : null}   
                 <div className={`logReg ${mobile && active == 'login' ? 'z-11' : 'z-10'} p-[2%] h-[60%] flex flex-col justify-center min-h-fit w-[25vw] rounded-s-2xl bg-white`}>
@@ -51,7 +51,7 @@ export default function Account() {
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="email" placeholder="Email" />
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="password" placeholder="Password" />
                         <div className="flex justify-center">
-                            <button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded"><a href="/">Login</a></button>
+                        <a href="/"><button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded">Login</button></a>
                         </div>
                     </form>
                 </div>
@@ -78,7 +78,7 @@ export default function Account() {
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="email" placeholder="Email" />
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="password" placeholder="Password" />
                         <div className="flex justify-center">
-                            <button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded"><a href="/">SIGN UP</a></button>
+                        <a href="/"><button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded">SIGN UP</button></a>
                         </div>
                     </form>
                 </div>

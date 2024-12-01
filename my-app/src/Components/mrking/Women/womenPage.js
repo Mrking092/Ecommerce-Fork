@@ -336,14 +336,14 @@ export default function WomenPage() {
                     {highQuickView &&
                         <div value className='quickViewContainer'>
                             <div value={''} onClick={highQuickViewChange} className='quickViewBg'></div>
-                            <div className='quickViewDiv h-fit flex items-center p-[1.5%]'>
+                            <div className='quickViewDiv h-fit flex items-center'>
                                     <div value={''} onClick={highQuickViewChange} className='quickViewCloseBtn absolute'>
                                         <FontAwesomeIcon icon={faX} />
                                     </div>    
                                 <div className='quickViewImg h-fit w-1/2 bg-[#f1f1ef]'>
                                     <img className='w-full' src={`${window.location.toString().slice(0,-5)}${highQuickVal[0].img.substr(1)}`}/>
                                 </div>
-                                <div className='quickViewContent w-1/2 px-[3%]'>
+                                <div className='quickViewContent w-1/2 px-[3%] p-[1.5%]'>
                                     <h2 className='text-3xl pb-5'>{highQuickVal[0].name}</h2>
                                         <Rating className='pb-5' name="half-rating-read " value={highQuickVal[0].rating || 0} precision={0.5} readOnly/>
                                     <p className='pb-5 font-semibold'>Auctor eros suspendisse tellus venenatis sodales purus non pellentesque amet,
