@@ -49,7 +49,7 @@ export default function Checkout() {
     const discount = JSON.parse(window.localStorage.getItem("discount"));
     return(
         <>
-            <a className='flex justify-center py-[1%] cursor-pointer'>
+            <a href="/" className='flex justify-center py-[1%] cursor-pointer'>
                 <img src={siteLogo}/>
             </a>
             <div id='checkoutMainPageContainer'  className='bg-[#f1f1ef] flex justify-center items-center h-[fit-content] px-[15%] py-[2%] min-w-fit'>
@@ -96,10 +96,12 @@ export default function Checkout() {
                                     Please contact us if you require assistance or wish to make alternate arrangements.
                                     </p>
                                 </div>
-                                <button className=' bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 w-[100%] duration-[0.8s] hover:bg-[#262b2c]'><a href='/' className='flex justify-center items-center gap-x-[2%]'>
-                                <FontAwesomeIcon className='text-sm' icon={faLock} />
-                                <p>PLACE ORDER ${discount ? ((1-(discount / 100)) * data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0 )).toFixed(2) : data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0).toFixed(2)}</p>
-                                </a></button>
+                                <a href='/' className='flex justify-center items-center gap-x-[2%]'>
+                                    <button className=' bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 w-[100%] duration-[0.8s] hover:bg-[#262b2c]'>
+                                    <FontAwesomeIcon className='text-sm' icon={faLock} />
+                                    <p>PLACE ORDER ${discount ? ((1-(discount / 100)) * data.reduce((acc,item) => acc + +item.price.new.toString().replace('$','') ,0 )).toFixed(2) : data.reduce((acc,item) => acc + +item.price.new.toString().replace('$','') ,0).toFixed(2)}</p>
+                                    </button>
+                                </a>
                             </div>
                         </form>
                         <div id='yourOrder' className='w-[45%] max-h-fit rounded'>
@@ -110,7 +112,7 @@ export default function Checkout() {
                                         <h6 className='whitespace-nowrap'>Show Order Summary</h6>
                                         <FontAwesomeIcon id='dropdownArrow' className='duration-[0.4s] mt-1' icon={faAngleUp} />
                                     </div>
-                                    <p className='yourOrderValue w-[25%] py-[3%] font-bold text-center min-w-fit'>${discount ? ((1-(discount / 100)) * data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0 )).toFixed(2) : data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0).toFixed(2)}</p>
+                                    <p className='yourOrderValue w-[25%] py-[3%] font-bold text-center min-w-fit'>${discount ? ((1-(discount / 100)) * data.reduce((acc,item) => acc + +item.price.new.toString().replace('$','') ,0 )).toFixed(2) : data.reduce((acc,item) => acc + +item.price.new.toString().replace('$','') ,0).toFixed(2)}</p>
                                 </div>
                                 <div id='yourOrderDiv'>
                                     <div id='yourOrderTitle' className='flex ps-[2%] py-[3%] justify-between items-center border-b'>
@@ -124,17 +126,17 @@ export default function Checkout() {
                                                     <img src={`${process.env.PUBLIC_URL}${item.img}`} className='w-[75px] rounded h-[75px]'/>
                                                     <p className='text-[1rem]'>{item.name} x {item.shoesNumber}</p>
                                                 </div>
-                                                <p className='yourOrderValue w-[25%] text-center'>{item.price.new}</p>
+                                                <p className='yourOrderValue w-[25%] text-center'>${item.price.new.toString().replace("$",'')}</p>
                                             </div>
                                         )}
                                     </div>
                                     <div className='flex ps-[4%] py-[3%] justify-between items-center border-b'>
                                         <h6 className=' w-[75%] min-w-fit'>Subtotal</h6>
-                                        <p className='yourOrderValue w-[25%] text-center min-w-fit'>${data.reduce((acc,item) => acc + +item.price.new.replace('$','') * item.shoesNumber ,0 ).toFixed(2)}</p>
+                                        <p className='yourOrderValue w-[25%] text-center min-w-fit'>${data.reduce((acc,item) => acc + +item.price.new.toString().replace('$','') * item.shoesNumber ,0 ).toFixed(2)}</p>
                                     </div>
                                     <div className='flex ps-[4%] py-[3%] justify-between items-center border-b'>
                                         <h6 className=' w-[75%] font-bold min-w-fit'>Total</h6>
-                                        <p className='yourOrderValue w-[25%] font-bold text-center min-w-fit'>${discount ? ((1-(discount / 100)) * data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0 )).toFixed(2) : data.reduce((acc,item) => acc + +item.price.new.replace('$','') ,0).toFixed(2)}</p>
+                                        <p className='yourOrderValue w-[25%] font-bold text-center min-w-fit'>${discount ? ((1-(discount / 100)) * data.reduce((acc,item) => acc + +item.price.new.toString().replace('$','') ,0 )).toFixed(2) : data.reduce((acc,item) => acc + +item.price.new.toString().replace('$','') ,0).toFixed(2)}</p>
                                     </div>
                                 </div>
                             </div>

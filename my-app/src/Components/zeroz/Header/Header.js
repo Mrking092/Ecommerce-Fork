@@ -56,13 +56,13 @@ console.log(sidebar);
             <div className='sidebarDiv'>
             <FontAwesomeIcon onClick={sidebarChange} className='closeBtn text-xl absolute z-20' icon={faXmark}/>
                 <ul className='sidebarSections flex flex-col text-lg'>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/men'>Men</a></li>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/women'>Women</a></li>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/collection'>Collection</a></li>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/lookbook'>Lookbook</a></li>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/sale'>Sale</a></li>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/ourstory'>Our Story</a></li>
-                    <li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'><a href='/contact'>Contact</a></li>
+                <a href='/men'><li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'>Men</li></a>
+                <a href='/women'><li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'>Women</li></a>
+                <a href='/collection'><li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'>Collection</li></a>
+                <a href='/lookbook'><li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'>Lookbook</li></a>
+                <a href='/sale'><li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'>Sale</li></a>
+                <a href='/ourstory'><li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'>Our Story</li></a>
+                <a href='/contact'><li className='py-5 border-b ps-8 text-gray-500 cursor-pointer'>Contact</li></a>
                 </ul>
             </div>
             <div className='sidebarBg' onClick={sidebarChange}></div>
@@ -106,8 +106,8 @@ console.log(sidebar);
                             ))}
                         </div>
                         <div>
-                            <div className='shoppingBtn cursor-pointer text-center mb-3 mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'><a href='/cart'>VIEW CART</a></div>
-                            <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'><a href='/checkout'>CHECKOUT</a></div>
+                        <a href='/cart'><div className='shoppingBtn cursor-pointer text-center mb-3 mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'>VIEW CART</div></a>
+                        <a href='/checkout'><div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'>CHECKOUT</div></a> 
                         </div>
 
                     </div>
@@ -116,7 +116,7 @@ console.log(sidebar);
                     <div className='flex justify-center items-center h-[86vh]'>
                         <h5 className='noElement text-lg font-semibold text-gray-500'>No products in the cart.</h5>
                     </div>
-                    <div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'><a href="/">CONTINUE SHOPPING</a></div>
+                    <a href="/"><div className='shoppingBtn cursor-pointer text-center mx-[5%] py-3 text-gray-100 text-md tracking-widest font-semibold'>CONTINUE SHOPPING</div></a>
                 </>
                     }
             </div>
@@ -129,11 +129,11 @@ console.log(sidebar);
             </div>  
             <div className="ShippingHeader mx-[3%] my-[3.5%] pe-0 flex relative">
                 <div id="sidebar" onClick={sidebarChange} className='cursor-pointer hidden'>
-                    <a href='#'>
-                    <div className='w-6 h-0.5 mb-1 mt-1 bg-gray-500'></div>
-                    <div className='w-6 h-0.5 mb-1 bg-gray-500'></div>
-                    <div className='w-6 h-0.5 mb-1 bg-gray-500'></div>
-                    </a>
+                    <div>
+                        <div className='w-6 h-0.5 mb-1 mt-1 bg-gray-500'></div>
+                        <div className='w-6 h-0.5 mb-1 bg-gray-500'></div>
+                        <div className='w-6 h-0.5 mb-1 bg-gray-500'></div>
+                    </div>
                 </div>
                 <button className='text-center cursor-pointer z-10'>
                     <a href='/'>
@@ -147,13 +147,13 @@ console.log(sidebar);
                                 <a className='pe-6' href='/men'>MEN</a>
                             </li>
                             <li>
-                                <a className='pe-6' href='women'>WOMEN</a>
+                                <a className='pe-6' href='/women'>WOMEN</a>
                             </li>
                             <li>
-                                <a className='pe-6' href='collection'>COLLECTION</a>
+                                <a className='pe-6' href='/collection'>COLLECTION</a>
                             </li>
                             <li>
-                                <a className='pe-6' href='lookbook'>LOOKBOOK</a>
+                                <a className='pe-6' href='/lookbook'>LOOKBOOK</a>
                             </li>
                             <li>
                                 <a className='pe-6' href='/sale'>SALE</a>

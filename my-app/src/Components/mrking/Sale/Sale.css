@@ -157,9 +157,9 @@
             .quickViewContainer .addToCartContainer div div{
                 height: 50px;
             }
-            .quickViewContainer .quickViewDiv{
+            /* .quickViewContainer .quickViewDiv{
                 padding: 1.5%;
-            }
+            } */
         }
 
         @media (max-width:400px){
