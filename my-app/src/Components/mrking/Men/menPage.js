@@ -309,7 +309,7 @@ export default function MenPage() {
             Men
           </h1>
           <div className="filterNSort flex justify-between flex-row items-center">
-            <div className="filter" style={{ marginLeft: "40px" }}>
+            <div className="filter" style={{ marginLeft: "3%" }}>
               <Button
                 onClick={toggleMenu}
                 component="label"
@@ -326,7 +326,7 @@ export default function MenPage() {
                 Filter Shoes
               </Button>
             </div>
-            <div className="sort mr-[40px] ml-[5%]">
+            <div className="sort mr-[3%]">
               <Sorter onSortChange={handleSortChange} />
             </div>
           </div>
