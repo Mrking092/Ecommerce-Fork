@@ -41,8 +41,8 @@ export default function MenPage() {
             ...item,
             price: {
               ...item.price,
-              new: parseFloat(item.price.new),
-              old: parseFloat(item.price.old),
+              new: parseFloat(item.price.new.replace("$", "")),
+              old: parseFloat(item.price.old.replace("$", "")),
             },
           }));
           
