@@ -50,9 +50,9 @@ export default function Account() {
                     <form className="">
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="email" placeholder="Email" />
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="password" placeholder="Password" />
-                        <div className="flex justify-center">
-                        <a href="/"><button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded">Login</button></a>
-                        </div>
+                        <a href="/" className="flex justify-center">
+                            <button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded">Login</button>
+                        </a>
                     </form>
                 </div>
 
@@ -77,9 +77,9 @@ export default function Account() {
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="text" placeholder="Name" />
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="email" placeholder="Email" />
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="password" placeholder="Password" />
-                        <div className="flex justify-center">
-                        <a href="/"><button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded">SIGN UP</button></a>
-                        </div>
+                        <a href="/" className="flex justify-center">
+                            <button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded">SIGN UP</button>
+                        </a>
                     </form>
                 </div>
             

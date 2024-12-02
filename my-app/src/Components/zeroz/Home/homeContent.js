@@ -135,7 +135,7 @@ export default function HomeContent() {
                 </div>
             </div>
 
-            <div className='aboutUs flex justify-center items-center gap-x-10 p-10'>
+            <div className='aboutUs flex justify-center items-center gap-x-10 px-10 pt-10'>
                 <img className='py-20' src={aboutUsImg} alt="About us" />
                 <div className='p-10 pt-5 max-w-[100%]'>
                     <h6 className='text-lg py-10 text-orange-400'>About Us</h6>
@@ -148,7 +148,7 @@ export default function HomeContent() {
                     <button className='font-semibold border-b-2 border-orange-400 mt-10'>READ MORE</button>
                 </div>
             </div>
-            <div className='seeHowMadeDiv py-20'>
+            <div className='seeHowMadeDiv pb-20'>
                 <h2 className='text-5xl font-semibold text-center py-10'>See how your shoes are made</h2>
                 <p className='text-gray-400 text-center mx-auto pb-5 w-5/12 font-semibold'>Urna, felis enim orci accumsan urna blandit
                 egestas mattis egestas feugiat viverra ornare donec adipiscing semper aliquet integer
@@ -179,7 +179,7 @@ export default function HomeContent() {
                     </div>
                 </div>
             </div>
-            <div className='homeShoes pb-24'>
+            <div className='homeShoes pb-14'>
                 <div className='headerDiv flex py-10 justify-between'>
                     <h4 className='text-2xl font-semibold'>Our Best Seller</h4>
                     <button className='pt-2 border-b-2 border-orange-400 hover:border-black duration-500 font-semibold tracking-wider'>VIEW ALL BEST SELLERS</button>
@@ -269,18 +269,22 @@ export default function HomeContent() {
             <div className='menOrWomenRoute flex justify-center py-10 mb-10 p-10 gap-x-10'>
                 <div id='menRoute' className='flex flex-col justify-center items-center'>
                     <h3 className='font-semibold text-white text-4xl pb-5'>Men</h3>
-                    <button className='border-2 font-semibold border-white text-white px-8 py-3'>
-                        <a className='' href='/men'>SHOP MEN</a>
-                    </button>
+                    <a className='' href='/men'>
+                        <button className='border-2 font-semibold border-white text-white px-8 py-3'>
+                            SHOP MEN
+                        </button>
+                    </a>
                 </div>
                 <div id='womenRoute' className='flex flex-col justify-center items-center'>
                     <h3 className='font-semibold text-white text-4xl pb-5'>Women</h3>
-                    <button className='border-2 font-semibold border-white text-white px-8 py-3'>
-                        <a className='' href='/women'>SHOP WOMEN</a>
-                    </button>
+                    <a className='' href='/women'>
+                        <button className='border-2 font-semibold border-white text-white px-8 py-3'>
+                        SHOP WOMEN
+                        </button>
+                    </a>
                 </div>
             </div>
-            <div className='homeShoes pb-24'>
+            <div className='homeShoes pb-14'>
                 <div className='headerDiv flex py-10 justify-between'>
                     <h4 className='text-2xl font-semibold'>New Arrivals</h4>
                     <button className='pt-2 border-b-2 border-orange-400 whitespace-nowrap hover:border-black duration-500 font-semibold tracking-wider'>VIEW ALL NEW ARRIVALS</button>
@@ -367,7 +371,7 @@ export default function HomeContent() {
                 )}
                 </div>
             </div>
-            <div className='shoesEmv flex justify-center items-center bg-[#f1f1ef] h-[60vh] max-w-[100%]  m-[1.5%] mb-[5%]'>
+            <div className='shoesEmv flex justify-center items-center bg-[#f1f1ef] h-[60vh] max-w-[100%]  m-[1.5%]'>
                 <div className='w-[40%] pe-[10%]'>
                     <p className='text-gray-500 pb-[15%] text-lg'>Eu eget felis erat mauris aliquam mattis lacus,
                     arcu leo aliquam sapien pulvinar laoreet vulputate sem aliquet phasellus egestas felis,

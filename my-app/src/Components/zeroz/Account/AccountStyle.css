@@ -1,3 +1,11 @@
+input{
+  border: 0;
+}
+input:focus{
+  box-shadow: none !important;
+  border: 0;
+  text-shadow: none;
+}
 .loginActive{
     transform: translateX(-100%);
     z-index: 15;
@@ -8,20 +16,20 @@
 }
 .websiteLogo {
     background: linear-gradient(90deg,#4F4D36, #A49D76, #EAE7DC);
-    background-size: 300%; /* Makes the gradient move */
+    background-size: 300%;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: animate-gradient 5s normal ease-in-out infinite;
   }
   @keyframes animate-gradient {
     0% {
-      background-position: 0% 50%; /* Starts from the left */
+      background-position: 0% 50%;
     }
     50% {
-      background-position: 100% 50%; /* Moves to the right */
+      background-position: 100% 50%;
     }
     100% {
-      background-position: 0% 50%; /* Loops back */
+      background-position: 0% 50%;
     }
   }
   @media (max-width: 1300px) {

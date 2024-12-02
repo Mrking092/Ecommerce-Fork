@@ -31,7 +31,7 @@ export default function Sorter({ onSortChange }) {
           }}
           
         >
-          <MenuItem value="rating">Ratin</MenuItem>
+          <MenuItem value="rating">Rating</MenuItem>
           <MenuItem value="priceLowToHigh">Price: Low to High</MenuItem>
           <MenuItem value="priceHighToLow">Price: High to Low</MenuItem>
         </Select>

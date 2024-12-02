@@ -104,14 +104,9 @@ export default function WomenPage() {
           setHighQuickView(!highQuickView);
       }
       document.querySelector('body').style.overflow = 'visible';
-      // Retrieve current items from local storage
       const currentItems = JSON.parse(localStorage.getItem("item")) || [];
-      // Add the new item to the list
       const updatedItems = [...currentItems, itemToAdd];
-      // Save updated list back to local storage
       localStorage.setItem("item", JSON.stringify(updatedItems));
-
-      // Trigger storage event to sync other components
       window.dispatchEvent(new Event('storage'));
       setShoesNum(1);
   }
