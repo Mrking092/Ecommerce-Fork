@@ -47,13 +47,11 @@ export default function Account() {
                         </div>
                     </div>
                     <p className="text-center mt-[5%] mb-[3%] font-semibold">Login with Email & Password</p>
-                    <form className="">
-                        <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="email" placeholder="Email" />
-                        <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="password" placeholder="Password" />
+                        <input  className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="email" placeholder="Email" />
+                        <input  className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="password" placeholder="Password" />
                         <a href="/" className="flex justify-center">
                             <button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded">Login</button>
                         </a>
-                    </form>
                 </div>
 
                 <div className={`logReg ${mobile && active == 'signup' ? 'z-11' : 'z-10'} p-[2%] h-[60%] flex flex-col justify-center min-h-fit w-[25vw] rounded-e-2xl bg-white`}>
@@ -73,14 +71,12 @@ export default function Account() {
                         </div>
                     </div>
                     <p className="text-center mt-[5%] mb-[3%] font-semibold">Register with E.mail</p>
-                    <form className="">
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="text" placeholder="Name" />
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="email" placeholder="Email" />
                         <input required className="w-[100%] bg-[#eee] mb-[5%] p-[2%] ps-[3%] rounded" type="password" placeholder="Password" />
                         <a href="/" className="flex justify-center">
                             <button className="py-[2%] px-[10%] bg-[#6e7051] tracking-widest font-semibold text-[1rem] mt-[2%] text-white p-3 duration-[0.8s] hover:bg-[#262b2c] rounded">SIGN UP</button>
                         </a>
-                    </form>
                 </div>
             
             {!mobile ? 
