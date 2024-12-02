@@ -217,8 +217,8 @@ export default function MenPage() {
         style={{
           backgroundColor: "#f1f1ef",
           borderColor: "#f1f1ef",
-          borderWidth: "50px 20px",
-          margin: "0 auto",
+          borderWidth: "0 20px",
+          margin: "50px auto",
           minWidth: "300px",
           maxWidth: "1300px",
         }}
@@ -349,7 +349,7 @@ export default function MenPage() {
               <Sorter onSortChange={handleSortChange} />
             </div>
           </div>
-          <div className='ourBestSeller pb-24'>
+          <div className='ourBestSeller pb-12'>
                 <div className='headerDiv flex py-10 justify-between'>
                     <h4 className='text-2xl font-semibold'>Last Pairs</h4>
                     <button className='pt-2 border-b-2 border-orange-400 hover:border-black duration-500 font-semibold tracking-wider'>VIEW ALL SALES</button>

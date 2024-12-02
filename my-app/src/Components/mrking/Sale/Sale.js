@@ -125,7 +125,7 @@ export default function Sale() {
                     />
                 </div>
             </div>
-            <div className='ourBestSeller pb-24'>
+            <div className='ourBestSeller pb-12'>
                 <div className='headerDiv flex py-10 justify-between'>
                     <h4 className='text-2xl font-semibold'>Last Pairs</h4>
                     <button className='pt-2 border-b-2 border-orange-400 hover:border-black duration-500 font-semibold tracking-wider'>VIEW ALL SALES</button>
