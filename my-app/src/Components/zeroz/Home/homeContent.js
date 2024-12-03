@@ -112,7 +112,7 @@ export default function HomeContent() {
         setShoesNum(1);
     }
     return (
-        <>
+        <div className="">
             <div className='homeFirstDiv'>
                 <h1 className='text-7xl w-4/12 leading-tight font-semibold text-white mb-7'>Love the Planet we walk on</h1>
                 <p className='text-lg text-white w-4/12 mb-7'>
@@ -418,6 +418,6 @@ export default function HomeContent() {
                 </div>
                 <h5 className='text-gray-400 font-semibold text-center text-lg px-[2%]'>4.8 average rating from 1814 reviews</h5>
             </div>
-        </>
+        </div>
     );
 }

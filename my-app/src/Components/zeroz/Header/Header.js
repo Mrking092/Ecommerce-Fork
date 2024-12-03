@@ -50,7 +50,7 @@ function deleteProduct(e) {
 }
 console.log(sidebar);
     return(
-        <>
+        <div className="bg-white">
         {sidebar &&
             <div className='sidebarContainer absolute'>
             <div className='sidebarDiv'>
@@ -127,7 +127,7 @@ console.log(sidebar);
                     Free Express Shipping on all orders with all duties included
                 </h5>
             </div>  
-            <div className="ShippingHeader mx-[3%] my-[3.5%] pe-0 flex relative">
+            <div className="ShippingHeader mx-[3%] py-[3.5%] pe-0 flex relative">
                 <div id="sidebar" onClick={sidebarChange} className='cursor-pointer hidden'>
                     <div>
                         <div className='w-6 h-0.5 mb-1 mt-1 bg-gray-500'></div>
@@ -185,6 +185,6 @@ console.log(sidebar);
                     </ul>
                 </div>    
             </div>
-        </>
+        </div>
     )
 }

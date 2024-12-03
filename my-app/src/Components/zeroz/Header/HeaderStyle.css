@@ -12,9 +12,9 @@ p,h5,h6{
     height: 20px;
     margin-left: 1%;
 }
-/* .shipping{
-    background-color: #f1f1ef;
-} */
+.shipping{
+    background-color: #f1f1ef !important;
+}
 .sidebarContainer{
     z-index: 5;
     width: 100vw;
@@ -113,6 +113,7 @@ p,h5,h6{
     .ShippingHeader{
         display: flex;
         justify-content: center;
+        background-color: white;
     }
     .ShippingHeader button{
         position: absolute;
