@@ -112,7 +112,7 @@ export default function HomeContent() {
         setShoesNum(1);
     }
     return (
-        <div className="">
+        <div>
             <div className='homeFirstDiv'>
                 <h1 className='text-7xl w-4/12 leading-tight font-semibold text-white mb-7'>Love the Planet we walk on</h1>
                 <p className='text-lg text-white w-4/12 mb-7'>

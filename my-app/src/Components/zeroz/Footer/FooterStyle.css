@@ -51,7 +51,6 @@
 .footerContainer div{
     width: 15%;
 }
-
 .footerContainer div p{
     font-size: 1.2rem;
 }
@@ -127,6 +126,7 @@
     .footerContainer .footerRouteContainer{
         width: 50%;
         height: 25vh;
+        min-height: fit-content;
         margin-bottom: 15%;
         text-align: center;
     }
